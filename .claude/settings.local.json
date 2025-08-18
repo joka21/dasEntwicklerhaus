@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app:*)",
+      "Bash(cp:*)",
+      "Bash(true)",
+      "Bash(rm:*)",
+      "Bash(robocopy:*)",
+      "Bash(xcopy:*)",
+      "Bash(mv:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm install:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\Users\\jokal\\OneDrive\\Desktop\\Projekte"
+    ]
+  }
+}
