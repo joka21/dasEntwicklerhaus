@@ -6,7 +6,10 @@ export default function ProjectsPage() {
     <>
       <Header />
       <div className="min-h-screen bg-gray-50">
-        <div className="container mx-auto px-4 py-8">
+        <div className="sr-only">
+          <h1>Alle Projekte - Das Entwicklerhaus</h1>
+        </div>
+        <main id="main-content" className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-8">
             Alle Projekte
           </h1>
@@ -16,7 +19,7 @@ export default function ProjectsPage() {
               <p className="text-gray-500">Projekte werden geladen...</p>
             </div>
           </div>
-        </div>
+        </main>
       </div>
       <Footer />
     </>

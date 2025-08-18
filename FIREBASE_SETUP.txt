@@ -1,0 +1,138 @@
+# Firebase Setup Anleitung für Das Entwicklerhaus
+
+## 1. Firebase Projekt erstellen
+
+1. Gehe zu https://console.firebase.google.com/
+2. Klicke auf "Projekt erstellen"
+3. Gib als Projektname ein: "das-entwicklerhaus" oder ähnlich
+4. Wähle dein Land/Region (z.B. Deutschland)
+5. Aktiviere Google Analytics (optional)
+6. Klicke auf "Projekt erstellen"
+
+## 2. Web App zu Firebase hinzufügen
+
+1. Klicke auf das Web-Icon (</>) im Firebase Dashboard
+2. Gib als App-Namen ein: "Das Entwicklerhaus Web"
+3. Aktiviere "Firebase Hosting einrichten" (optional)
+4. Klicke auf "App registrieren"
+5. Kopiere die Konfigurationsdaten (siehe unten)
+
+## 3. Umgebungsvariablen konfigurieren
+
+1. Kopiere die Datei `.env.local.example` zu `.env.local`:
+   ```
+   cp .env.local.example .env.local
+   ```
+
+2. Fülle die `.env.local` Datei mit deinen Firebase Konfigurationswerten:
+   ```
+   NEXT_PUBLIC_FIREBASE_API_KEY=dein_api_key_hier
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=dein_projekt.firebaseapp.com
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=dein_projekt_id
+   NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=dein_projekt.appspot.com
+   NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=dein_sender_id
+   NEXT_PUBLIC_FIREBASE_APP_ID=dein_app_id
+   NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=G-MEASUREMENT_ID
+   ```
+
+## 4. Firebase Services aktivieren
+
+### Authentication:
+1. Gehe zu "Authentication" > "Get started"
+2. Klicke auf "Sign-in method"
+3. Aktiviere "Email/Password"
+4. Speichere die Einstellungen
+
+### Firestore Database:
+1. Gehe zu "Firestore Database" > "Datenbank erstellen"
+2. Wähle "Im Testmodus starten" (für Entwicklung)
+3. Wähle deine Region (z.B. europe-west3)
+4. Klicke auf "Fertig"
+
+### Storage:
+1. Gehe zu "Storage" > "Erste Schritte"
+2. Wähle "Im Testmodus starten"
+3. Wähle deine Region (z.B. europe-west3)
+4. Klicke auf "Fertig"
+
+## 5. Sicherheitsregeln (für Produktion)
+
+### Firestore Rules:
+```javascript
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Benutzer können nur ihre eigenen Daten lesen/schreiben
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Projekte sind öffentlich lesbar, aber nur authentifizierte Benutzer können erstellen
+    match /projects/{projectId} {
+      allow read: if true;
+      allow create, update: if request.auth != null;
+      allow delete: if request.auth != null && resource.data.authorId == request.auth.uid;
+    }
+  }
+}
+```
+
+### Storage Rules:
+```javascript
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /project-images/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}
+```
+
+## 6. Lokale Entwicklung testen
+
+1. Starte den Entwicklungsserver:
+   ```
+   npm run dev
+   ```
+
+2. Öffne http://localhost:3000
+3. Teste die Firebase Verbindung in der Browser-Konsole
+
+## 7. Vercel Environment Variables
+
+Für das Vercel Deployment:
+1. Gehe zu deinem Vercel Dashboard
+2. Wähle dein Projekt aus
+3. Gehe zu "Settings" > "Environment Variables"
+4. Füge alle NEXT_PUBLIC_FIREBASE_* Variablen hinzu
+
+## 8. Troubleshooting
+
+### Häufige Probleme:
+
+1. **"Firebase: No Firebase App '[DEFAULT]' has been created"**
+   - Überprüfe ob .env.local existiert und korrekte Werte hat
+   - Starte den Dev-Server neu
+
+2. **CORS Fehler**
+   - Füge deine Domain in Firebase Console unter Authentication > Settings > Authorized domains hinzu
+
+3. **Permission denied**
+   - Überprüfe Firestore/Storage Sicherheitsregeln
+   - Stelle sicher, dass Benutzer authentifiziert ist
+
+### Nützliche Links:
+- Firebase Console: https://console.firebase.google.com/
+- Firebase Docs: https://firebase.google.com/docs
+- Next.js Firebase Guide: https://nextjs.org/learn/dashboard-app
+
+## 9. Nächste Schritte
+
+Nach erfolgreicher Firebase Verbindung:
+1. Benutzerregistrierung implementieren
+2. Projekt-Upload Funktionalität hinzufügen
+3. Datenbankstrukturen für Projekte erstellen
+4. Image Upload für Projektbilder einrichten
+5. Admin-Bereich für featured Projects entwickeln
