@@ -9,7 +9,7 @@ export default function DieIdeePage() {
         <main id="main-content" className="container mx-auto px-4 py-8 max-w-4xl">
           <div className="bg-white rounded-lg shadow-md p-8 lg:p-12">
             <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-              ✅ VISITENKARTEN URL FUNKTIONIERT: /dieIdee
+              ✅ Visitenkarten-URL /dieIdee funktioniert (zeigt Inhalt von /dieidee)
             </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-6">
               Die Idee: Ein Zuhause für gute Projekte
@@ -239,7 +239,7 @@ export default function DieIdeePage() {
                   <p className="text-gray-700 mt-2">Das Einreichen ist im MVP kostenfrei. Sponsoring/Partnerschaften werden klar gekennzeichnet.</p>
                 </details>
                 <details className="bg-gray-50 rounded-lg p-4">
-                  <summary className="font-semibent text-gray-800 cursor-pointer">Wie stellt ihr Qualität sicher?</summary>
+                  <summary className="font-semibold text-gray-800 cursor-pointer">Wie stellt ihr Qualität sicher?</summary>
                   <p className="text-gray-700 mt-2">Kurzer Redaktionscheck, klare Kriterien (Projektziel, Ansprechperson, Aktualität), transparente Angaben und Kennzeichnung von Werbung/Sponsoring.</p>
                 </details>
                 <details className="bg-gray-50 rounded-lg p-4">
