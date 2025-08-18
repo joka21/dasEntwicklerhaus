@@ -6,7 +6,7 @@ export default function ContactPage() {
     <>
       <Header />
       <div className="min-h-screen bg-gray-50">
-        <div className="container mx-auto px-4 py-8">
+        <main className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-8">
             Kontakt
           </h1>
@@ -17,7 +17,7 @@ export default function ContactPage() {
                   Kontaktinformationen
                 </h2>
                 <p className="text-gray-700 mb-2">
-                  <strong>Email:</strong> info@dasentwicklerhaus.de
+                  <strong>Email:</strong> <a href="mailto:info@dasentwicklerhaus.de" className="text-indigo-600 hover:text-indigo-800">info@dasentwicklerhaus.de</a>
                 </p>
                 <p className="text-gray-700">
                   Wir freuen uns auf Ihre Nachricht und werden uns schnellstmöglich bei Ihnen melden.
@@ -34,7 +34,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-        </div>
+        </main>
       </div>
       <Footer />
     </>

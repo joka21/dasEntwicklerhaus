@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Important pages
+Allow: /dieidee
+Allow: /projects
+Allow: /contact
+
+# Sitemap location
+Sitemap: https://dasentwicklerhaus.de/sitemap.xml
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1
