@@ -8,7 +8,7 @@ export default function DieIdeePage() {
       <div className="min-h-screen bg-gray-50">
         <main id="main-content" className="container mx-auto px-4 py-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-8">
-            Die Idee
+            dieIdee
           </h1>
           <div className="bg-white rounded-lg shadow-md p-8">
             <p className="text-gray-700 mb-4">
