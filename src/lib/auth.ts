@@ -30,7 +30,7 @@ export const signUp = async (email: string, password: string, displayName: strin
       id: result.user.uid,
       email: result.user.email!,
       displayName: displayName,
-      photoURL: result.user.photoURL,
+      photoURL: result.user.photoURL || undefined,
       createdAt: new Date(),
       updatedAt: new Date()
     }
