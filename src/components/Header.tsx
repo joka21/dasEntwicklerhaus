@@ -39,7 +39,7 @@ export default function Header() {
                   Projekte
                 </Link>
                 <Link
-                  href="/dieidee"
+                  href="/die-idee"
                   className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded"
                 >
                   dieIdee
@@ -99,7 +99,7 @@ export default function Header() {
                   Projekte
                 </Link>
                 <Link
-                  href="/dieidee"
+                  href="/die-idee"
                   className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   onClick={() => setIsMenuOpen(false)}
                 >

@@ -1,15 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: false,
-  async redirects() {
-    return [
-      {
-        source: '/dieIdee',
-        destination: '/dieidee',
-        permanent: true,
-      },
-    ]
-  },
+  trailingSlash: false
 };
 
 export default nextConfig;
