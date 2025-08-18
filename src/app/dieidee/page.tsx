@@ -8,6 +8,9 @@ export default function DieIdeePage() {
       <div className="min-h-screen bg-gray-50">
         <main id="main-content" className="container mx-auto px-4 py-8 max-w-4xl">
           <div className="bg-white rounded-lg shadow-md p-8 lg:p-12">
+            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+              ✅ Route /dieidee funktioniert! (Build: {new Date().toISOString()})
+            </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-6">
               Die Idee: Ein Zuhause für gute Projekte
             </h1>
