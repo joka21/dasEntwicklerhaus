@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
 export default function DieIdeeRedirect() {
-  redirect('/dieidee')
+  redirect('/dieIdee')
 }

@@ -26,7 +26,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link 
-                  href="/die-idee" 
+                  href="/dieIdee" 
                   className="text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded"
                 >
                   dieIdee
