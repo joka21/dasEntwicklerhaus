@@ -16,7 +16,7 @@ export default function Hero() {
       {/* Geometric Shapes */}
       {/* Green Rectangle - Top Left Corner */}
       <div 
-        className="absolute top-0 left-0 w-32 h-24 lg:w-48 lg:h-32 bg-umwelt transition-transform duration-300 hover:scale-110 hover:rotate-3"
+        className="absolute top-0 left-0 w-44 h-32 lg:w-67 lg:h-45 bg-umwelt transition-transform duration-300 hover:scale-110 hover:rotate-3"
         style={{
           transform: `translateY(${scrollY * 0.2}px) rotate(${scrollY * 0.1}deg)`
         }}
@@ -24,7 +24,7 @@ export default function Hero() {
 
       {/* Purple/Violet Half-Circle - Right Edge */}
       <div 
-        className="absolute top-16 -right-16 lg:top-20 lg:-right-20 w-32 h-32 lg:w-48 lg:h-48 bg-frieden rounded-full transition-transform duration-300 hover:scale-110"
+        className="absolute top-16 -right-21 lg:top-20 lg:-right-28 w-42 h-42 lg:w-63 lg:h-63 bg-frieden rounded-full transition-transform duration-300 hover:scale-110"
         style={{
           transform: `translateY(${scrollY * -0.15}px) translateX(${scrollY * -0.1}px)`
         }}
