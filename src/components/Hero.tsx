@@ -37,9 +37,23 @@ export default function Hero() {
           transform: `translateX(-50%) translateY(${scrollY * -0.3}px)`,
           width: 0,
           height: 0,
-          borderLeft: '60px solid transparent',
-          borderRight: '60px solid transparent',
-          borderBottom: '80px solid',
+          borderLeft: '30vw solid transparent',
+          borderRight: '30vw solid transparent',
+          borderBottom: '120px solid',
+          borderBottomColor: 'var(--menschen)',
+        }}
+      ></div>
+      
+      {/* Desktop Triangle Overlay for larger size */}
+      <div 
+        className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 lg:-bottom-12 transition-transform duration-300 hover:scale-110 hover:-rotate-12 hidden lg:block"
+        style={{
+          transform: `translateX(-50%) translateY(${scrollY * -0.3}px)`,
+          width: 0,
+          height: 0,
+          borderLeft: '40vw solid transparent',
+          borderRight: '40vw solid transparent',
+          borderBottom: '150px solid',
           borderBottomColor: 'var(--menschen)',
         }}
       ></div>
