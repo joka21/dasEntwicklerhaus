@@ -35,71 +35,105 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
           Filter nach Themen
         </h3>
         
-        <div className="flex flex-wrap gap-4 justify-center">
+        <div className="flex flex-wrap gap-6 justify-center items-center">
           <button
             onClick={() => handleFilterClick('alle')}
-            className={`px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'alle' 
-                ? 'bg-secondary text-white' 
-                : 'bg-gray-200 text-dark hover:bg-gray-300'
+                ? 'bg-secondary shadow-lg scale-105' 
+                : 'bg-gray-200 hover:bg-gray-300'
             }`}
+            aria-label="Alle Themen anzeigen"
+            title="Alle Themen"
           >
-            Alle Themen
+            <div className="w-8 h-8 bg-dark rounded-sm flex items-center justify-center">
+              <span className="text-white font-bold text-sm">ALL</span>
+            </div>
           </button>
           
           <button
             onClick={() => handleFilterClick('menschen')}
-            className={`px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'menschen' 
-                ? 'bg-red-500 text-white' 
-                : 'bg-gray-200 text-dark hover:bg-red-100'
+                ? 'bg-red-100 shadow-lg scale-105' 
+                : 'bg-gray-200 hover:bg-red-50'
             }`}
+            aria-label="Menschen-Projekte anzeigen"
+            title="Menschen"
           >
-            Menschen
+            <img 
+              src="/images/categories/menschen.png" 
+              alt="Menschen Icon" 
+              className="w-8 h-8"
+            />
           </button>
           
           <button
             onClick={() => handleFilterClick('frieden')}
-            className={`px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'frieden' 
-                ? 'bg-purple-500 text-white' 
-                : 'bg-gray-200 text-dark hover:bg-purple-100'
+                ? 'bg-purple-100 shadow-lg scale-105' 
+                : 'bg-gray-200 hover:bg-purple-50'
             }`}
+            aria-label="Frieden-Projekte anzeigen"
+            title="Frieden"
           >
-            Frieden
+            <img 
+              src="/images/categories/frieden.png" 
+              alt="Frieden Icon" 
+              className="w-8 h-8"
+            />
           </button>
           
           <button
             onClick={() => handleFilterClick('umwelt')}
-            className={`px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'umwelt' 
-                ? 'bg-green-500 text-white' 
-                : 'bg-gray-200 text-dark hover:bg-green-100'
+                ? 'bg-green-100 shadow-lg scale-105' 
+                : 'bg-gray-200 hover:bg-green-50'
             }`}
+            aria-label="Umwelt-Projekte anzeigen"
+            title="Umwelt"
           >
-            Umwelt
+            <img 
+              src="/images/categories/umwelt.png" 
+              alt="Umwelt Icon" 
+              className="w-8 h-8"
+            />
           </button>
           
           <button
             onClick={() => handleFilterClick('zusammenarbeit')}
-            className={`px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'zusammenarbeit' 
-                ? 'bg-blue-500 text-white' 
-                : 'bg-gray-200 text-dark hover:bg-blue-100'
+                ? 'bg-blue-100 shadow-lg scale-105' 
+                : 'bg-gray-200 hover:bg-blue-50'
             }`}
+            aria-label="Zusammenarbeit-Projekte anzeigen"
+            title="Zusammenarbeit"
           >
-            Zusammenarbeit
+            <img 
+              src="/images/categories/zusammenarbeite.png" 
+              alt="Zusammenarbeit Icon" 
+              className="w-8 h-8"
+            />
           </button>
           
           <button
             onClick={() => handleFilterClick('zukunft')}
-            className={`px-6 py-3 rounded-lg transition-all duration-300 ${
+            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'zukunft' 
-                ? 'bg-orange-500 text-white' 
-                : 'bg-gray-200 text-dark hover:bg-orange-100'
+                ? 'bg-orange-100 shadow-lg scale-105' 
+                : 'bg-gray-200 hover:bg-orange-50'
             }`}
+            aria-label="Zukunft-Projekte anzeigen"
+            title="Zukunft"
           >
-            Zukunft
+            <img 
+              src="/images/categories/zulunft.png" 
+              alt="Zukunft Icon" 
+              className="w-8 h-8"
+            />
           </button>
         </div>
       </div>
