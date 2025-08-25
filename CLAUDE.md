@@ -1,0 +1,1 @@
+- sehr gut gemacht, nun muss noch die filter nav mit den cards vernbunde werden

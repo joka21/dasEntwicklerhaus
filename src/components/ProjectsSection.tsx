@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import ContentSection from './ContentSection'
 import ProjectsGrid from './ProjectsGrid'
 import { Project } from '@/types/project'
@@ -17,18 +16,9 @@ export default function ProjectsSection({
   activeFilter = 'alle',
   onFilterChange 
 }: ProjectsSectionProps) {
-  const [currentFilter, setCurrentFilter] = useState<FilterCategory>(activeFilter)
-
-  const handleFilterChange = (filter: FilterCategory) => {
-    setCurrentFilter(filter)
-    if (onFilterChange) {
-      onFilterChange(filter)
-    }
-  }
-
-  const filteredProjects = currentFilter === 'alle' 
+  const filteredProjects = activeFilter === 'alle' 
     ? projects 
-    : projects.filter(project => project.category === currentFilter)
+    : projects.filter(project => project.category === activeFilter)
 
   return (
     <ContentSection>
@@ -36,9 +26,9 @@ export default function ProjectsSection({
       <div className="mb-8 text-center">
         <p className="text-secondary">
           {filteredProjects.length} {filteredProjects.length === 1 ? 'Projekt gefunden' : 'Projekte gefunden'}
-          {currentFilter !== 'alle' && (
+          {activeFilter !== 'alle' && (
             <span className="ml-2 text-dark font-medium">
-              in Kategorie: {currentFilter.charAt(0).toUpperCase() + currentFilter.slice(1)}
+              in Kategorie: {activeFilter.charAt(0).toUpperCase() + activeFilter.slice(1)}
             </span>
           )}
         </p>
