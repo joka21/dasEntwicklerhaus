@@ -16,7 +16,7 @@ export default function Hero() {
       {/* Geometric Shapes */}
       {/* Green Rectangle - Top Left Corner */}
       <div 
-        className="absolute top-0 left-0 w-44 h-32 lg:w-67 lg:h-45 bg-umwelt transition-transform duration-300 hover:scale-110 hover:rotate-3"
+        className="absolute top-0 left-0 w-44 h-32 lg:w-[18rem] lg:h-[12rem] bg-umwelt transition-transform duration-300 hover:scale-110 hover:rotate-3"
         style={{
           transform: `translateY(${scrollY * 0.2}px) rotate(${scrollY * 0.1}deg)`
         }}
@@ -24,7 +24,7 @@ export default function Hero() {
 
       {/* Purple/Violet Half-Circle - Right Edge */}
       <div 
-        className="absolute top-16 -right-21 lg:top-20 lg:-right-28 w-42 h-42 lg:w-63 lg:h-63 bg-frieden rounded-full transition-transform duration-300 hover:scale-110"
+        className="absolute top-16 -right-16 lg:top-20 lg:-right-20 w-44 h-44 lg:w-[20rem] lg:h-[20rem] bg-frieden rounded-full transition-transform duration-300 hover:scale-110"
         style={{
           transform: `translateY(${scrollY * -0.15}px) translateX(${scrollY * -0.1}px)`
         }}
@@ -85,17 +85,17 @@ export default function Hero() {
       </div>
 
       {/* Additional decorative shapes for visual interest */}
-      {/* Small accent circle - left side */}
+      {/* Small accent circle - left side (30% larger) */}
       <div 
-        className="absolute top-1/3 left-2 lg:left-12 w-8 h-8 lg:w-12 lg:h-12 bg-zusammenarbeit rounded-full opacity-60 transition-all duration-500 hover:opacity-100 hover:scale-150"
+        className="absolute top-1/3 left-2 lg:left-12 w-10 h-10 lg:w-[3.9rem] lg:h-[3.9rem] bg-zusammenarbeit rounded-full opacity-60 transition-all duration-500 hover:opacity-100 hover:scale-150"
         style={{
           transform: `translateY(${scrollY * 0.4}px)`
         }}
       ></div>
 
-      {/* Small accent square - right side */}
+      {/* Small accent square - right side (40% larger) */}
       <div 
-        className="absolute bottom-1/3 right-2 lg:right-20 w-12 h-12 lg:w-16 lg:h-16 bg-zukunft opacity-40 rotate-45 transition-all duration-700 hover:opacity-80 hover:rotate-180 hover:scale-125"
+        className="absolute bottom-1/3 right-2 lg:right-20 w-16 h-16 lg:w-[5.6rem] lg:h-[5.6rem] bg-zukunft opacity-40 rotate-45 transition-all duration-700 hover:opacity-80 hover:rotate-180 hover:scale-125"
         style={{
           transform: `rotate(45deg) translateY(${scrollY * -0.25}px)`
         }}
