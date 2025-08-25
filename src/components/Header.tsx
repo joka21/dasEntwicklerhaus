@@ -28,11 +28,11 @@ export default function Header() {
                 <Image
                   src="/images/logo/logo-Klein.webp"
                   alt=""
-                  width={40}
+                  width={52}
                   height={40}
-                  className="h-10 w-10"
+                  className="h-10 w-[52px]"
                 />
-                <span className="text-lg font-medium text-secondary lg:text-xl">
+                <span className="text-lg font-medium text-zusammenarbeit-800 lg:text-xl">
                   Das Entwicklerhaus
                 </span>
               </Link>
