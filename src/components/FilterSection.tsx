@@ -49,7 +49,7 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
             <img 
               src="/images/categories/all.png" 
               alt="Alle Themen Icon" 
-              className="w-8 h-8"
+              className="w-12 h-12"
             />
           </button>
           
@@ -66,7 +66,7 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
             <img 
               src="/images/categories/menschen.png" 
               alt="Menschen Icon" 
-              className="w-8 h-8"
+              className="w-12 h-12"
             />
           </button>
           
@@ -83,7 +83,7 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
             <img 
               src="/images/categories/frieden.png" 
               alt="Frieden Icon" 
-              className="w-8 h-8"
+              className="w-12 h-12"
             />
           </button>
           
@@ -100,7 +100,7 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
             <img 
               src="/images/categories/umwelt.png" 
               alt="Umwelt Icon" 
-              className="w-8 h-8"
+              className="w-12 h-12"
             />
           </button>
           
@@ -117,7 +117,7 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
             <img 
               src="/images/categories/zusammenarbeite.png" 
               alt="Zusammenarbeit Icon" 
-              className="w-8 h-8"
+              className="w-12 h-12"
             />
           </button>
           
@@ -134,7 +134,7 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
             <img 
               src="/images/categories/zulunft.png" 
               alt="Zukunft Icon" 
-              className="w-8 h-8"
+              className="w-12 h-12"
             />
           </button>
         </div>
