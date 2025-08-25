@@ -23,7 +23,7 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
     <ContentSection>
       <div className="text-center mb-12">
         <h2 className="text-3xl lg:text-4xl font-bold text-dark mb-6">
-          Entdecke innovative Projekte
+          Entdecke innovative Proj
         </h2>
         <p className="text-base lg:text-lg text-secondary max-w-3xl mx-auto">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.
