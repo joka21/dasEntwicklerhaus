@@ -32,9 +32,9 @@ export default function Hero() {
 
       {/* Yellow Triangle - Bottom Edge */}
       <div 
-        className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 lg:-bottom-12 transition-transform duration-300 hover:scale-110 hover:-rotate-12"
+        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 transition-transform duration-300 hover:scale-110 hover:-rotate-12"
         style={{
-          transform: `translateX(-50%) translateY(${scrollY * -0.3}px)`,
+          transform: `translateX(-50%) scale(${1 + (scrollY * 0.001)})`,
           width: 0,
           height: 0,
           borderLeft: '30vw solid transparent',
@@ -46,9 +46,9 @@ export default function Hero() {
       
       {/* Desktop Triangle Overlay for larger size */}
       <div 
-        className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 lg:-bottom-12 transition-transform duration-300 hover:scale-110 hover:-rotate-12 hidden lg:block"
+        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 transition-transform duration-300 hover:scale-110 hover:-rotate-12 hidden lg:block"
         style={{
-          transform: `translateX(-50%) translateY(${scrollY * -0.3}px)`,
+          transform: `translateX(-50%) scale(${1 + (scrollY * 0.001)})`,
           width: 0,
           height: 0,
           borderLeft: '40vw solid transparent',
