@@ -1,33 +1,34 @@
 import Header from '@/components/Header'
+import ContentSection from '@/components/ContentSection'
 import Footer from '@/components/Footer'
 
 export default function ContactPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gray-50">
-        <main className="container mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-8">
+      <ContentSection>
+        <main>
+          <h1 className="text-h1 lg:text-h1-lg font-bold text-dark mb-8">
             Kontakt
           </h1>
-          <div className="bg-white rounded-lg shadow-md p-8">
+          <div className="bg-light-50 rounded-lg shadow-md p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                <h2 className="text-h3 lg:text-h2-lg font-semibold text-dark mb-4">
                   Kontaktinformationen
                 </h2>
-                <p className="text-gray-700 mb-2">
-                  <strong>Email:</strong> <a href="mailto:info@dasentwicklerhaus.de" className="text-indigo-600 hover:text-indigo-800">info@dasentwicklerhaus.de</a>
+                <p className="text-dark mb-2">
+                  <strong>Email:</strong> <a href="mailto:info@dasentwicklerhaus.de" className="text-primary hover:text-primary-hover">info@dasentwicklerhaus.de</a>
                 </p>
-                <p className="text-gray-700">
+                <p className="text-dark">
                   Wir freuen uns auf Ihre Nachricht und werden uns schnellstmöglich bei Ihnen melden.
                 </p>
               </div>
               <div>
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                <h2 className="text-h3 lg:text-h2-lg font-semibold text-dark mb-4">
                   Projekt einreichen
                 </h2>
-                <p className="text-gray-700">
+                <p className="text-dark">
                   Haben Sie ein innovatives Projekt, das Sie präsentieren möchten? 
                   Kontaktieren Sie uns gerne!
                 </p>
@@ -35,7 +36,7 @@ export default function ContactPage() {
             </div>
           </div>
         </main>
-      </div>
+      </ContentSection>
       <Footer />
     </>
   )

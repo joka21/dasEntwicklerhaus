@@ -1,28 +1,29 @@
 import Header from '@/components/Header'
+import ContentSection from '@/components/ContentSection'
 import Footer from '@/components/Footer'
 
 export default function DieIdeePage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gray-50">
-        <main id="main-content" className="container mx-auto px-4 py-8 max-w-4xl">
-          <div className="bg-white rounded-lg shadow-md p-8 lg:p-12">
-            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+      <ContentSection>
+        <main id="main-content">
+          <div className="bg-light-50 rounded-lg shadow-md p-8 lg:p-12 max-w-4xl mx-auto">
+            <div className="bg-umwelt-100 border border-umwelt-400 text-umwelt-700 px-4 py-3 rounded mb-4">
               ✅ Visitenkarten-URL /dieIdee funktioniert (zeigt Inhalt von /dieidee)
             </div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">
+            <h1 className="text-h1 lg:text-h1-lg font-bold text-dark mb-6">
               Die Idee: Ein Zuhause für gute Projekte
             </h1>
             
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+              <h2 className="text-h2 lg:text-h1-lg font-semibold text-dark mb-4">
                 Warum es das Entwicklerhaus gibt
               </h2>
-              <p className="text-gray-700 mb-4 leading-relaxed">
+              <p className="text-dark mb-4 leading-relaxed">
                 Gute Projekte passieren überall – sie finden nur zu selten die Bühne, die sie verdienen. Das Entwicklerhaus schließt diese Lücke: Wir machen Innovationsprojekte, soziale Initiativen, KI‑Lösungen, Webportale und DIY‑Vorhaben sichtbar.
               </p>
-              <p className="text-gray-700 leading-relaxed">
+              <p className="text-dark leading-relaxed">
                 Unser Startpunkt ist der Niederrhein, der Ausbau führt über NRW nach Deutschland und weiter nach Europa. So entsteht eine wachsende Landkarte, auf der Menschen Projekte entdecken, unterstützen und miteinander vernetzen.
               </p>
             </section>
@@ -250,7 +251,7 @@ export default function DieIdeePage() {
             </section>
           </div>
         </main>
-      </div>
+      </ContentSection>
       <Footer />
     </>
   )
