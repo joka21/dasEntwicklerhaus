@@ -161,4 +161,3 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
   )
 }
 
-export { type FilterCategory }
