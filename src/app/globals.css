@@ -3,14 +3,206 @@
 @tailwind utilities;
 
 :root {
+  /* Original Next.js variables */
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Custom Color Palette - Light Mode */
+  --primary: #93BDE6;
+  --primary-50: #F5F9FD;
+  --primary-100: #EBF2FA;
+  --primary-200: #D2E3F2;
+  --primary-300: #B9D4EA;
+  --primary-400: #A6C9E8;
+  --primary-500: #93BDE6;
+  --primary-600: #7AAEE1;
+  --primary-700: #5B9ADB;
+  --primary-800: #4485D0;
+  --primary-900: #3770B8;
+  --primary-950: #2B5A9A;
+  --primary-hover: #7AAEE1;
+  --primary-focus: #5B9ADB;
+  
+  --secondary: #BEBEBE;
+  --secondary-50: #FAFAFA;
+  --secondary-100: #F5F5F5;
+  --secondary-200: #E9E9E9;
+  --secondary-300: #DDDDDD;
+  --secondary-400: #D1D1D1;
+  --secondary-500: #BEBEBE;
+  --secondary-600: #ABABAB;
+  --secondary-700: #989898;
+  --secondary-800: #858585;
+  --secondary-900: #727272;
+  --secondary-950: #606060;
+  --secondary-hover: #ABABAB;
+  --secondary-focus: #989898;
+  
+  --dark: #000000;
+  --dark-50: #F7F7F7;
+  --dark-100: #E3E3E3;
+  --dark-200: #C7C7C7;
+  --dark-300: #ABABAB;
+  --dark-400: #8F8F8F;
+  --dark-500: #737373;
+  --dark-600: #575757;
+  --dark-700: #3B3B3B;
+  --dark-800: #1F1F1F;
+  --dark-900: #030303;
+  --dark-950: #000000;
+  --dark-hover: #1F1F1F;
+  --dark-focus: #3B3B3B;
+  
+  --light: #FFFFFF;
+  --light-50: #FFFFFF;
+  --light-100: #FFFFFF;
+  --light-200: #FEFEFE;
+  --light-300: #FDFDFD;
+  --light-400: #FCFCFC;
+  --light-500: #FBFBFB;
+  --light-600: #F9F9F9;
+  --light-700: #F7F7F7;
+  --light-800: #F5F5F5;
+  --light-900: #F3F3F3;
+  --light-950: #F0F0F0;
+  --light-hover: #F9F9F9;
+  --light-focus: #F5F5F5;
+  
+  /* Category Colors */
+  --menschen: #FFCD00;
+  --menschen-50: #FFFEF7;
+  --menschen-100: #FFFCEB;
+  --menschen-200: #FFF8D1;
+  --menschen-300: #FFF3B6;
+  --menschen-400: #FFEE9C;
+  --menschen-500: #FFCD00;
+  --menschen-600: #E6B800;
+  --menschen-700: #CCA300;
+  --menschen-800: #B38E00;
+  --menschen-900: #997900;
+  --menschen-950: #806400;
+  --menschen-soft: #FFCD0073;
+  --menschen-hover: #E6B800;
+  --menschen-focus: #CCA300;
+  
+  --frieden: #BA5FA1;
+  --frieden-50: #FDF7FC;
+  --frieden-100: #FAEFF8;
+  --frieden-200: #F3DFEF;
+  --frieden-300: #ECCFE5;
+  --frieden-400: #E5BFDC;
+  --frieden-500: #BA5FA1;
+  --frieden-600: #A7549E;
+  --frieden-700: #94499A;
+  --frieden-800: #813E97;
+  --frieden-900: #6E3394;
+  --frieden-950: #5B2891;
+  --frieden-soft: #BA5FA173;
+  --frieden-hover: #A7549E;
+  --frieden-focus: #94499A;
+  
+  --umwelt: #73B958;
+  --umwelt-50: #F7FCF4;
+  --umwelt-100: #EFF9E9;
+  --umwelt-200: #DFF2D3;
+  --umwelt-300: #CFECBD;
+  --umwelt-400: #BFE5A7;
+  --umwelt-500: #73B958;
+  --umwelt-600: #68A74E;
+  --umwelt-700: #5D9544;
+  --umwelt-800: #52833A;
+  --umwelt-900: #477130;
+  --umwelt-950: #3C5F26;
+  --umwelt-soft: #73B95873;
+  --umwelt-hover: #68A74E;
+  --umwelt-focus: #5D9544;
+  
+  --zusammenarbeit: #203A8F;
+  --zusammenarbeit-50: #F3F6FD;
+  --zusammenarbeit-100: #E7EDFB;
+  --zusammenarbeit-200: #CFDBF7;
+  --zusammenarbeit-300: #B7C9F3;
+  --zusammenarbeit-400: #9FB7EF;
+  --zusammenarbeit-500: #203A8F;
+  --zusammenarbeit-600: #1D3481;
+  --zusammenarbeit-700: #1A2E73;
+  --zusammenarbeit-800: #172865;
+  --zusammenarbeit-900: #142257;
+  --zusammenarbeit-950: #111C49;
+  --zusammenarbeit-soft: #203A8F73;
+  --zusammenarbeit-hover: #1D3481;
+  --zusammenarbeit-focus: #1A2E73;
+  
+  --zukunft: #65BBE1;
+  --zukunft-50: #F6FCFE;
+  --zukunft-100: #EDF9FD;
+  --zukunft-200: #DBF3FB;
+  --zukunft-300: #C9EDF9;
+  --zukunft-400: #B7E7F7;
+  --zukunft-500: #65BBE1;
+  --zukunft-600: #5BAACB;
+  --zukunft-700: #5199B5;
+  --zukunft-800: #47889F;
+  --zukunft-900: #3D7789;
+  --zukunft-950: #336673;
+  --zukunft-soft: #65BBE173;
+  --zukunft-hover: #5BAACB;
+  --zukunft-focus: #5199B5;
+  
+  /* Semantic Color Variables */
+  --color-surface: var(--light);
+  --color-surface-secondary: var(--light-100);
+  --color-text-primary: var(--dark);
+  --color-text-secondary: var(--dark-600);
+  --color-text-muted: var(--secondary-700);
+  --color-border: var(--secondary-200);
+  --color-border-hover: var(--secondary-300);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Original Next.js variables */
     --background: #0a0a0a;
     --foreground: #ededed;
+    
+    /* Custom Color Palette - Dark Mode Adjustments */
+    --primary: #7AAEE1;
+    --primary-hover: #5B9ADB;
+    --primary-focus: #4485D0;
+    
+    --secondary: #989898;
+    --secondary-hover: #ABABAB;
+    --secondary-focus: #BEBEBE;
+    
+    /* Category Colors - Dark Mode Adjustments */
+    --menschen: #E6B800;
+    --menschen-hover: #CCA300;
+    --menschen-focus: #B38E00;
+    
+    --frieden: #A7549E;
+    --frieden-hover: #94499A;
+    --frieden-focus: #813E97;
+    
+    --umwelt: #68A74E;
+    --umwelt-hover: #5D9544;
+    --umwelt-focus: #52833A;
+    
+    --zusammenarbeit: #1D3481;
+    --zusammenarbeit-hover: #1A2E73;
+    --zusammenarbeit-focus: #172865;
+    
+    --zukunft: #5BAACB;
+    --zukunft-hover: #5199B5;
+    --zukunft-focus: #47889F;
+    
+    /* Semantic Color Variables - Dark Mode */
+    --color-surface: var(--dark-800);
+    --color-surface-secondary: var(--dark-700);
+    --color-text-primary: var(--light);
+    --color-text-secondary: var(--light-700);
+    --color-text-muted: var(--secondary-400);
+    --color-border: var(--dark-600);
+    --color-border-hover: var(--dark-500);
   }
 }
 
