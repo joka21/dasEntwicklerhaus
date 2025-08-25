@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import ContentSection from './ContentSection'
 import ProjectsGrid from './ProjectsGrid'
 import { Project } from '@/types/project'
@@ -37,8 +38,8 @@ export default function ProjectsSection({
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
         {filteredProjects.map((project) => (
-          <div key={project.id}>
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+          <Link key={project.id} href={`/projects/${project.slug}`}>
+            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group cursor-pointer">
               {/* Hero Image - 50-60% of card height */}
               <div className="relative h-48 lg:h-56 overflow-hidden">
                 <img
@@ -90,16 +91,16 @@ export default function ProjectsSection({
                   </p>
                   
                   {/* More Info Button */}
-                  <button className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors duration-200 flex items-center text-sm font-medium">
+                  <div className="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition-colors duration-200 flex items-center text-sm font-medium">
                     Mehr erfahren
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
