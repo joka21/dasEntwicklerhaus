@@ -38,25 +38,27 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
         <div className="flex flex-wrap gap-6 justify-center items-center">
           <button
             onClick={() => handleFilterClick('alle')}
-            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
+            className={`p-4 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'alle' 
-                ? 'bg-secondary shadow-lg scale-105' 
-                : 'bg-gray-200 hover:bg-gray-300'
+                ? 'shadow-lg scale-105' 
+                : 'hover:opacity-75'
             }`}
             aria-label="Alle Themen anzeigen"
             title="Alle Themen"
           >
-            <div className="w-8 h-8 bg-dark rounded-sm flex items-center justify-center">
-              <span className="text-white font-bold text-sm">ALL</span>
-            </div>
+            <img 
+              src="/images/categories/all.png" 
+              alt="Alle Themen Icon" 
+              className="w-8 h-8"
+            />
           </button>
           
           <button
             onClick={() => handleFilterClick('menschen')}
-            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
+            className={`p-4 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'menschen' 
-                ? 'bg-red-100 shadow-lg scale-105' 
-                : 'bg-gray-200 hover:bg-red-50'
+                ? 'shadow-lg scale-105' 
+                : 'hover:opacity-75'
             }`}
             aria-label="Menschen-Projekte anzeigen"
             title="Menschen"
@@ -70,10 +72,10 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
           
           <button
             onClick={() => handleFilterClick('frieden')}
-            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
+            className={`p-4 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'frieden' 
-                ? 'bg-purple-100 shadow-lg scale-105' 
-                : 'bg-gray-200 hover:bg-purple-50'
+                ? 'shadow-lg scale-105' 
+                : 'hover:opacity-75'
             }`}
             aria-label="Frieden-Projekte anzeigen"
             title="Frieden"
@@ -87,10 +89,10 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
           
           <button
             onClick={() => handleFilterClick('umwelt')}
-            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
+            className={`p-4 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'umwelt' 
-                ? 'bg-green-100 shadow-lg scale-105' 
-                : 'bg-gray-200 hover:bg-green-50'
+                ? 'shadow-lg scale-105' 
+                : 'hover:opacity-75'
             }`}
             aria-label="Umwelt-Projekte anzeigen"
             title="Umwelt"
@@ -104,10 +106,10 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
           
           <button
             onClick={() => handleFilterClick('zusammenarbeit')}
-            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
+            className={`p-4 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'zusammenarbeit' 
-                ? 'bg-blue-100 shadow-lg scale-105' 
-                : 'bg-gray-200 hover:bg-blue-50'
+                ? 'shadow-lg scale-105' 
+                : 'hover:opacity-75'
             }`}
             aria-label="Zusammenarbeit-Projekte anzeigen"
             title="Zusammenarbeit"
@@ -121,10 +123,10 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
           
           <button
             onClick={() => handleFilterClick('zukunft')}
-            className={`p-4 rounded-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
+            className={`p-4 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary ${
               activeFilter === 'zukunft' 
-                ? 'bg-orange-100 shadow-lg scale-105' 
-                : 'bg-gray-200 hover:bg-orange-50'
+                ? 'shadow-lg scale-105' 
+                : 'hover:opacity-75'
             }`}
             aria-label="Zukunft-Projekte anzeigen"
             title="Zukunft"
