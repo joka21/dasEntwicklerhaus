@@ -86,6 +86,7 @@ export default function RootLayout({
   return (
     <html lang="de" itemScope itemType="https://schema.org/WebSite">
       <head>
+        <meta name="google-site-verification" content="caAjiFZudEGwlkms5VQwjcDqc5wYfs6uhVDLC9KfhVw" />
         <link rel="icon" href="/images/logo/logo-Klein.webp" type="image/webp" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
