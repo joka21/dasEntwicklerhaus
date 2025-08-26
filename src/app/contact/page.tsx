@@ -1,39 +1,40 @@
 import Header from '@/components/Header'
 import ContentSection from '@/components/ContentSection'
 import Footer from '@/components/Footer'
+import ContactForm from '@/components/ContactForm'
 
 export default function ContactPage() {
   return (
     <>
       <Header />
+      <div className="sr-only">
+        <h1>Kontakt - Das Entwicklerhaus</h1>
+      </div>
       <ContentSection>
-        <main>
-          <h1 className="text-h1 lg:text-h1-lg font-bold text-dark mb-8">
-            Kontakt
+        <main id="main-content">
+          <h1 className="text-3xl lg:text-4xl font-bold text-dark mb-8 text-center">
+            Projekt einreichen
           </h1>
-          <div className="bg-light-50 rounded-lg shadow-md p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h2 className="text-h3 lg:text-h2-lg font-semibold text-dark mb-4">
-                  Kontaktinformationen
-                </h2>
-                <p className="text-dark mb-2">
-                  <strong>Email:</strong> <a href="mailto:info@dasentwicklerhaus.de" className="text-primary hover:text-primary-hover">info@dasentwicklerhaus.de</a>
-                </p>
-                <p className="text-dark">
-                  Wir freuen uns auf Ihre Nachricht und werden uns schnellstmöglich bei Ihnen melden.
-                </p>
-              </div>
-              <div>
-                <h2 className="text-h3 lg:text-h2-lg font-semibold text-dark mb-4">
-                  Projekt einreichen
-                </h2>
-                <p className="text-dark">
-                  Haben Sie ein innovatives Projekt, das Sie präsentieren möchten? 
-                  Kontaktieren Sie uns gerne!
-                </p>
-              </div>
-            </div>
+          <p className="text-secondary text-center mb-12 max-w-2xl mx-auto">
+            Haben Sie ein innovatives Projekt, das Sie präsentieren möchten? 
+            Teilen Sie es mit uns! Wir helfen dabei, Projekte sichtbar zu machen und zu vernetzen.
+          </p>
+          
+          <ContactForm />
+
+          <div className="mt-16 text-center">
+            <h2 className="text-2xl font-semibold text-dark mb-4">
+              Direkter Kontakt
+            </h2>
+            <p className="text-secondary mb-4">
+              Sie können uns auch direkt kontaktieren:
+            </p>
+            <p className="text-dark">
+              <strong>E-Mail:</strong>{' '}
+              <a href="mailto:admin@dasentwicklerhaus.de" className="text-primary hover:underline">
+                admin@dasentwicklerhaus.de
+              </a>
+            </p>
           </div>
         </main>
       </ContentSection>
