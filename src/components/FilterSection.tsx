@@ -23,10 +23,12 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
     <ContentSection>
       <div className="text-center mb-12">
         <h2 className="text-3xl lg:text-4xl font-bold text-dark mb-6">
-          Entdecke innovative Proj
+          Die größte Superkraft von uns Menschen sind unsere Ideen
         </h2>
         <p className="text-base lg:text-lg text-secondary max-w-3xl mx-auto">
-          Lorem ipsum dolor samet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.
+         Deshalb präsentieren wir Ideen – gute Ideen, kluge Ideen aus ganz Deutschland und Europa. Ideen von Menschen, die sich auf den Weg gemacht haben, unser Leben ein wenig besser zu gestalten. 
+
+Hier sind einige Beispielprojekte, um unseren Weg zu verdeutlichen:
         </p>
       </div>
 

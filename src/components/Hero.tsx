@@ -59,15 +59,29 @@ export default function Hero() {
       ></div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+        <div className="max-w-4xl mx-auto mb-8">
+          <p className="text-lg lg:text-xl text-dark leading-relaxed mb-6">
+            Seit recht langer Zeit bin ich Entwickler. Viele Trends mitgemacht, viele Trends verpasst, aber immer auf dem Stand der Technik.
+          </p>
+          
+          <p className="text-lg lg:text-xl text-dark leading-relaxed mb-6">
+            Und nun kommt KI und plötzlich ist nichts mehr wie es war. Werden unsere Fähigkeiten morgen noch gebraucht? Werde ich noch gebraucht? Die einzig ehrliche Antwort auf diese Frage ist: Keine Ahnung!
+          </p>
+          
+          <p className="text-lg lg:text-xl text-dark leading-relaxed mb-6">
+            Wir wissen nicht, was da auf uns zukommt. Wir wissen nicht, was KI in der nächsten Woche alles kann. Aber Zuschauen und mit offenen Augen die neue Welt bestaunen ist eine sehr schlechte Alternative.
+          </p>
+          
+          <p className="text-lg lg:text-xl text-dark leading-relaxed mb-8">
+            Also auf geht's! Lass uns Ideen entwickeln, lass uns Ideen vorstellen – dafür gibt es diese Plattform. Werde ein Teil davon und stelle deine Ideen vor oder unterstütze Ideen, die du gut findest.
+          </p>
+        </div>
+        
         <h1 className="text-h1 lg:text-h1-lg font-bold text-dark mb-6 leading-tight">
-          Zusammen erreichen wir{' '}
+          Denn gemeinsam erreichen wir{' '}
           <span className="italic font-light">mehr</span>
         </h1>
-        
-        <p className="text-h3 lg:text-h2-lg text-dark font-medium max-w-2xl mx-auto mb-12">
-          Das Entwicklerhaus – Wir machen euch sichtbar!
-        </p>
       </div>
 
       {/* Black Arrow Down - Center Bottom */}

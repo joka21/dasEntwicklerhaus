@@ -1,0 +1,4 @@
+SMTP_HOST=mail.agenturserver.de
+SMTP_PORT=587
+SMTP_USER=admin@dasentwicklerhaus.de
+SMTP_PASS=T3njoka21!

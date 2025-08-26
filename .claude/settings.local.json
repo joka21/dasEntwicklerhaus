@@ -13,7 +13,8 @@
       "Bash(npm run build:*)",
       "Bash(npx next build:*)",
       "Bash(npx tsc:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(copy:*)"
     ],
     "deny": [],
     "ask": [],
