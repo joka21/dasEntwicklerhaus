@@ -112,7 +112,7 @@ export default function DieIdeePage() {
               </div>
             </section>
 
-           
+           kannst du es stattdessen mit einer URL-Präfix-Property versuchen
           </div>
         </main>
       </ContentSection>
