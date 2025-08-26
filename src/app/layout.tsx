@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { OrganizationSchema, WebSiteSchema } from '@/components/StructuredData'
+import CookieBanner from '@/components/CookieBanner'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -59,6 +60,7 @@ export default function RootLayout({
         <OrganizationSchema />
         <WebSiteSchema />
         {children}
+        <CookieBanner />
       </body>
     </html>
   )

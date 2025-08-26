@@ -2,64 +2,39 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900" role="contentinfo">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">
-              Das Entwicklerhaus
-            </h3>
-            <p className="text-gray-300">
-              Innovative Projekte aus Europa entdecken und präsentieren.
-            </p>
-          </div>
-          <nav aria-label="Footer Navigation">
-            <h3 className="text-lg font-semibold text-white mb-4">Navigation</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link 
-                  href="/projects" 
-                  className="text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded"
-                >
-                  Projekte
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/dieidee" 
-                  className="text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded"
-                >
-                  dieIdee
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/contact" 
-                  className="text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded"
-                >
-                  Kontakt
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Kontakt</h3>
-            <address className="text-gray-300 not-italic">
-              <a 
-                href="mailto:info@dasentwicklerhaus.de"
-                className="hover:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded"
-                aria-label="E-Mail an Das Entwicklerhaus senden"
+    <footer className="border-t border-dark bg-light" role="contentinfo">
+      <div className="mx-auto max-w-[1500px] w-[90%] py-12 lg:py-16">
+        <nav aria-label="Footer Navigation">
+          <ul className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-12 sm:justify-center lg:justify-center">
+            <li>
+              <Link 
+                href="/contact" 
+                className="text-dark underline hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded transition-colors duration-200"
+                aria-label="Zur Kontaktseite navigieren"
               >
-                info@dasentwicklerhaus.de
-              </a>
-            </address>
-          </div>
-        </div>
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-          <p className="text-gray-300">
-            © 2024 Das Entwicklerhaus. Alle Rechte vorbehalten.
-          </p>
-        </div>
+                Kontakt
+              </Link>
+            </li>
+            <li>
+              <Link 
+                href="/impressum" 
+                className="text-dark underline hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded transition-colors duration-200"
+                aria-label="Zum Impressum navigieren"
+              >
+                Impressum
+              </Link>
+            </li>
+            <li>
+              <Link 
+                href="/datenschutz" 
+                className="text-dark underline hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded transition-colors duration-200"
+                aria-label="Zur Datenschutzerklärung navigieren"
+              >
+                Datenschutz
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
     </footer>
   )
