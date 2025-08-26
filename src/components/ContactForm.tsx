@@ -77,6 +77,8 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       })
 
+      const result = await response.json()
+
       if (response.ok) {
         setShowSuccessPopup(true)
         setFormData({
@@ -87,7 +89,8 @@ export default function ContactForm() {
           privacyConsent: false
         })
       } else {
-        throw new Error('Fehler beim Senden der Nachricht')
+        console.error('Server error:', result)
+        alert(`Fehler beim Senden: ${result.error || 'Unbekannter Fehler'}`)
       }
     } catch (error) {
       console.error('Error submitting form:', error)
