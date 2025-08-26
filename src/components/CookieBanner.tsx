@@ -94,7 +94,7 @@ export default function CookieBanner() {
       <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
         {!showSettings ? (
           <div className="p-6">
-            <h3 className="text-xl font-bold text-dark mb-4">
+            <h3 className="text-xl font-bold text-umwelt-800 mb-4">
               Wir verwenden Cookies
             </h3>
             <p className="text-secondary leading-relaxed mb-4">
@@ -129,13 +129,13 @@ export default function CookieBanner() {
           </div>
         ) : (
           <div className="p-6">
-            <h3 className="text-xl font-bold text-dark mb-4">
+            <h3 className="text-xl font-bold text-umwelt-800 mb-4">
               Cookie-Einstellungen
             </h3>
             <div className="space-y-6">
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="text-lg font-semibold text-dark">
+                  <h4 className="text-lg font-semibold text-umwelt-800">
                     Notwendige Cookies
                   </h4>
                   <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -149,7 +149,7 @@ export default function CookieBanner() {
               
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <h4 className="text-lg font-semibold text-dark">
+                  <h4 className="text-lg font-semibold text-umwelt-800">
                     Analyse-Cookies (Google Analytics)
                   </h4>
                   <label className="relative inline-flex items-center cursor-pointer">

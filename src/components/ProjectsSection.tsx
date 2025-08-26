@@ -108,7 +108,7 @@ export default function ProjectsSection({
       {filteredProjects.length === 0 && (
         <div className="text-center py-12">
           <div className="text-6xl mb-4">🔍</div>
-          <h3 className="text-xl font-semibold text-dark mb-2">
+          <h3 className="text-xl font-semibold text-umwelt-800 mb-2">
             Keine Projekte gefunden
           </h3>
           <p className="text-secondary">

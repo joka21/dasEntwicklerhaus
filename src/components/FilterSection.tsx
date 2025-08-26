@@ -22,7 +22,7 @@ export default function FilterSection({ onFilterChange }: FilterSectionProps) {
   return (
     <ContentSection>
       <div className="text-center mb-12">
-        <h2 className="text-3xl lg:text-4xl font-bold text-dark mb-6">
+        <h2 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-6">
           Die größte Superkraft von uns Menschen sind unsere Ideen
         </h2>
         <p className="text-base lg:text-lg text-secondary max-w-3xl mx-auto">
@@ -33,7 +33,7 @@ Hier sind einige Beispielprojekte, um unseren Weg zu verdeutlichen:
       </div>
 
       <div className="mb-16">
-        <h3 className="text-xl lg:text-2xl font-semibold text-dark mb-6 text-center">
+        <h3 className="text-xl lg:text-2xl font-semibold text-umwelt-800 mb-6 text-center">
           Filter nach Themen
         </h3>
         

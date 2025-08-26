@@ -12,7 +12,7 @@ export default function ContactPage() {
       </div>
       <ContentSection>
         <main id="main-content">
-          <h1 className="text-3xl lg:text-4xl font-bold text-dark mb-8 text-center">
+          <h1 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8 text-center">
             Projekt einreichen
           </h1>
           <p className="text-secondary text-center mb-12 max-w-2xl mx-auto">
@@ -23,7 +23,7 @@ export default function ContactPage() {
           <ContactForm />
 
           <div className="mt-16 text-center">
-            <h2 className="text-2xl font-semibold text-dark mb-4">
+            <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
               Direkter Kontakt
             </h2>
             <p className="text-secondary mb-4">

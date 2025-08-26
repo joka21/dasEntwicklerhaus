@@ -11,13 +11,13 @@ export default function ImpressumPage() {
       </div>
       <ContentSection>
         <main id="main-content" className="max-w-4xl mx-auto">
-          <h1 className="text-3xl lg:text-4xl font-bold text-dark mb-8">
+          <h1 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8">
             Impressum
           </h1>
 
           <div className="prose prose-lg max-w-none">
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-dark mb-4">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
                 Angaben gemäß § 5 TMG
               </h2>
               <div className="bg-light-50 p-6 rounded-lg">
@@ -31,7 +31,7 @@ export default function ImpressumPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-dark mb-4">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
                 Kontakt
               </h2>
               <div className="bg-light-50 p-6 rounded-lg">
@@ -48,7 +48,7 @@ export default function ImpressumPage() {
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-semibold text-dark mb-4">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
                 Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
               </h2>
               <div className="bg-light-50 p-6 rounded-lg">
@@ -67,7 +67,7 @@ export default function ImpressumPage() {
 
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-xl font-medium text-dark mb-3">
+                  <h3 className="text-xl font-medium text-umwelt-800 mb-3">
                     Haftung für Inhalte
                   </h3>
                   <p className="text-secondary leading-relaxed">
@@ -76,7 +76,7 @@ export default function ImpressumPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-medium text-dark mb-3">
+                  <h3 className="text-xl font-medium text-umwelt-800 mb-3">
                     Haftung für Links
                   </h3>
                   <p className="text-secondary leading-relaxed">
@@ -85,7 +85,7 @@ export default function ImpressumPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-medium text-dark mb-3">
+                  <h3 className="text-xl font-medium text-umwelt-800 mb-3">
                     Urheberrecht
                   </h3>
                   <p className="text-secondary leading-relaxed mb-4">

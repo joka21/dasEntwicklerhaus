@@ -11,13 +11,13 @@ export default function DatenschutzPage() {
       </div>
       <ContentSection>
         <main id="main-content" className="max-w-4xl mx-auto">
-          <h1 className="text-3xl lg:text-4xl font-bold text-dark mb-8">
+          <h1 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8">
             Datenschutzerklärung
           </h1>
 
           <div className="prose prose-lg max-w-none space-y-8">
             <section>
-              <h2 className="text-2xl font-semibold text-dark mb-4">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
                 1. Allgemeine Hinweise
               </h2>
               <p className="text-secondary leading-relaxed">
@@ -26,7 +26,7 @@ export default function DatenschutzPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-dark mb-4">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
                 2. Verantwortlicher
               </h2>
               <p className="text-secondary mb-3">
@@ -44,13 +44,13 @@ export default function DatenschutzPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-dark mb-6">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-6">
                 3. Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck von deren Verwendung
               </h2>
               
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-xl font-medium text-dark mb-4">
+                  <h3 className="text-xl font-medium text-umwelt-800 mb-4">
                     a) Beim Besuch der Website
                   </h3>
                   <p className="text-secondary leading-relaxed mb-4">
@@ -77,7 +77,7 @@ export default function DatenschutzPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-medium text-dark mb-4">
+                  <h3 className="text-xl font-medium text-umwelt-800 mb-4">
                     b) Nutzung von Google Analytics
                   </h3>
                   <p className="text-secondary leading-relaxed mb-4">
@@ -98,7 +98,7 @@ export default function DatenschutzPage() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-medium text-dark mb-4">
+                  <h3 className="text-xl font-medium text-umwelt-800 mb-4">
                     c) Kontaktformular
                   </h3>
                   <p className="text-secondary leading-relaxed mb-4">
@@ -112,7 +112,7 @@ export default function DatenschutzPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-dark mb-4">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
                 4. Weitergabe von Daten
               </h2>
               <p className="text-secondary leading-relaxed mb-3">
@@ -127,7 +127,7 @@ export default function DatenschutzPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-dark mb-4">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
                 5. Betroffenenrechte
               </h2>
               <p className="text-secondary leading-relaxed mb-3">
@@ -146,7 +146,7 @@ export default function DatenschutzPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-dark mb-4">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
                 6. Datensicherheit
               </h2>
               <p className="text-secondary leading-relaxed">
@@ -155,7 +155,7 @@ export default function DatenschutzPage() {
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold text-dark mb-4">
+              <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
                 7. Aktualität und Änderung dieser Datenschutzerklärung
               </h2>
               <p className="text-secondary leading-relaxed">

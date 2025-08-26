@@ -187,7 +187,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <div className="lg:col-span-2">
             {/* Project Description */}
             <div className="mb-8">
-              <h2 className="text-2xl lg:text-3xl font-bold text-dark mb-6">
+              <h2 className="text-2xl lg:text-3xl font-bold text-umwelt-800 mb-6">
                 Über das Projekt
               </h2>
               <p className="text-lg text-secondary leading-relaxed whitespace-pre-line">
@@ -197,7 +197,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
             {/* Contact Section */}
             <div className="bg-gray-50 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-semibold text-dark mb-4">
+              <h3 className="text-xl font-semibold text-umwelt-800 mb-4">
                 Kontakt
               </h3>
               <div className="space-y-2">
@@ -220,7 +220,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             {/* Social Media */}
             {(project.socialMedia.website || project.socialMedia.facebook || project.socialMedia.instagram || project.socialMedia.twitter) && (
               <div className="mb-8">
-                <h3 className="text-xl font-semibold text-dark mb-4">
+                <h3 className="text-xl font-semibold text-umwelt-800 mb-4">
                   Links & Social Media
                 </h3>
                 <div className="flex flex-wrap gap-4">
@@ -276,7 +276,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <div className="space-y-6">
             {/* Project Info */}
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold text-dark mb-4">
+              <h3 className="text-lg font-semibold text-umwelt-800 mb-4">
                 Projekt-Info
               </h3>
               <div className="space-y-4">
@@ -309,7 +309,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
             {/* Navigation */}
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold text-dark mb-4">
+              <h3 className="text-lg font-semibold text-umwelt-800 mb-4">
                 Weitere Projekte
               </h3>
               <div className="space-y-3">

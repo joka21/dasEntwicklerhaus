@@ -12,12 +12,12 @@ export default function DieIdeePage() {
             <div className="bg-umwelt-100 border border-umwelt-400 text-umwelt-700 px-4 py-3 rounded mb-4">
               ✅ Visitenkarten-URL /dieIdee funktioniert (zeigt Inhalt von /dieidee)
             </div>
-            <h1 className="text-h1 lg:text-h1-lg font-bold text-dark mb-6">
+            <h1 className="text-h1 lg:text-h1-lg font-bold text-umwelt-800 mb-6">
               Die Idee: Ein Zuhause für gute Projekte
             </h1>
             
             <section className="mb-8">
-              <h2 className="text-h2 lg:text-h1-lg font-semibold text-dark mb-4">
+              <h2 className="text-h2 lg:text-h1-lg font-semibold text-umwelt-800 mb-4">
                 Warum es das Entwicklerhaus gibt
               </h2>
               <div className="space-y-4 mb-6">
@@ -37,7 +37,7 @@ export default function DieIdeePage() {
                   Also auf geht's! Lass uns Ideen entwickeln, lass uns Ideen vorstellen – dafür gibt es diese Plattform. Werde ein Teil davon und stelle deine Ideen vor oder unterstütze Ideen, die du gut findest.
                 </p>
                 
-                <p className="text-xl lg:text-2xl text-dark leading-relaxed font-bold text-center mt-8">
+                <p className="text-xl lg:text-2xl text-umwelt-800 leading-relaxed font-bold text-center mt-8">
                   Denn gemeinsam erreichen wir mehr.
                 </p>
               </div>

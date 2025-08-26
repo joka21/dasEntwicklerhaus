@@ -11,7 +11,7 @@ export default function ProjectsPage() {
       </div>
       <ContentSection>
         <main id="main-content">
-          <h1 className="text-h1 lg:text-h1-lg font-bold text-dark mb-8">
+          <h1 className="text-h1 lg:text-h1-lg font-bold text-umwelt-800 mb-8">
             Alle Projekte
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
