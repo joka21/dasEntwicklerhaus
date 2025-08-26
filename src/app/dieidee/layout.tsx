@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: 'Erfahren Sie mehr über die Idee hinter Das Entwicklerhaus: Eine Plattform für innovative Projekte vom Niederrhein bis Europa. Transparenz, Vernetzung und regionale Tiefe.',
   openGraph: {
     title: 'Die Idee - Das Entwicklerhaus',
-    description: 'Erfahren Sie mehr über die Idee hinter Das Entwicklerhaus: Eine Plattform für innovative Projekte vom Niederrhein bis Europa.',
+    description: 'Erfahren Sie mehr über die Idee hinter dem wicklerhaus: Eine Plattform für innovative Projekte vom Niederrhein bis Europa.',
     url: 'https://dasentwicklerhaus.de/dieidee',
   },
   alternates: {
