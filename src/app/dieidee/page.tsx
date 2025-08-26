@@ -20,6 +20,28 @@ export default function DieIdeePage() {
               <h2 className="text-h2 lg:text-h1-lg font-semibold text-dark mb-4">
                 Warum es das Entwicklerhaus gibt
               </h2>
+              <div className="space-y-4 mb-6">
+                <p className="text-lg lg:text-xl text-dark leading-relaxed">
+                  Seit recht langer Zeit bin ich Entwickler. Viele Trends mitgemacht, viele Trends verpasst, aber immer auf dem Stand der Technik.
+                </p>
+                
+                <p className="text-lg lg:text-xl text-dark leading-relaxed">
+                  Und nun kommt KI und plötzlich ist nichts mehr wie es war. Werden unsere Fähigkeiten morgen noch gebraucht? Werde ich noch gebraucht? Die einzig ehrliche Antwort auf diese Frage ist: Keine Ahnung!
+                </p>
+                
+                <p className="text-lg lg:text-xl text-dark leading-relaxed">
+                  Wir wissen nicht, was da auf uns zukommt. Wir wissen nicht, was KI in der nächsten Woche alles kann. Aber Zuschauen und mit offenen Augen die neue Welt bestaunen ist eine sehr schlechte Alternative.
+                </p>
+                
+                <p className="text-lg lg:text-xl text-dark leading-relaxed font-medium">
+                  Also auf geht's! Lass uns Ideen entwickeln, lass uns Ideen vorstellen – dafür gibt es diese Plattform. Werde ein Teil davon und stelle deine Ideen vor oder unterstütze Ideen, die du gut findest.
+                </p>
+                
+                <p className="text-xl lg:text-2xl text-dark leading-relaxed font-bold text-center mt-8">
+                  Denn gemeinsam erreichen wir mehr.
+                </p>
+              </div>
+              
               <p className="text-dark mb-4 leading-relaxed">
                 Gute Projekte passieren überall – sie finden nur zu selten die Bühne, die sie verdienen. Das Entwicklerhaus schließt diese Lücke: Wir machen Innovationsprojekte, soziale Initiativen, KI‑Lösungen, Webportale und DIY‑Vorhaben sichtbar.
               </p>

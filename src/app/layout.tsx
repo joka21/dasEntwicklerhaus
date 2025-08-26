@@ -10,41 +10,72 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Das Entwicklerhaus - Innovative Projekte aus Europa | Niederrhein bis Europa',
+  metadataBase: new URL('https://dasentwicklerhaus.de'),
+  title: {
+    default: 'Das Entwicklerhaus - Innovative Projekte aus Europa',
+    template: '%s | Das Entwicklerhaus'
+  },
   description: 'Entdecken Sie innovative Projekte aus Europa: KI-Lösungen, soziale Initiativen, Webportale und DIY-Vorhaben. Vom Niederrhein bis Europa - Projekte sichtbar machen, vernetzen und unterstützen.',
-  keywords: ['Projekte Europa', 'Innovation Niederrhein', 'Soziale Initiativen', 'KI Projekte', 'Startup Plattform', 'Entwicklerhaus', 'Projektförderung'],
-  authors: [{ name: 'Das Entwicklerhaus Team' }],
+  keywords: ['Projekte Europa', 'Innovation Niederrhein', 'Soziale Initiativen', 'KI Projekte', 'Startup Plattform', 'Entwicklerhaus', 'Projektförderung', 'Community', 'Vernetzung', 'Digitale Innovation'],
+  authors: [{ name: 'Das Entwicklerhaus Team', url: 'https://dasentwicklerhaus.de' }],
   creator: 'Das Entwicklerhaus',
   publisher: 'Das Entwicklerhaus',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: 'Das Entwicklerhaus - Innovative Projekte aus Europa',
-    description: 'Entdecken Sie innovative Projekte aus Europa: KI-Lösungen, soziale Initiativen, Webportale und DIY-Vorhaben. Vom Niederrhein bis Europa.',
+    type: 'website',
+    locale: 'de_DE',
     url: 'https://dasentwicklerhaus.de',
     siteName: 'Das Entwicklerhaus',
-    locale: 'de_DE',
-    type: 'website',
+    title: 'Das Entwicklerhaus - Innovative Projekte aus Europa',
+    description: 'Entdecken Sie innovative Projekte aus Europa: KI-Lösungen, soziale Initiativen, Webportale und DIY-Vorhaben. Vom Niederrhein bis Europa.',
+    images: [
+      {
+        url: '/images/logo/logo-dasentwicklerhaus-1024x783.png',
+        width: 1024,
+        height: 783,
+        alt: 'Das Entwicklerhaus Logo',
+      }
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Das Entwicklerhaus - Innovative Projekte aus Europa',
     description: 'Entdecken Sie innovative Projekte aus Europa: KI-Lösungen, soziale Initiativen, Webportale und DIY-Vorhaben.',
     creator: '@entwicklerhaus',
+    images: ['/images/logo/logo-dasentwicklerhaus-1024x783.png'],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: '/images/logo/logo-Klein.webp',
+    shortcut: '/images/logo/logo-Klein.webp',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
   alternates: {
     canonical: 'https://dasentwicklerhaus.de',
   },
+  verification: {
+    google: 'caAjiFZudEGwlkms5VQwjcDqc5wYfs6uhVDLC9KfhVw',
+  },
   category: 'technology',
+  classification: 'Business',
+  referrer: 'origin-when-cross-origin',
 }
 
 export default function RootLayout({

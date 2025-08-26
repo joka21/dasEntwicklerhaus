@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { sampleProjects } from '@/data/projects'
 import { Project } from '@/types/project'
 import ContentSection from '@/components/ContentSection'
+import { ProjectSchema } from '@/components/StructuredData'
 
 interface ProjectPageProps {
   params: {
@@ -26,13 +27,40 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     }
   }
 
+  const baseUrl = 'https://dasentwicklerhaus.de'
+
   return {
-    title: `${project.name} - ${project.city} | dasEntwicklerhaus`,
+    title: `${project.name} - ${project.city}`,
     description: project.description,
+    keywords: [project.category, project.city, 'Projekt', 'Innovation', 'Europa', 'Das Entwicklerhaus'],
+    authors: [{ name: project.contact.name }],
     openGraph: {
-      title: project.name,
+      title: `${project.name} - ${project.city}`,
+      description: project.description,
+      url: `${baseUrl}/projects/${project.slug}`,
+      siteName: 'Das Entwicklerhaus',
+      images: [
+        {
+          url: project.image,
+          width: 1200,
+          height: 630,
+          alt: `${project.name} - Projektbild`,
+        }
+      ],
+      locale: 'de_DE',
+      type: 'article',
+      publishedTime: project.startDate,
+      authors: [project.contact.name],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${project.name} - ${project.city}`,
       description: project.description,
       images: [project.image],
+      creator: '@entwicklerhaus',
+    },
+    alternates: {
+      canonical: `${baseUrl}/projects/${project.slug}`,
     },
   }
 }
@@ -94,6 +122,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <>
+      <ProjectSchema project={project} />
       {/* Hero Section */}
       <div className="relative h-[60vh] min-h-[400px] overflow-hidden">
         <img
