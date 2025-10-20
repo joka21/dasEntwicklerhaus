@@ -246,5 +246,257 @@ Das Ladenprojekt zeigt: Digitalisierung muss nicht den Großen gehören. Mit den
     socialMedia: {
       website: 'https://dasentwicklerhaus.de/projects/das-ladenprojekt'
     }
+  },
+
+  // Umwelt Kategorie - Makersite
+  {
+    id: '4',
+    name: 'Makersite',
+    city: 'Stuttgart',
+    description: 'KI-gestützte Produktnachhaltigkeit im industriellen Maßstab – Umweltauswirkungen bereits in der Designphase bewerten.',
+    fullDescription: `**Nachhaltigkeit beginnt beim Design**
+
+Das Stuttgarter Unternehmen Makersite entwickelt eine KI-Plattform für Product Lifecycle Intelligence, die Herstellern ermöglicht, Umweltauswirkungen, Kosten und Compliance-Risiken ihrer Produkte bereits in der Designphase zu bewerten. Die Plattform nutzt künstliche Intelligenz und Graph-Technologie, um digitale Zwillinge von Produkten zu erstellen und fragmentierte Lieferkettendaten zu strukturieren.
+
+Mit einer Series-B-Finanzierung von €60 Millionen im Juli 2025 und über 350 Unternehmenskunden gehört Makersite zu den führenden europäischen Lösungen für nachhaltiges Produktdesign. Die Technologie ermöglicht es Unternehmen, ihre CO₂-Emissionen nachweislich zu reduzieren und regulatorische Anforderungen effizient zu erfüllen.
+
+**Relevanz:** Skalierbare Lösung zur Unterstützung der Transformation der Industrie in Richtung Kreislaufwirtschaft und Klimaneutralität.`,
+    category: 'umwelt',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop',
+    slug: 'makersite',
+    status: 'aktiv',
+    startDate: '2016-01-01',
+    teamSize: 150,
+    contact: {
+      name: 'Das Entwicklerhaus',
+      email: 'admin@dasentwicklerhaus.de'
+    },
+    socialMedia: {
+      website: 'https://makersite.io'
+    }
+  },
+
+  // Umwelt Kategorie - TWAICE
+  {
+    id: '5',
+    name: 'TWAICE Technologies',
+    city: 'München',
+    description: 'Batterieanalytik für nachhaltige Mobilität und Energiespeicherung – Digital Twins verlängern Batterielebensdauer.',
+    fullDescription: `**Batterien intelligent nutzen**
+
+TWAICE entwickelt KI-basierte Software für die Optimierung von Batteriesystemen in Elektromobilität und stationären Energiespeichern. Durch Digital-Twin-Technologie und prädiktive Analysen verlängert das Unternehmen die Lebensdauer von Batterien, erhöht deren Effizienz und trägt zur Wirtschaftlichkeit der Elektromobilität bei.
+
+Das Münchner Unternehmen betreibt das Munich Battery Lab und arbeitet mit führenden Automobilherstellern sowie dem TÜV Rheinland zusammen. TWAICE ermöglicht eine objektive Zustandsbewertung von Fahrzeugbatterien und leistet damit einen wesentlichen Beitrag zur Akzeptanz und Verbreitung der E-Mobilität.
+
+**Relevanz:** Kritische Infrastruktur-Technologie für die Verkehrswende und Integration erneuerbarer Energien ins Stromnetz.`,
+    category: 'umwelt',
+    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&h=400&fit=crop',
+    slug: 'twaice-technologies',
+    status: 'aktiv',
+    startDate: '2018-01-01',
+    teamSize: 120,
+    contact: {
+      name: 'Das Entwicklerhaus',
+      email: 'admin@dasentwicklerhaus.de'
+    },
+    socialMedia: {
+      website: 'https://twaice.com'
+    }
+  },
+
+  // Umwelt Kategorie - Climatiq
+  {
+    id: '6',
+    name: 'Climatiq',
+    city: 'Berlin',
+    description: 'Automatisierte CO₂-Bilanzierung durch künstliche Intelligenz – Echtzeit-Transparenz über alle Emissionen.',
+    fullDescription: `**CO₂-Transparenz in Echtzeit**
+
+Climatiq bietet eine Carbon-Intelligence-Plattform, die Unternehmen mittels KI bei der automatisierten Erfassung und Analyse ihrer CO₂-Emissionen unterstützt. Die API-first-Lösung integriert sich in über 200 bestehende Business-Plattformen und ermöglicht Echtzeit-Transparenz über Scope-1-, Scope-2- und Scope-3-Emissionen.
+
+Mit einer Series-A-Finanzierung von €10 Millionen im Juni 2025 und über einer Milliarde durchgeführter CO₂-Berechnungen in den letzten 12 Monaten hat sich Climatiq als bedeutender Infrastrukturanbieter für Emissionsdaten etabliert. Die Plattform umfasst über 200.000 wissenschaftlich verifizierte Emissionsfaktoren.
+
+**Relevanz:** Unverzichtbares Werkzeug für die verpflichtende Nachhaltigkeitsberichterstattung (CSRD) und Dekarbonisierungsstrategien der Wirtschaft.`,
+    category: 'umwelt',
+    image: 'https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=600&h=400&fit=crop',
+    slug: 'climatiq',
+    status: 'aktiv',
+    startDate: '2020-01-01',
+    teamSize: 45,
+    contact: {
+      name: 'Das Entwicklerhaus',
+      email: 'admin@dasentwicklerhaus.de'
+    },
+    socialMedia: {
+      website: 'https://climatiq.io'
+    }
+  },
+
+  // Umwelt Kategorie - Greenlyte
+  {
+    id: '7',
+    name: 'Greenlyte Carbon Technologies',
+    city: 'Essen',
+    description: 'Direct Air Capture für eine klimaneutrale Zukunft – CO₂ aus der Luft holen und in grüne Kraftstoffe verwandeln.',
+    fullDescription: `**Zukunftstechnologie Made in NRW**
+
+Das Essener Unternehmen Greenlyte Carbon Technologies entwickelt energieeffiziente Technologie zur direkten CO₂-Abscheidung aus der Atmosphäre (Direct Air Capture). Als Nebenprodukt entsteht grüner Wasserstoff, der in nachhaltige Kraftstoffe (eSAF, eMethanol) umgewandelt werden kann.
+
+Im Januar 2025 ging am Düsseldorf Airport die weltweit erste integrierte DAC-to-SAF-Anlage in Betrieb. Mit über €40 Millionen Kapital, 60+ Mitarbeitern und mehrjähriger Forschung der Universität Duisburg-Essen adressiert Greenlyte eine der größten globalen Herausforderungen: die Dekarbonisierung schwer elektrifizierbarer Sektoren wie Luftfahrt und Schifffahrt.
+
+**Relevanz:** Zukunftstechnologie zur aktiven CO₂-Entfernung aus der Atmosphäre und Produktion klimaneutraler Kraftstoffe.`,
+    category: 'umwelt',
+    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop',
+    slug: 'greenlyte',
+    status: 'aktiv',
+    startDate: '2022-01-01',
+    teamSize: 60,
+    contact: {
+      name: 'Das Entwicklerhaus',
+      email: 'admin@dasentwicklerhaus.de'
+    },
+    socialMedia: {
+      website: 'https://greenlyte.com'
+    }
+  },
+
+  // Umwelt Kategorie - vGreens
+  {
+    id: '8',
+    name: 'vGreens',
+    city: 'Essen',
+    description: 'KI-gesteuerte vertikale Landwirtschaft – 95% weniger Wasser, 99% weniger Fläche, ganzjährige Ernte.',
+    fullDescription: `**Die Zukunft der Landwirtschaft ist vertikal**
+
+vGreens entwickelt KI-Software für automatisiertes Vertical Farming, die eine ganzjährige, klimaunabhängige Produktion von Früchten und Gemüse ermöglicht. Die Technologie reduziert den Wasser- und Düngemittelverbrauch um 95% sowie den Flächenbedarf um 99% gegenüber konventioneller Landwirtschaft.
+
+Das Essener Startup mit 20 Mitarbeitern wurde 2025 in die globale FoodTech 500 Liste aufgenommen und betreibt erfolgreiche Pilotanlagen in Deutschland und Südafrika. Die autonome Steuerung aller Umweltparameter durch KI ermöglicht präzise, skalierbare und lokale Lebensmittelproduktion.
+
+**Relevanz:** Innovative Antwort auf Ernährungssicherheit, urbane Landwirtschaft und Ressourcenschonung in Zeiten des Klimawandels.`,
+    category: 'umwelt',
+    image: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=600&h=400&fit=crop',
+    slug: 'vgreens',
+    status: 'aktiv',
+    startDate: '2020-01-01',
+    teamSize: 20,
+    contact: {
+      name: 'Das Entwicklerhaus',
+      email: 'admin@dasentwicklerhaus.de'
+    },
+    socialMedia: {
+      website: 'https://vgreens.de'
+    }
+  },
+
+  // Umwelt Kategorie - Planted
+  {
+    id: '9',
+    name: 'Planted',
+    city: 'Köln',
+    description: 'KI-gestützte ESG-Management-Plattform – Von der CO₂-Bilanzierung bis zum CSRD-konformen Nachhaltigkeitsbericht.',
+    fullDescription: `**Nachhaltigkeit messbar machen**
+
+Planted bietet eine integrierte Software-Lösung für Environmental, Social & Governance (ESG) Management, die Unternehmen von der CO₂-Bilanzierung über die Dekarbonisierung bis zum CSRD-konformen Nachhaltigkeitsbericht begleitet. Die KI-Assistentin "Kaia" automatisiert Datenextraktion und -verarbeitung und reduziert den Zeitaufwand um bis zu 70%.
+
+Im Februar 2025 erhielt das Kölner Unternehmen €5 Millionen Seed-Finanzierung. Mit über 350 Unternehmenskunden, die nachweislich ihre Emissionen um bis zu 50% senken konnten, verbindet Planted regulatorische Compliance mit echter Nachhaltigkeitstransformation.
+
+**Relevanz:** Praktikable Lösung zur Erfüllung gesetzlicher ESG-Anforderungen bei gleichzeitiger Unterstützung messbarer Emissionsreduktion.`,
+    category: 'umwelt',
+    image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop',
+    slug: 'planted',
+    status: 'aktiv',
+    startDate: '2020-01-01',
+    teamSize: 50,
+    contact: {
+      name: 'Das Entwicklerhaus',
+      email: 'admin@dasentwicklerhaus.de'
+    },
+    socialMedia: {
+      website: 'https://getplanted.de'
+    }
+  },
+
+  // Umwelt Kategorie - Envelio
+  {
+    id: '10',
+    name: 'Envelio',
+    city: 'Köln',
+    description: 'Smart-Grid-Software für die Integration erneuerbarer Energien – 35 Millionen Netzanschlusspunkte intelligent verwalten.',
+    fullDescription: `**Das Stromnetz wird intelligent**
+
+Envelio entwickelt die Intelligent Grid Platform (IGP), eine umfassende Software-Lösung für Digitalisierung und Automatisierung von Stromverteilnetzen. Die Plattform ermöglicht Netzbetreibern, den massiven Zubau erneuerbarer Energien, Wärmepumpen und Ladestationen effizient zu managen und Netzengpässe durch intelligente Steuerung zu vermeiden.
+
+Mit über 175 Mitarbeitern, 65 Netzbetreiberkunden und 35 Millionen verwalteten Netzanschlusspunkten ist Envelio europäischer Marktführer. Die Software automatisiert kritische Prozesse wie Netzanschlussprüfungen (über 55.000 in 12 Monaten) und unterstützt die gesetzliche Umsetzung von §14a EnWG.
+
+**Relevanz:** Infrastruktur-Schlüsseltechnologie für die Energiewende und Versorgungssicherheit bei dezentraler Energieerzeugung.`,
+    category: 'umwelt',
+    image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop',
+    slug: 'envelio',
+    status: 'aktiv',
+    startDate: '2017-01-01',
+    teamSize: 175,
+    contact: {
+      name: 'Das Entwicklerhaus',
+      email: 'admin@dasentwicklerhaus.de'
+    },
+    socialMedia: {
+      website: 'https://envelio.de'
+    }
+  },
+
+  // Umwelt Kategorie - ecoligo
+  {
+    id: '11',
+    name: 'ecoligo',
+    city: 'Berlin',
+    description: 'Solar-as-a-Service für Schwellenländer durch Crowdinvesting – Demokratisierung von Solarenergie weltweit.',
+    fullDescription: `**Solarenergie für alle**
+
+ecoligo demokratisiert den Zugang zu Solarenergie in Entwicklungs- und Schwellenländern durch ein innovatives Crowdinvesting-Modell. Die Plattform finanziert, plant und betreibt Photovoltaikanlagen für gewerbliche und industrielle Kunden in 11 Ländern (u.a. Kenia, Vietnam, Chile) und ermöglicht europäischen Privatinvestoren, ab €100 in diese Projekte zu investieren.
+
+Mit 64 Mitarbeitern, 93 realisierten Projekten und €26,4 Millionen vermitteltem Kapital trägt ecoligo zur Reduktion fossiler Energieabhängigkeit bei und schafft gleichzeitig lokale Wertschöpfung. Die Projektfinanzierung erfolgt zu 100% transparent mit nachweisbaren CO₂-Einsparungen.
+
+**Relevanz:** Modell für impact-orientierte Finanzierung der globalen Energiewende mit messbaren Entwicklungs- und Klimaschutzeffekten.`,
+    category: 'umwelt',
+    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop',
+    slug: 'ecoligo',
+    status: 'aktiv',
+    startDate: '2016-01-01',
+    teamSize: 64,
+    contact: {
+      name: 'Das Entwicklerhaus',
+      email: 'admin@dasentwicklerhaus.de'
+    },
+    socialMedia: {
+      website: 'https://ecoligo.investments'
+    }
+  },
+
+  // Umwelt Kategorie - KONUX
+  {
+    id: '12',
+    name: 'KONUX',
+    city: 'München',
+    description: 'KI und IoT für zuverlässige und klimafreundliche Bahninfrastruktur – 50% weniger Weichenausfälle.',
+    fullDescription: `**Züge pünktlicher machen**
+
+KONUX kombiniert Industrial IoT-Sensorik mit KI-Analytik, um den Zustand kritischer Bahninfrastruktur-Komponenten kontinuierlich zu überwachen und vorausschauende Wartung zu ermöglichen. Die Technologie reduziert Weichenausfälle – eine Hauptursache für Zugverspätungen – um bis zu 50%.
+
+Mit Großaufträgen der Deutschen Bahn (3.500 Weichen), einem Umsatz von €7,6 Millionen (2023) und internationaler Präsenz in 10 Ländern trägt KONUX zur Zuverlässigkeit des umweltfreundlichsten Massenverkehrsmittels bei. Die Optimierung von Bahnbetrieb und -kapazität ist essentiell für die Verkehrswende.
+
+**Relevanz:** Technologie zur Stärkung der Wettbewerbsfähigkeit und Attraktivität des Schienenverkehrs als klimafreundliche Mobilitätsalternative.`,
+    category: 'umwelt',
+    image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&h=400&fit=crop',
+    slug: 'konux',
+    status: 'aktiv',
+    startDate: '2014-01-01',
+    teamSize: 100,
+    contact: {
+      name: 'Das Entwicklerhaus',
+      email: 'admin@dasentwicklerhaus.de'
+    },
+    socialMedia: {
+      website: 'https://konux.com'
+    }
   }
 ]
