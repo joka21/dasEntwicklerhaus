@@ -5,7 +5,7 @@ export const learningPhases: LearningPhaseData[] = [
   {
     title: 'Bewusstsein schaffen',
     introduction:
-      'Künstliche Intelligenz ist längst Teil unseres Alltags – oft ohne dass wir es merken. In dieser Phase lernst du, was KI wirklich ist, wo sie bereits im Einsatz ist und welche Chancen und Grenzen sie hat. Ziel ist es, ein realistisches Bild von KI zu entwickeln – jenseits von Hype und Ängsten.',
+      'KI ist überall. In deinem Handy. Auf Netflix. Im Spam-Filter. Nur merkst du es meist nicht. Diese Phase zeigt dir, was KI wirklich ist. Keine Buzzwords. Keine Angstmache. Sondern: Was kann sie? Was nicht? Und wo steckt sie schon drin?',
     learningGoals: [
       'Verstehen, was Künstliche Intelligenz ist und was sie nicht ist',
       'KI-Systeme im Alltag erkennen und einordnen können',
@@ -126,7 +126,7 @@ export const learningPhases: LearningPhaseData[] = [
   {
     title: 'Grundlagen verstehen',
     introduction:
-      'Wie funktioniert KI eigentlich? In dieser Phase lernst du die wichtigsten Konzepte und Technologien kennen: Machine Learning, neuronale Netze, Training und Datenqualität. Du musst kein Programmierer sein – es geht darum, die grundlegenden Prinzipien zu verstehen, um KI-Systeme besser einschätzen zu können.',
+      'Wie lernt so eine KI eigentlich? Warum braucht sie Daten? Und was sind neuronale Netze? Keine Sorge – du musst kein Programmierer sein. Es geht nur darum, das Prinzip zu verstehen. Damit du weißt, warum KI manchmal brillant ist. Und manchmal daneben liegt.',
     learningGoals: [
       'Grundprinzipien von Machine Learning verstehen',
       'Unterschied zwischen überwachtem und unüberwachtem Lernen kennen',
@@ -247,7 +247,7 @@ export const learningPhases: LearningPhaseData[] = [
   {
     title: 'Anwendung im Arbeitsalltag',
     introduction:
-      'Jetzt wird es praktisch! In dieser Phase lernst du, wie du KI-Tools konkret in deinem Berufsalltag einsetzen kannst – egal ob im Marketing, Projektmanagement, in der Verwaltung oder im kreativen Bereich. Du erfährst, welche Tools es gibt, wie du sie nutzt und worauf du achten solltest. Ziel ist es, KI als nützlichen Assistenten zu verstehen, der dich produktiver macht.',
+      'Jetzt wird es konkret. Wie nutzt du KI im Job? Egal ob Marketing, Verwaltung oder kreative Arbeit – es gibt Tools, die dir Zeit sparen. Diese Phase zeigt dir, welche. Und wie du sie richtig einsetzt. Damit KI dein Assistent wird. Nicht dein Ersatz.',
     learningGoals: [
       'KI-Tools für verschiedene Arbeitsbereiche kennenlernen',
       'Effektive Prompts für KI-Assistenten schreiben',
@@ -370,7 +370,7 @@ export const learningPhases: LearningPhaseData[] = [
   {
     title: 'Ethik & Verantwortung',
     introduction:
-      'Mit großer Macht kommt große Verantwortung – das gilt auch für KI. In dieser Phase lernst du, KI ethisch und verantwortungsvoll einzusetzen: Datenschutz, Fairness, Transparenz und Bias. Du erfährst, welche Risiken es gibt und wie du sie minimierst. Ziel ist es, KI so zu nutzen, dass sie Menschen hilft, ohne zu schaden.',
+      'KI ist mächtig. Und mit Macht kommt Verantwortung. Diese Phase zeigt dir: Welche Risiken gibt es? Wie schützt du Daten? Wann diskriminiert KI? Und was kannst du dagegen tun? Damit KI Menschen hilft. Nicht schadet.',
     learningGoals: [
       'Ethische Herausforderungen von KI verstehen',
       'Datenschutz und Privatsphäre bei KI-Nutzung beachten',

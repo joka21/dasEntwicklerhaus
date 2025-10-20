@@ -39,7 +39,7 @@ export default function AILiteracyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-dark">Dein Lernfortschritt</h2>
+              <h2 className="text-2xl font-bold text-dark">Wo du gerade stehst</h2>
               <span className="text-lg font-semibold text-zukunft">
                 {completedPhases.length} / 4 Phasen
               </span>

@@ -10,20 +10,19 @@ export default function AILiteracyHero() {
 
           {/* Untertitel */}
           <p className="text-xl lg:text-2xl text-white opacity-95 mb-8 max-w-3xl mx-auto">
-            Verstehe, nutze und gestalte KI verantwortungsvoll
+            Versteh, was KI wirklich ist – und wie du sie nutzt
           </p>
 
           {/* Beschreibung */}
           <div className="max-w-4xl mx-auto text-white opacity-90 space-y-4">
             <p className="text-lg leading-relaxed">
-              Künstliche Intelligenz verändert unsere Arbeitswelt – und das schneller als je zuvor.
-              Doch was steckt wirklich dahinter? Wie nutzt man KI sinnvoll im Berufsalltag?
-              Und wie geht man verantwortungsvoll damit um?
+              KI ist überall. Alle reden drüber. Die meisten wissen nicht genau, was dahinter steckt.
             </p>
             <p className="text-lg leading-relaxed">
-              Diese Lernplattform befähigt dich, KI sicher, kreativ und ethisch einzusetzen –
-              ohne technisches Vorwissen. In vier praxisnahen Phasen lernst du alles,
-              was du brauchst, um KI als Werkzeug zu verstehen und selbstbewusst anzuwenden.
+              Das hier ist keine Uni-Vorlesung. Keine Marketing-Buzzwords. Keine theoretischen Modelle.
+            </p>
+            <p className="text-lg leading-relaxed">
+              Sondern: Was du wirklich wissen musst. In vier Schritten. Praxisnah. Ehrlich.
             </p>
           </div>
 

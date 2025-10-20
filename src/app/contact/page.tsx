@@ -13,21 +13,22 @@ export default function ContactPage() {
       <ContentSection>
         <main id="main-content">
           <h1 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8 text-center">
-            Projekt einreichen
+            Zeig, was du machst
           </h1>
           <p className="text-secondary text-center mb-12 max-w-2xl mx-auto">
-            Haben Sie ein innovatives Projekt, das Sie präsentieren möchten? 
-            Teilen Sie es mit uns! Wir helfen dabei, Projekte sichtbar zu machen und zu vernetzen.
+            Du hast ein Projekt? Egal ob groß oder klein, fertig oder in Arbeit – erzähl mir davon.
+            <br />
+            Ich helf dir, dass es gesehen wird.
           </p>
-          
+
           <ContactForm />
 
           <div className="mt-16 text-center">
             <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
-              Direkter Kontakt
+              Oder schreib mir direkt
             </h2>
             <p className="text-secondary mb-4">
-              Sie können uns auch direkt kontaktieren:
+              Keine Lust auf Formulare? Versteh ich.
             </p>
             <p className="text-dark">
               <strong>E-Mail:</strong>{' '}
