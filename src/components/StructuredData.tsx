@@ -100,7 +100,8 @@ export function ProjectSchema({ project }: { project: Project }) {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Das Entwicklerhaus"
+      "name": "Das Entwicklerhaus",
+      "email": "admin@dasentwicklerhaus.de"
     },
     "locationCreated": {
       "@type": "Place",
@@ -113,13 +114,7 @@ export function ProjectSchema({ project }: { project: Project }) {
       "Innovation",
       "Projekt",
       "Europa"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": project.contact.email,
-      "telephone": project.contact.phone,
-      "name": project.contact.name
-    }
+    ]
   }
 
   return <StructuredData data={projectData} />
