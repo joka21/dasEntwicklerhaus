@@ -14,10 +14,6 @@ export const sampleProjects: Project[] = [
     status: 'aktiv',
     startDate: '2025-10-20',
     teamSize: 1,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://dasentwicklerhaus.de/ai-literacy'
     }
@@ -149,10 +145,6 @@ Krefeld 2030 ist keine fertige Lösung, die von oben implementiert wird. Es ist 
     status: 'geplant',
     startDate: '2026-01-01',
     teamSize: 5,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://dasentwicklerhaus.de/projects/krefeld-2030'
     }
@@ -239,10 +231,6 @@ Das Ladenprojekt zeigt: Digitalisierung muss nicht den Großen gehören. Mit den
     status: 'geplant',
     startDate: '2025-11-01',
     teamSize: 3,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://dasentwicklerhaus.de/projects/das-ladenprojekt'
     }
@@ -267,10 +255,6 @@ Mit einer Series-B-Finanzierung von €60 Millionen im Juli 2025 und über 350 U
     status: 'aktiv',
     startDate: '2016-01-01',
     teamSize: 150,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://makersite.io'
     }
@@ -295,10 +279,6 @@ Das Münchner Unternehmen betreibt das Munich Battery Lab und arbeitet mit führ
     status: 'aktiv',
     startDate: '2018-01-01',
     teamSize: 120,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://twaice.com'
     }
@@ -323,10 +303,6 @@ Mit einer Series-A-Finanzierung von €10 Millionen im Juni 2025 und über einer
     status: 'aktiv',
     startDate: '2020-01-01',
     teamSize: 45,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://climatiq.io'
     }
@@ -351,10 +327,6 @@ Im Januar 2025 ging am Düsseldorf Airport die weltweit erste integrierte DAC-to
     status: 'aktiv',
     startDate: '2022-01-01',
     teamSize: 60,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://greenlyte.com'
     }
@@ -379,10 +351,6 @@ Das Essener Startup mit 20 Mitarbeitern wurde 2025 in die globale FoodTech 500 L
     status: 'aktiv',
     startDate: '2020-01-01',
     teamSize: 20,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://vgreens.de'
     }
@@ -407,10 +375,6 @@ Im Februar 2025 erhielt das Kölner Unternehmen €5 Millionen Seed-Finanzierung
     status: 'aktiv',
     startDate: '2020-01-01',
     teamSize: 50,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://getplanted.de'
     }
@@ -435,10 +399,6 @@ Mit über 175 Mitarbeitern, 65 Netzbetreiberkunden und 35 Millionen verwalteten 
     status: 'aktiv',
     startDate: '2017-01-01',
     teamSize: 175,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://envelio.de'
     }
@@ -463,10 +423,6 @@ Mit 64 Mitarbeitern, 93 realisierten Projekten und €26,4 Millionen vermittelte
     status: 'aktiv',
     startDate: '2016-01-01',
     teamSize: 64,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://ecoligo.investments'
     }
@@ -491,10 +447,6 @@ Mit Großaufträgen der Deutschen Bahn (3.500 Weichen), einem Umsatz von €7,6 
     status: 'aktiv',
     startDate: '2014-01-01',
     teamSize: 100,
-    contact: {
-      name: 'Das Entwicklerhaus',
-      email: 'admin@dasentwicklerhaus.de'
-    },
     socialMedia: {
       website: 'https://konux.com'
     }

@@ -10,7 +10,7 @@ export interface Project {
   status: 'aktiv' | 'geplant' | 'abgeschlossen'
   startDate: string
   teamSize: number
-  contact: {
+  contact?: {
     name: string
     email: string
     phone?: string
