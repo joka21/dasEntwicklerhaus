@@ -147,7 +147,7 @@ Krefeld 2030 ist keine fertige Lösung, die von oben implementiert wird. Es ist 
     category: 'zusammenarbeit',
     image: 'https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?w=600&h=400&fit=crop',
     slug: 'krefeld-2030',
-    status: 'in Planung',
+    status: 'geplant',
     startDate: '2026-01-01',
     teamSize: 5,
     contact: {
@@ -238,7 +238,7 @@ Das Ladenprojekt zeigt: Digitalisierung muss nicht den Großen gehören. Mit den
     category: 'zukunft',
     image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop',
     slug: 'das-ladenprojekt',
-    status: 'in Planung',
+    status: 'geplant',
     startDate: '2025-11-01',
     teamSize: 3,
     contact: {
