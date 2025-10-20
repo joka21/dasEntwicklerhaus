@@ -3,7 +3,9 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { sampleProjects } from '@/data/projects'
 import { Project } from '@/types/project'
+import Header from '@/components/Header'
 import ContentSection from '@/components/ContentSection'
+import Footer from '@/components/Footer'
 import { ProjectSchema } from '@/components/StructuredData'
 
 interface ProjectPageProps {
@@ -33,7 +35,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     title: `${project.name} - ${project.city}`,
     description: project.description,
     keywords: [project.category, project.city, 'Projekt', 'Innovation', 'Europa', 'Das Entwicklerhaus'],
-    authors: [{ name: project.contact.name }],
+    authors: [{ name: 'Das Entwicklerhaus' }],
     openGraph: {
       title: `${project.name} - ${project.city}`,
       description: project.description,
@@ -50,7 +52,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       locale: 'de_DE',
       type: 'article',
       publishedTime: project.startDate,
-      authors: [project.contact.name],
+      authors: ['Das Entwicklerhaus'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -122,6 +124,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <>
+      <Header />
       <ProjectSchema project={project} />
       {/* Hero Section */}
       <div className="relative h-[60vh] min-h-[400px] overflow-hidden">
@@ -193,28 +196,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               <p className="text-lg text-secondary leading-relaxed whitespace-pre-line">
                 {project.fullDescription}
               </p>
-            </div>
-
-            {/* Contact Section */}
-            <div className="bg-gray-50 rounded-lg p-6 mb-8">
-              <h3 className="text-xl font-semibold text-umwelt-800 mb-4">
-                Kontakt
-              </h3>
-              <div className="space-y-2">
-                <p className="font-medium text-dark">{project.contact.name}</p>
-                <p className="text-secondary">
-                  <a href={`mailto:${project.contact.email}`} className="hover:text-primary transition-colors">
-                    {project.contact.email}
-                  </a>
-                </p>
-                {project.contact.phone && (
-                  <p className="text-secondary">
-                    <a href={`tel:${project.contact.phone}`} className="hover:text-primary transition-colors">
-                      {project.contact.phone}
-                    </a>
-                  </p>
-                )}
-              </div>
             </div>
 
             {/* Social Media */}
@@ -336,6 +317,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
       </ContentSection>
+      <Footer />
     </>
   )
 }
