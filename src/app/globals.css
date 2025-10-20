@@ -226,6 +226,19 @@ strong, b, h1, h2, h3, h4, h5, h6 {
   color: #000000;
 }
 
+/* Override Tailwind text color utilities */
+.text-primary,
+.text-secondary,
+.text-muted,
+.text-dark,
+.text-dark-600,
+.text-dark-700,
+.text-gray-500,
+.text-gray-600,
+.text-gray-700 {
+  color: #000000 !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
