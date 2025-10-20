@@ -46,6 +46,12 @@ export default function Header() {
                 Projekte
               </Link>
               <Link
+                href="/blog"
+                className="text-base font-medium text-menschen-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
+              >
+                Blog
+              </Link>
+              <Link
                 href="/ai-literacy"
                 className="text-base font-medium text-zukunft-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
               >
@@ -110,6 +116,13 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Projekte
+                </Link>
+                <Link
+                  href="/blog"
+                  className="block px-3 py-2 text-base font-medium text-menschen-800 hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Blog
                 </Link>
                 <Link
                   href="/ai-literacy"
