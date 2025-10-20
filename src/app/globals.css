@@ -207,7 +207,7 @@
 }
 
 body {
-  color: #1a1a1a;
+  color: #000000;
   background: var(--background);
   font-family: var(--font-inter), system-ui, sans-serif;
   font-weight: 500;
@@ -218,12 +218,12 @@ body {
 /* Stärkere Schrift für bessere Lesbarkeit */
 p, span, div, a, li {
   font-weight: 500;
-  color: #1a1a1a;
+  color: #000000;
 }
 
 strong, b, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  color: #0a0a0a;
+  color: #000000;
 }
 
 @layer utilities {
