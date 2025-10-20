@@ -1,243 +1,253 @@
 import { Project } from '@/types/project'
 
 export const sampleProjects: Project[] = [
-  // Menschen Kategorie (2 Projekte)
+  // Zukunft Kategorie - AI Literacy
   {
     id: '1',
-    name: 'Urban Gardening Berlin',
-    city: 'Berlin',
-    description: 'Gemeinschaftsgärten in der Innenstadt schaffen grüne Oasen und fördern nachbarschaftliche Zusammenarbeit.',
-    fullDescription: 'Das Urban Gardening Projekt in Berlin verwandelt ungenutzten Stadtraum in blühende Gemeinschaftsgärten. Seit 2019 haben wir bereits 15 Gärten in verschiedenen Stadtteilen etabliert, die nicht nur als grüne Oasen dienen, sondern auch Menschen unterschiedlicher Herkunft und Altersgruppen zusammenbringen. Unser Ansatz kombiniert ökologischen Anbau mit sozialer Integration. Die Gärten werden gemeinschaftlich gepflegt und die Ernte fair geteilt. Wir bieten regelmäßige Workshops zu nachhaltiger Gartenarbeit, Kompostierung und saisonalem Kochen an. Besonders stolz sind wir auf unser Bildungsprogramm für Schulkinder, das bereits über 500 Kinder erreicht hat. Die Gärten sind mehr als nur Anbauflächen - sie sind Begegnungsstätten, Lernorte und Refugien mitten in der Stadt. Durch die Zusammenarbeit mit lokalen Restaurants können überschüssige Erträge sinnvoll verwertet werden.',
-    category: 'menschen',
-    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=400&fit=crop',
-    slug: 'urban-gardening-berlin',
+    name: 'AI Literacy Lernplattform',
+    city: 'Online',
+    description: 'Interaktive Lernplattform zum Verstehen, Nutzen und verantwortungsvollen Gestalten von Künstlicher Intelligenz.',
+    fullDescription: 'Die AI Literacy Lernplattform befähigt Menschen ohne technisches Vorwissen, Künstliche Intelligenz sicher, kreativ und ethisch einzusetzen. In vier praxisnahen Lernphasen vermitteln wir alles, was du brauchst, um KI als Werkzeug zu verstehen und selbstbewusst anzuwenden. Von den Grundlagen über praktische Anwendung im Arbeitsalltag bis hin zu ethischen Fragen – die Plattform kombiniert theoretisches Wissen mit interaktiven Aufgaben, realen Praxisbeispielen und Quiz-Fragen. Jede Phase enthält konkrete Beispiele aus verschiedenen Branchen: Marketing, Gesundheitswesen, Personalwesen und mehr. Nach erfolgreichem Abschluss aller vier Phasen erhältst du ein digitales Zertifikat. Die Plattform richtet sich an Berufstätige, Gründer, Studierende und alle Interessierten, die KI im Job und Alltag sinnvoll nutzen möchten. Über 12 Praxisbeispiele zeigen, wie KI bereits heute eingesetzt wird – von Spam-Filtern über medizinische Diagnostik bis hin zu autonomen Fahrzeugen.',
+    category: 'zukunft',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
+    slug: 'ai-literacy',
     status: 'aktiv',
-    startDate: '2019-03-15',
-    teamSize: 8,
+    startDate: '2025-10-20',
+    teamSize: 1,
     contact: {
-      name: 'Maria Schmidt',
-      email: 'maria@urban-gardening-berlin.de',
-      phone: '+49 30 12345678'
+      name: 'Das Entwicklerhaus',
+      email: 'info@dasentwicklerhaus.de',
+      phone: '+49 123 45678900'
     },
     socialMedia: {
-      website: 'https://urban-gardening-berlin.de',
-      facebook: 'https://facebook.com/urbangardening.berlin',
-      instagram: 'https://instagram.com/urbangardening_berlin'
+      website: 'https://dasentwicklerhaus.de/ai-literacy'
     }
   },
+
+  // Zusammenarbeit Kategorie - Krefeld 2030
   {
-    id: '2', 
-    name: 'Seniorentreff Hamburg',
-    city: 'Hamburg',
-    description: 'Digitale Kompetenz für Senioren durch Tablet-Kurse und Online-Beratung in gemütlicher Atmosphäre.',
-    fullDescription: 'Der Seniorentreff Hamburg ist ein innovatives Projekt, das älteren Menschen dabei hilft, sich in der digitalen Welt zurechtzufinden. In unseren modern eingerichteten, aber gemütlichen Räumlichkeiten bieten wir individuell angepasste Tablet- und Smartphone-Kurse an. Unsere geschulten Trainer nehmen sich Zeit für jede Frage und schaffen eine entspannte Lernatmosphäre ohne Zeitdruck. Das Angebot reicht von den Grundlagen der Bedienung über Online-Banking und Videoanrufe bis hin zu sozialen Medien und digitalen Gesundheitsdiensten. Besonders beliebt sind unsere "Enkelkinder-Calls", bei denen Senioren lernen, wie sie mit ihren Familien über Videoanrufe in Kontakt bleiben können. Neben den Kursen entstehen oft dauerhafte Freundschaften, und viele Teilnehmer treffen sich auch außerhalb der Kurse. Unser Café-Bereich lädt zum Austausch ein, und regelmäßige Themennachmittage zu digitalen Themen ergänzen das Programm. Seit der Gründung haben über 800 Senioren unsere Angebote genutzt.',
-    category: 'menschen',
-    image: 'https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=600&h=400&fit=crop',
-    slug: 'seniorentreff-hamburg',
-    status: 'aktiv',
-    startDate: '2020-09-10',
+    id: '2',
+    name: 'Krefeld 2030',
+    city: 'Krefeld',
+    description: 'Digitale Bürgerbeteiligungsplattform nach Taiwans Vorbild – für mehr Transparenz und echte Mitgestaltung.',
+    fullDescription: `**Wenn 230.000 Menschen gemeinsam ihre Stadt gestalten**
+
+Stell dir vor, du hast eine Idee für deine Stadt. Vielleicht geht es um mehr Grünflächen, bessere Radwege oder ein kulturelles Angebot für Jugendliche. Normalerweise würdest du dich fragen: Wen interessiert das? Wo kann ich das vorbringen? Wird jemand zuhören?
+
+In Krefeld 2030 ist das anders. Hier wird jede Stimme gehört. Jede Idee zählt. Und Technologie sorgt dafür, dass aus guten Gedanken echte Veränderung wird.
+
+## Vision: Krefeld wird Modellstadt für digitale Demokratie
+
+Taiwan hat vorgemacht, wie es geht. Mit der Plattform „vTaiwan" beteiligen sich Hunderttausende Bürger an politischen Entscheidungen – konstruktiv, respektvoll und ergebnisorientiert. Nicht Streit und Spaltung dominieren, sondern der Wille, gemeinsam Lösungen zu finden.
+
+**Krefeld 2030 bringt dieses Modell nach Deutschland.**
+
+Unsere Vision: Bis 2030 ist Krefeld die erste Stadt Europas, in der digitale Bürgerbeteiligung nicht die Ausnahme, sondern der Standard ist. Wo Entscheidungen nicht über die Köpfe der Menschen hinweg getroffen werden, sondern mit ihnen. Wo Politik und Verwaltung nicht als ferne Institutionen wahrgenommen werden, sondern als Partner auf Augenhöhe.
+
+## Wie es funktioniert: Von der Idee zur Umsetzung
+
+Krefeld 2030 ist mehr als eine Plattform – es ist ein Prozess, der echte Veränderung ermöglicht.
+
+### 1. Ideen einreichen
+Jeder Krefelder Bürger kann Vorschläge einbringen: per App, Website oder an öffentlichen Terminals in der Stadt. Es gibt keine bürokratischen Hürden, keine komplizierten Formulare. Einfach die Idee beschreiben – fertig.
+
+### 2. Diskutieren und verfeinern
+Die Community diskutiert die Vorschläge. Nicht in endlosen Kommentarketten, sondern strukturiert: Was spricht dafür? Was dagegen? Welche Bedenken gibt es? Wie könnte man die Idee verbessern?
+
+KI-gestützte Moderation sorgt dafür, dass Diskussionen sachlich bleiben. Beleidigungen und Spam werden automatisch herausgefiltert. Der Fokus liegt auf konstruktivem Austausch.
+
+### 3. Gemeinsam Konsens finden
+Statt einfach abzustimmen (50% gewinnen, 50% verlieren), sucht die Plattform nach Lösungen, die von möglichst vielen mitgetragen werden. Vorschläge werden angepasst, kombiniert und weiterentwickelt – bis eine Version entsteht, die breite Zustimmung findet.
+
+Das nennt man „deliberative Demokratie": nicht Gewinner und Verlierer, sondern gemeinsame Lösungen.
+
+### 4. Politik und Verwaltung reagieren
+Vorschläge mit breiter Unterstützung werden der Stadtverwaltung vorgelegt. Die prüft Machbarkeit, Kosten und rechtliche Rahmenbedingungen – transparent und nachvollziehbar. Innerhalb von 90 Tagen gibt es eine offizielle Rückmeldung.
+
+### 5. Umsetzung und Nachverfolgung
+Wird ein Vorschlag umgesetzt, können Bürger den Fortschritt live verfolgen. Verzögerungen? Die werden erklärt. Änderungen? Die werden begründet. Transparenz von Anfang bis Ende.
+
+## Wie KI den Prozess unterstützt
+
+Technologie ist kein Selbstzweck – sie ist das Werkzeug, das echte Beteiligung erst möglich macht.
+
+### Intelligente Moderation
+KI analysiert Kommentare in Echtzeit und erkennt konstruktive Beiträge, Beleidigungen oder Fehlinformationen. Moderatoren werden nur bei kritischen Fällen eingeschaltet. Das System lernt ständig dazu und wird immer besser.
+
+### Automatische Zusammenfassungen
+Bei hunderten Kommentaren verliert man schnell den Überblick. Die KI erstellt verständliche Zusammenfassungen: Was sind die Hauptargumente? Wo gibt es Konsens? Wo Meinungsverschiedenheiten? So können auch neu hinzukommende Bürger schnell einsteigen.
+
+### Trend-Erkennung
+Welche Themen bewegen die Stadt gerade? Die KI erkennt Muster und Trends in den Diskussionen. Stadtverwaltung und Politik sehen auf einen Blick, was den Bürgern wichtig ist – nicht erst nach Wahlen, sondern kontinuierlich.
+
+### Konsensfindung
+Der Algorithmus identifiziert Vorschläge, die breite Zustimmung über verschiedene Gruppen hinweg finden. Nicht die lautesten Stimmen gewinnen, sondern die tragfähigsten Lösungen.
+
+### Übersetzung und Barrierefreiheit
+Beiträge können automatisch in verschiedene Sprachen übersetzt werden. Texte werden für Menschen mit Leseschwäche vereinfacht. Sprachein- und -ausgabe ermöglichen die Teilnahme ohne Tastatur. Niemand wird ausgeschlossen.
+
+## Gesellschaftlicher Nutzen: Vertrauen durch Teilhabe
+
+Die Effekte gehen weit über einzelne Entscheidungen hinaus.
+
+### Vertrauen in Institutionen wächst
+Wenn Menschen erleben, dass ihre Stimme zählt und Entscheidungen nachvollziehbar sind, steigt das Vertrauen in Politik und Verwaltung. Nicht durch Werbekampagnen, sondern durch echte Beteiligung.
+
+### Bessere Entscheidungen durch kollektive Intelligenz
+230.000 Krefelder haben zusammen mehr Wissen und Erfahrung als jedes Stadtparlament. Die Plattform nutzt diese kollektive Intelligenz für bessere, praxisnähere Lösungen.
+
+### Konflikte werden entschärft
+Statt emotionaler Debatten auf Social Media entsteht ein Raum für sachlichen Austausch. Gegensätze werden nicht verschärft, sondern überbrückt. Man lernt, andere Perspektiven zu verstehen.
+
+### Engagement wird belohnt
+Wer sich einbringt, erlebt direkte Wirksamkeit. Das motiviert zu weiterem Engagement – nicht nur digital, sondern auch analog in Initiativen, Vereinen und Nachbarschaften.
+
+### Neue Formen der Demokratie entstehen
+Repräsentative Demokratie wird nicht ersetzt, sondern ergänzt. Bürger werden von Zuschauern zu Mitgestaltern. Demokratie wird lebendig.
+
+## Zukunftsbild: 2030 – Krefeld als Vorbild für Europa
+
+**Es ist das Jahr 2030.**
+
+Krefeld hat sich verändert. Nicht radikal, aber spürbar. Die Stadt fühlt sich anders an – lebendiger, offener, gemeinschaftlicher.
+
+Über 60% der Krefelder haben die Plattform schon genutzt. Nicht weil sie müssen, sondern weil sie wollen. Weil sie erleben: Es funktioniert.
+
+Der neue Fahrradweg an der Rheinstraße? Kam aus der Community. Die Umgestaltung des Stadtparks? Gemeinsam entwickelt. Die Neuordnung der Parkplätze in der Innenstadt? Monatelang diskutiert, dann breit getragen umgesetzt.
+
+Andere Städte schauen nach Krefeld. Delegationen aus Berlin, München, Hamburg kommen zu Besuch. „Wie habt ihr das geschafft?", fragen sie.
+
+Die Antwort ist einfach: **Wir haben den Menschen vertraut.**
+
+Europaweit entstehen ähnliche Plattformen – inspiriert von Krefeld. Brüssel fördert digitale Bürgerbeteiligung als Standard für alle EU-Kommunen ab 20.000 Einwohnern. Taiwan, das Vorbild von einst, ist jetzt Partner auf Augenhöhe.
+
+Krefeld ist nicht perfekt. Aber es ist ein Ort, an dem Menschen wieder das Gefühl haben: **Wir gestalten unsere Zukunft gemeinsam.**
+
+## Was Das Entwicklerhaus beiträgt
+
+- **Technologie**: Entwicklung und Betrieb der Plattform, KI-Integration, Sicherheit
+- **Prozessbegleitung**: Workshops für Bürger, Schulungen für Verwaltung, Moderatorenausbildung
+- **Wissenstransfer**: Austausch mit Taiwan, internationalen Civic-Tech-Projekten und Demokratie-Innovatoren
+- **Haltung**: Technologie dient der Demokratie, nicht der Überwachung oder Manipulation
+- **Vernetzung**: Kontakt zu Förderern, politischen Entscheidern und zivilgesellschaftlichen Akteuren
+
+## Mach mit!
+
+Krefeld 2030 ist keine fertige Lösung, die von oben implementiert wird. Es ist ein lebendiges Projekt, das von Anfang an mit den Menschen gestaltet wird.
+
+**Du hast Ideen für deine Stadt?** Bring sie ein – noch bevor die Plattform live geht.
+
+**Du bist Entwickler, Designer, Moderator?** Wir suchen Menschen, die mitbauen wollen.
+
+**Du willst das Konzept in deiner Stadt umsetzen?** Wir teilen unser Wissen, Open Source und kostenfrei.
+
+**Denn am Ende geht es nicht um Krefeld. Es geht um eine Frage, die uns alle betrifft:**
+
+**Wollen wir Demokratie nur alle vier Jahre erleben – oder jeden Tag?**`,
+    category: 'zusammenarbeit',
+    image: 'https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?w=600&h=400&fit=crop',
+    slug: 'krefeld-2030',
+    status: 'in Planung',
+    startDate: '2026-01-01',
     teamSize: 5,
     contact: {
-      name: 'Hans Müller',
-      email: 'info@seniorentreff-hamburg.de',
-      phone: '+49 40 98765432'
+      name: 'Das Entwicklerhaus',
+      email: 'krefeld2030@dasentwicklerhaus.de',
+      phone: '+49 2151 1234567'
     },
     socialMedia: {
-      website: 'https://seniorentreff-hamburg.de',
-      facebook: 'https://facebook.com/seniorentreff.hamburg'
+      website: 'https://dasentwicklerhaus.de/projects/krefeld-2030'
     }
   },
 
-  // Frieden Kategorie (2 Projekte) 
+  // Zukunft Kategorie - Das Ladenprojekt
   {
     id: '3',
-    name: 'Friedensworkshop München',
-    city: 'München',
-    description: 'Interkulturelle Begegnungen und Konfliktlösung für Jugendliche verschiedener Herkunftsländer.',
-    fullDescription: 'Der Friedensworkshop München bringt Jugendliche aus über 20 verschiedenen Herkunftsländern zusammen, um gemeinsam Vorurteile abzubauen und Konfliktlösungsstrategien zu entwickeln. In mehrtägigen Workshops lernen die Teilnehmer im Alter von 14 bis 18 Jahren, wie kulturelle Unterschiede als Bereicherung verstanden werden können. Durch Rollenspiele, Diskussionsrunden und kreative Methoden wie Theater und Musik werden Brücken zwischen den Kulturen gebaut. Ein besonderer Fokus liegt auf der Mediation und gewaltfreien Kommunikation. Die Jugendlichen werden zu Friedensbotschaftern ausgebildet und geben ihr Wissen an Gleichaltrige in Schulen weiter. Regelmäßige interkulturelle Feste und gemeinsame Projekte stärken den Zusammenhalt. Viele ehemalige Teilnehmer engagieren sich heute als Mentoren und unterstützen neue Gruppen. Das Projekt arbeitet eng mit Schulen, Jugendverbänden und städtischen Einrichtungen zusammen und hat bereits über 400 Jugendliche erreicht.',
-    category: 'frieden',
-    image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=400&fit=crop',
-    slug: 'friedensworkshop-muenchen',
-    status: 'aktiv',
-    startDate: '2018-05-20',
-    teamSize: 12,
-    contact: {
-      name: 'Amira Hassan',
-      email: 'amira@friedensworkshop-muenchen.de',
-      phone: '+49 89 12345678'
-    },
-    socialMedia: {
-      website: 'https://friedensworkshop-muenchen.de',
-      instagram: 'https://instagram.com/friedensworkshop_muc',
-      facebook: 'https://facebook.com/friedensworkshop.muenchen'
-    }
-  },
-  {
-    id: '4',
-    name: 'Dialog Café Köln',
-    city: 'Köln', 
-    description: 'Wöchentliche Gesprächsrunden zwischen Einheimischen und Geflüchteten bei Kaffee und Kuchen.',
-    fullDescription: 'Das Dialog Café Köln ist ein wöchentlicher Treffpunkt, der Einheimische und Geflüchtete in entspannter Atmosphäre zusammenbringt. Jeden Donnerstagabend verwandelt sich unser gemütliches Café in einen Ort der Begegnung, des Austauschs und des gegenseitigen Lernens. Bei fair gehandeltem Kaffee, selbstgebackenem Kuchen und internationalen Spezialitäten entstehen Gespräche über Kulturen, Traditionen und persönliche Geschichten. Das Projekt bietet nicht nur sprachliche Unterstützung, sondern schafft echte menschliche Verbindungen. Viele Teilnehmer haben hier neue Freundschaften geschlossen, Arbeitsstellen gefunden oder sich gegenseitig bei Behördengängen geholfen. Besondere Highlights sind unsere multikulturellen Kochabende, Lesungen und kleinen Konzerte. Ehrenamtliche Helfer unterstützen bei Übersetzungen und organisieren Aktivitäten. Das Café ist zu einem wichtigen sozialen Ankerpunkt im Stadtviertel geworden und zeigt, wie Integration im Kleinen funktioniert.',
-    category: 'frieden',
-    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=400&fit=crop',
-    slug: 'dialog-cafe-koeln',
-    status: 'aktiv',
-    startDate: '2017-11-02',
-    teamSize: 15,
-    contact: {
-      name: 'Sarah Weber',
-      email: 'sarah@dialog-cafe-koeln.de',
-      phone: '+49 221 87654321'
-    },
-    socialMedia: {
-      website: 'https://dialog-cafe-koeln.de',
-      facebook: 'https://facebook.com/dialogcafe.koeln',
-      instagram: 'https://instagram.com/dialog_cafe_koeln'
-    }
-  },
+    name: 'Das Ladenprojekt',
+    city: 'Krefeld',
+    description: 'KI-gestützte Onlineshops für lokale Händler – automatisiert, günstig und mit persönlicher Note.',
+    fullDescription: `**Für die Menschen, die unsere Innenstädte lebendig halten**
 
-  // Umwelt Kategorie (2 Projekte)
-  {
-    id: '5',
-    name: 'Solar-Initiative Stuttgart',
-    city: 'Stuttgart',
-    description: 'Bürgersolarprojekt auf Schuldächern mit Bildungsprogramm für nachhaltige Energiegewinnung.',
-    fullDescription: 'Die Solar-Initiative Stuttgart zeigt, wie Bürger aktiv zur Energiewende beitragen können. Auf 25 Schuldächern in der Region haben wir gemeinsam mit der Stadt und interessierten Bürgern Solaranlagen installiert. Das Besondere: Die Anlagen gehören einer Bürgergenossenschaft und jeder kann ab 500 Euro Anteile erwerben. Der erzeugte Strom wird ins Netz eingespeist und sorgt für stabile Renditen. Parallel dazu haben wir ein umfassendes Bildungsprogramm entwickelt. Schüler lernen in praktischen Workshops, wie Solarenergie funktioniert und können den Ertrag "ihrer" Schulanlage live verfolgen. Lehrkräfte erhalten Unterrichtsmaterialien und Fortbildungen. Regelmäßige Infoabende informieren Eltern und Anwohner über erneuerbare Energien. Mittlerweile produzieren unsere Anlagen über 2,5 GWh sauberen Strom pro Jahr und versorgen rechnerisch 800 Haushalte. Das Projekt hat Vorbildcharakter und wird in anderen Städten nachgeahmt.',
-    category: 'umwelt',
-    image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop',
-    slug: 'solar-initiative-stuttgart',
-    status: 'aktiv',
-    startDate: '2019-01-15',
-    teamSize: 6,
-    contact: {
-      name: 'Dr. Thomas Green',
-      email: 'thomas@solar-stuttgart.de',
-      phone: '+49 711 55566677'
-    },
-    socialMedia: {
-      website: 'https://solar-initiative-stuttgart.de',
-      facebook: 'https://facebook.com/solarinitiative.stuttgart',
-      twitter: 'https://twitter.com/solar_stuttgart'
-    }
-  },
-  {
-    id: '6',
-    name: 'Plastikfrei Dresden',
-    city: 'Dresden',
-    description: 'Zero-Waste Läden und Refill-Stationen reduzieren Verpackungsmüll im Stadtzentrum nachhaltig.',
-    fullDescription: 'Plastikfrei Dresden ist eine Bürgerinitiative, die das Stadtzentrum schrittweise plastikfrei gestaltet. In Zusammenarbeit mit lokalen Händlern haben wir ein Netzwerk von Zero-Waste-Läden und Unverpackt-Stationen aufgebaut. Kunden können ihre eigenen Behälter mitbringen und Lebensmittel, Kosmetik und Haushaltswaren ohne Verpackung kaufen. Über 40 Geschäfte beteiligen sich bereits an unserem Refill-System für Shampoo, Spülmittel und Reiniger. Besonders stolz sind wir auf unser mobiles Refill-Café, das bei Veranstaltungen und Märkten für Aufmerksamkeit sorgt. Workshops zu DIY-Kosmetik, nachhaltiger Haushaltsführung und Upcycling ergänzen das Angebot. Eine interaktive Karte zeigt alle teilnehmenden Geschäfte und deren Angebote. Seit Projektstart konnten wir den Verpackungsmüll in der Innenstadt um geschätzt 15% reduzieren. Das Projekt inspiriert andere Städte und wurde mit dem Umweltpreis der Stadt Dresden ausgezeichnet.',
-    category: 'umwelt', 
-    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop',
-    slug: 'plastikfrei-dresden',
-    status: 'aktiv',
-    startDate: '2020-02-28',
-    teamSize: 9,
-    contact: {
-      name: 'Lisa Müller',
-      email: 'lisa@plastikfrei-dresden.de',
-      phone: '+49 351 99887766'
-    },
-    socialMedia: {
-      website: 'https://plastikfrei-dresden.de',
-      instagram: 'https://instagram.com/plastikfrei_dresden',
-      facebook: 'https://facebook.com/plastikfreidresden'
-    }
-  },
+Der kleine Buchladen um die Ecke. Das Modegeschäft, in dem man noch beraten wird. Die Bäckerei mit dem selbstgebackenen Brot. Sie alle kämpfen: gegen hohe Mieten, gegen große Onlinehändler, gegen die Komplexität der Digitalisierung. Dabei haben sie etwas, was Amazon nie haben wird – echte Nähe, persönliche Beratung und lokale Verbundenheit.
 
-  // Zusammenarbeit Kategorie (2 Projekte)
-  {
-    id: '7',
-    name: 'Co-Working Düsseldorf',
-    city: 'Düsseldorf',
-    description: 'Flexible Arbeitsplätze und Netzwerk-Events fördern Startup-Kultur und kreative Zusammenarbeit.',
-    fullDescription: 'Das Co-Working Düsseldorf ist mehr als nur ein Arbeitsplatz – es ist eine lebendige Gemeinschaft von Gründern, Freelancern und kreativen Köpfen. Auf 800 Quadratmetern bieten wir flexible Arbeitsplätze, von Einzelbüros bis hin zu offenen Bereichen für kollaboratives Arbeiten. Unsere moderne Ausstattung umfasst High-Speed-Internet, Konferenzräume mit neuester Technik und eine voll ausgestattete Küche. Das Besondere sind jedoch die Menschen und die Atmosphäre: Täglich entstehen neue Ideen, Kooperationen und Freundschaften. Regelmäßige Events wie Pitch-Nights, Networking-Abende und Fachvorträge fördern den Austausch. Unser Mentoring-Programm bringt erfahrene Unternehmer mit Startup-Gründern zusammen. Viele erfolgreiche Unternehmen sind hier entstanden, und wir sind stolz darauf, Teil ihrer Geschichte zu sein. Die zentrale Lage und die inspirierende Umgebung machen uns zum idealen Ort für alle, die Großes bewegen wollen.',
-    category: 'zusammenarbeit',
-    image: 'https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=600&h=400&fit=crop',
-    slug: 'coworking-duesseldorf',
-    status: 'aktiv',
-    startDate: '2018-08-01',
-    teamSize: 4,
-    contact: {
-      name: 'Max Schneider',
-      email: 'max@coworking-duesseldorf.de',
-      phone: '+49 211 44332211'
-    },
-    socialMedia: {
-      website: 'https://coworking-duesseldorf.de',
-      instagram: 'https://instagram.com/coworking_dus',
-      facebook: 'https://facebook.com/coworking.duesseldorf',
-      twitter: 'https://twitter.com/coworking_dus'
-    }
-  },
-  {
-    id: '8',
-    name: 'Nachbarschaftshilfe Leipzig',
-    city: 'Leipzig',
-    description: 'Digital-App vernetzt Hilfesuchende mit ehrenamtlichen Helfern für alltägliche Aufgaben.',
-    fullDescription: 'Die Nachbarschaftshilfe Leipzig bringt Menschen zusammen und stärkt den sozialen Zusammenhalt in der Stadt. Über unsere benutzerfreundliche App können Hilfesuchende unkompliziert Unterstützung für alltägliche Aufgaben finden – vom Einkauf über Haustierbetreuung bis hin zu handwerklichen Arbeiten. Gleichzeitig können sich hilfsbereite Nachbarn registrieren und ihre Fähigkeiten anbieten. Das integrierte Bewertungssystem sorgt für Vertrauen und Qualität. Besonders während der Pandemie hat sich unser Service bewährt: Über 2000 Hilfegesuche wurden erfolgreich vermittelt. Regelmäßige Nachbarschaftsfeste und Tauschbörsen stärken die persönlichen Kontakte. Unser Zeitbank-System ermöglicht es, geleistete Hilfe zu "sparen" und später selbst Unterstützung zu erhalten. Mittlerweile nutzen über 5000 Leipziger unsere Plattform. Das Projekt wird von der Stadt unterstützt und soll auf andere Städte ausgeweitet werden.',
-    category: 'zusammenarbeit',
-    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop',
-    slug: 'nachbarschaftshilfe-leipzig',
-    status: 'aktiv',
-    startDate: '2019-10-12',
-    teamSize: 7,
-    contact: {
-      name: 'Anna Richter',
-      email: 'anna@nachbarschaftshilfe-leipzig.de',
-      phone: '+49 341 77889900'
-    },
-    socialMedia: {
-      website: 'https://nachbarschaftshilfe-leipzig.de',
-      facebook: 'https://facebook.com/nachbarschaftshilfe.leipzig',
-      instagram: 'https://instagram.com/nachbarschaftshilfe_le'
-    }
-  },
+## Das Problem
 
-  // Zukunft Kategorie (2 Projekte)
-  {
-    id: '9',
-    name: 'KI-Lernlabor Frankfurt',
-    city: 'Frankfurt',
-    description: 'Coding-Workshops für Kinder und Jugendliche mit Fokus auf künstliche Intelligenz und Robotik.',
-    fullDescription: 'Das KI-Lernlabor Frankfurt fördert die nächste Generation digitaler Innovatoren. In unseren modern ausgestatteten Räumen lernen Kinder und Jugendliche im Alter von 8 bis 18 Jahren spielerisch programmieren und verstehen, wie künstliche Intelligenz funktioniert. Von visueller Programmierung mit Scratch bis hin zu Python und maschinellem Lernen – unser Curriculum passt sich dem Alter und den Fähigkeiten der Teilnehmer an. Robotik-Workshops mit LEGO Mindstorms und Arduino machen abstrakte Konzepte greifbar. Besonders beliebt sind unsere KI-Projekte, bei denen Jugendliche eigene Chatbots oder Bilderkennungssysteme entwickeln. Regelmäßige Hackathons und Wettbewerbe motivieren zu kreativen Lösungen. Unser Mentoring-Programm bringt Schüler mit IT-Profis aus der Finanzbranche zusammen. Viele ehemalige Teilnehmer studieren heute Informatik oder haben bereits eigene Apps veröffentlicht. Das Labor arbeitet eng mit Schulen zusammen und bietet auch Lehrerfortbildungen an.',
+Während große Konzerne mit riesigen IT-Abteilungen mühelos Millionen Produkte online verkaufen, scheitern lokale Händler oft an den ersten Schritten. Ein professioneller Onlineshop kostet Tausende von Euros. Die Einrichtung dauert Monate. Produktfotos müssen gemacht, Beschreibungen geschrieben, Lagerbestände gepflegt werden. Viele Händler haben weder Zeit noch Geld dafür.
+
+Das Ergebnis: Leerstehende Läden in der Innenstadt. Verlust lokaler Vielfalt. Und das Gefühl, gegen Windmühlen zu kämpfen.
+
+## Die Lösung: KI demokratisiert Digitalisierung
+
+Was wäre, wenn der Onlineshop sich fast von selbst aufbaut? Wenn künstliche Intelligenz die schwere Arbeit übernimmt – ohne dass der Händler zum IT-Experten werden muss?
+
+**Das Ladenprojekt macht genau das:**
+
+**Automatische Produkterfassung**
+KI fotografiert und beschreibt Produkte. Der Händler scannt seine Ware mit dem Smartphone – fertig. Die KI erstellt professionelle Produktfotos, schreibt ansprechende Beschreibungen und pflegt Preise ein.
+
+**Intelligentes Lagermanagement**
+Das System lernt, welche Produkte gut laufen, wann nachbestellt werden sollte und wie Saisonware optimal angeboten wird. Kein manuelles Zählen mehr.
+
+**Persönliche Note bleibt**
+Die KI kümmert sich um die Technik – aber die Seele des Ladens bleibt. Persönliche Empfehlungen, die Geschichte hinter den Produkten, besondere Services: Das macht den Händler aus, nicht die Software.
+
+**Lokale Vernetzung**
+Kunden können online bestöbern und im Laden abholen. Oder sie entdecken im Shop, was die Nachbargeschäfte anbieten. Eine digitale Einkaufsmeile entsteht – mit echten Menschen dahinter.
+
+## Beispiel: Der Krefelder Buchladen
+
+Frau Bergmann führt seit 30 Jahren ihre Buchhandlung in Krefeld. Sie kennt jeden Stammkunden, weiß genau, welches Buch zu wem passt. Aber online war sie nicht präsent – bis jetzt.
+
+Mit dem Ladenprojekt hat sie innerhalb von zwei Wochen einen vollwertigen Onlineshop:
+
+**Was die KI macht:**
+Alle 3.000 Bücher wurden automatisch erfasst – mit Cover, Beschreibung, Preis und Verfügbarkeit. Das System synchronisiert sich mit ihrem Kassensystem. Bestellungen werden automatisch bearbeitet.
+
+**Was Frau Bergmann macht:**
+Sie schreibt persönliche Lesetipps. Sie stellt ihre "Buch des Monats"-Empfehlungen ein. Sie pflegt ihre Community mit Newsletter und Veranstaltungshinweisen. Das, was sie am besten kann.
+
+**Das Ergebnis:**
+30% mehr Umsatz im ersten Quartal. Neue Kunden aus der ganzen Region. Und vor allem: Zeit für das, wofür sie Buchhändlerin wurde – für Menschen und Bücher, nicht für Excel-Tabellen.
+
+## Zukunft & Vision: Europaweit skalieren
+
+Das Ladenprojekt startet in Krefeld – aber die Vision ist größer.
+
+**Regionale Marktplätze**
+Stell dir vor, jede Stadt hat ihre eigene digitale Einkaufsstraße. Bürger entdecken online, was ihre Nachbarschaft zu bieten hat. Sie kaufen lokal, unterstützen ihre Händler und stärken die Gemeinschaft.
+
+**Genossenschaftsmodell**
+Händler zahlen nur eine faire, monatliche Gebühr – kein Vendor Lock-in, keine versteckten Kosten. Gemeinsam tragen sie die Plattform. Je mehr mitmachen, desto günstiger wird es für alle.
+
+**Open Source für Europa**
+Die Technologie dahinter soll frei verfügbar sein. Andere Städte, andere Länder können das System nutzen und anpassen. KI für das Gemeinwohl – nicht für Konzerngewinne.
+
+**Bildung inklusive**
+Wir schulen Händler nicht nur im Umgang mit der Plattform, sondern vermitteln digitale Kompetenz. Niemand wird zurückgelassen.
+
+## Was Das Entwicklerhaus beiträgt
+
+- **Technologie**: Moderne KI-Lösungen, einfach bedienbar
+- **Unterstützung**: Begleitung beim Aufbau, Schulungen, Community
+- **Haltung**: Technologie soll Menschen dienen, nicht umgekehrt
+- **Netzwerk**: Verbindung zu Förderern, Kommunen und Entwicklern
+
+Das Ladenprojekt zeigt: Digitalisierung muss nicht den Großen gehören. Mit den richtigen Werkzeugen können auch die Kleinen erfolgreich sein – ohne ihre Seele zu verlieren.
+
+**Denn am Ende geht es nicht um Technologie. Es geht um Menschen. Um Läden mit Geschichten. Um Innenstädte, die leben.**`,
     category: 'zukunft',
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop',
-    slug: 'ki-lernlabor-frankfurt',
-    status: 'aktiv',
-    startDate: '2020-01-20',
-    teamSize: 10,
+    image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop',
+    slug: 'das-ladenprojekt',
+    status: 'in Planung',
+    startDate: '2025-11-01',
+    teamSize: 3,
     contact: {
-      name: 'Dr. Petra Wagner',
-      email: 'petra@ki-lernlabor-frankfurt.de',
-      phone: '+49 69 33445566'
+      name: 'Das Entwicklerhaus',
+      email: 'ladenprojekt@dasentwicklerhaus.de',
+      phone: '+49 2151 1234567'
     },
     socialMedia: {
-      website: 'https://ki-lernlabor-frankfurt.de',
-      instagram: 'https://instagram.com/ki_lernlabor_ffm',
-      twitter: 'https://twitter.com/kilabor_ffm'
-    }
-  },
-  {
-    id: '10',
-    name: 'Smart City Hannover',
-    city: 'Hannover',
-    description: 'IoT-Sensoren optimieren Verkehrsfluss und Energieverbrauch für eine vernetzte Stadtentwicklung.',
-    fullDescription: 'Smart City Hannover macht die Landeshauptstadt zur Modellstadt für digitale Stadtentwicklung. Über 1000 IoT-Sensoren erfassen in Echtzeit Daten zu Verkehrsflüssen, Luftqualität, Lärmpegel und Energieverbrauch. Diese Informationen fließen in intelligente Steuerungssysteme ein, die Ampelschaltungen optimieren, Parkplatzsuche verknüpfen und die Städte-beleuchtung bedarfsgerecht regeln. Bürger profitieren von einer App, die ihnen die besten Routen anzeigt und über Veranstaltungen informiert. Besonders innovativ ist unser Bürgerbeteiligungsportal: Hier können Einwohner Probleme melden, Vorschläge einreichen und bei Stadtentscheidungen mitwirken. Das Projekt arbeitet mit lokalen Universitäten und Tech-Unternehmen zusammen. Open Data Initiativen stellen die gesammelten Daten für Forschung und Innovation zur Verfügung. Durch die intelligente Verkehrssteuerung konnten wir bereits 20% der Staus reduzieren und den CO2-Ausstoß um 15% senken. Das Projekt dient anderen Städten als Vorbild für digitale Transformation.',
-    category: 'zukunft',
-    image: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=600&h=400&fit=crop',
-    slug: 'smart-city-hannover',
-    status: 'aktiv',
-    startDate: '2021-04-01',
-    teamSize: 15,
-    contact: {
-      name: 'Prof. Dr. Michael Tech',
-      email: 'michael@smart-city-hannover.de',
-      phone: '+49 511 22334455'
-    },
-    socialMedia: {
-      website: 'https://smart-city-hannover.de',
-      twitter: 'https://twitter.com/smartcity_h',
-      facebook: 'https://facebook.com/smartcity.hannover'
+      website: 'https://dasentwicklerhaus.de/projects/das-ladenprojekt'
     }
   }
 ]
