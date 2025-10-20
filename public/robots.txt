@@ -4,10 +4,26 @@ Allow: /
 # Important pages
 Allow: /dieidee
 Allow: /projects
+Allow: /blog
+Allow: /ai-literacy
 Allow: /contact
+
+# Block admin/private paths (if any in future)
+Disallow: /api/
+Disallow: /_next/webpack-hmr
 
 # Sitemap location
 Sitemap: https://dasentwicklerhaus.de/sitemap.xml
 
 # Crawl-delay (optional, helps with server load)
 Crawl-delay: 1
+
+# Specific crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /

@@ -126,7 +126,7 @@ export function WebSiteSchema() {
     "@type": "WebSite",
     "name": "Das Entwicklerhaus",
     "url": "https://dasentwicklerhaus.de",
-    "description": "Entdecken Sie innovative Projekte aus Europa: KI-Lösungen, soziale Initiativen, Webportale und DIY-Vorhaben. Vom Niederrhein bis Europa.",
+    "description": "Dein Projekt verdient es, gesehen zu werden. Eine Plattform für innovative Ideen aus Europa – KI, Startups, soziale Initiativen. Ehrlich, transparent, echt.",
     "inLanguage": "de-DE",
     "potentialAction": {
       "@type": "SearchAction",
@@ -140,4 +140,75 @@ export function WebSiteSchema() {
   }
 
   return <StructuredData data={websiteData} />
+}
+
+interface BlogPost {
+  title: string
+  slug: string
+  excerpt: string
+  content: string
+  image: string
+  publishedDate: string
+  author: {
+    name: string
+    avatar: string
+  }
+  tags: string[]
+  readingTime: number
+}
+
+export function BlogPostSchema({ post }: { post: BlogPost }) {
+  const blogPostData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.image,
+    "datePublished": post.publishedDate,
+    "dateModified": post.publishedDate,
+    "author": {
+      "@type": "Person",
+      "name": post.author.name,
+      "image": post.author.avatar
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Das Entwicklerhaus",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://dasentwicklerhaus.de/images/logo/logo-dasentwicklerhaus-1024x783.png"
+      }
+    },
+    "url": `https://dasentwicklerhaus.de/blog/${post.slug}`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://dasentwicklerhaus.de/blog/${post.slug}`
+    },
+    "keywords": post.tags.join(', '),
+    "articleSection": "Blog",
+    "inLanguage": "de-DE",
+    "timeRequired": `PT${post.readingTime}M`
+  }
+
+  return <StructuredData data={blogPostData} />
+}
+
+interface BreadcrumbItem {
+  name: string
+  url: string
+}
+
+export function BreadcrumbSchema({ items }: { items: BreadcrumbItem[] }) {
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((item, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": item.name,
+      "item": item.url
+    }))
+  }
+
+  return <StructuredData data={breadcrumbData} />
 }

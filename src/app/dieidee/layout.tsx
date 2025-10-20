@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Die Idee - Das Entwicklerhaus | Ein Zuhause für gute Projekte',
-  description: 'Erfahren Sie mehr über die Idee hinter Das Entwicklerhaus: Eine Plattform für innovative Projekte vom Niederrhein bis Europa. Transparenz, Vernetzung und regionale Tiefe.',
+  title: 'Warum es das Entwicklerhaus gibt',
+  description: 'Über 20 Jahre Entwickler. Dann kam KI. Alles ändert sich. Keiner weiß, was kommt. Aber nur zuschauen? Das ist keine Option. Gemeinsam sind wir weniger allein.',
   openGraph: {
-    title: 'Die Idee - Das Entwicklerhaus',
-    description: 'Erfahren Sie mehr über die Idee hinter dem wicklerhaus: Eine Plattform für innovative Projekte vom Niederrhein bis Europa.',
+    title: 'Warum es das Entwicklerhaus gibt',
+    description: 'Über 20 Jahre Entwickler. Dann kam KI. Alles ändert sich. Gemeinsam sind wir weniger allein.',
     url: 'https://dasentwicklerhaus.de/dieidee',
   },
   alternates: {

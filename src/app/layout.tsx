@@ -12,11 +12,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://dasentwicklerhaus.de'),
   title: {
-    default: 'Das Entwicklerhaus - Innovative Projekte aus Europa',
+    default: 'Das Entwicklerhaus - Gemeinsam sind wir weniger allein',
     template: '%s | Das Entwicklerhaus'
   },
-  description: 'Entdecken Sie innovative Projekte aus Europa: KI-Lösungen, soziale Initiativen, Webportale und DIY-Vorhaben. Vom Niederrhein bis Europa - Projekte sichtbar machen, vernetzen und unterstützen.',
-  keywords: ['Projekte Europa', 'Innovation Niederrhein', 'Soziale Initiativen', 'KI Projekte', 'Startup Plattform', 'Entwicklerhaus', 'Projektförderung', 'Community', 'Vernetzung', 'Digitale Innovation'],
+  description: 'Dein Projekt verdient es, gesehen zu werden. Eine Plattform für innovative Ideen aus Europa – vom Niederrhein bis Europa. KI, Startups, soziale Initiativen. Ehrlich, transparent, echt.',
+  keywords: ['Projekte Europa', 'Innovation Niederrhein', 'Soziale Initiativen', 'KI Projekte', 'Startup Plattform', 'Entwicklerhaus', 'Projektförderung', 'Community', 'Vernetzung', 'Digitale Innovation', 'AI Literacy', 'KI-Startups Deutschland'],
   authors: [{ name: 'Das Entwicklerhaus Team', url: 'https://dasentwicklerhaus.de' }],
   creator: 'Das Entwicklerhaus',
   publisher: 'Das Entwicklerhaus',
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     locale: 'de_DE',
     url: 'https://dasentwicklerhaus.de',
     siteName: 'Das Entwicklerhaus',
-    title: 'Das Entwicklerhaus - Innovative Projekte aus Europa',
-    description: 'Entdecken Sie innovative Projekte aus Europa: KI-Lösungen, soziale Initiativen, Webportale und DIY-Vorhaben. Vom Niederrhein bis Europa.',
+    title: 'Das Entwicklerhaus - Gemeinsam sind wir weniger allein',
+    description: 'Dein Projekt verdient es, gesehen zu werden. Eine Plattform für innovative Ideen aus Europa. KI, Startups, soziale Initiativen. Ehrlich, transparent, echt.',
     images: [
       {
         url: '/images/logo/logo-dasentwicklerhaus-1024x783.png',
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Das Entwicklerhaus - Innovative Projekte aus Europa',
-    description: 'Entdecken Sie innovative Projekte aus Europa: KI-Lösungen, soziale Initiativen, Webportale und DIY-Vorhaben.',
+    title: 'Das Entwicklerhaus - Gemeinsam sind wir weniger allein',
+    description: 'Dein Projekt verdient es, gesehen zu werden. KI, Startups, soziale Initiativen aus Europa. Ehrlich, transparent, echt.',
     creator: '@entwicklerhaus',
     images: ['/images/logo/logo-dasentwicklerhaus-1024x783.png'],
   },

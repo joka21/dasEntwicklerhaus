@@ -7,6 +7,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ContentSection from '@/components/ContentSection'
 import ReactMarkdown from 'react-markdown'
+import { BlogPostSchema, BreadcrumbSchema } from '@/components/StructuredData'
 
 interface BlogPostPageProps {
   params: {
@@ -111,6 +112,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
+      <BlogPostSchema post={post} />
+      <BreadcrumbSchema items={[
+        { name: 'Home', url: 'https://dasentwicklerhaus.de' },
+        { name: 'Blog', url: 'https://dasentwicklerhaus.de/blog' },
+        { name: post.title, url: `https://dasentwicklerhaus.de/blog/${post.slug}` }
+      ]} />
       <Header />
 
       {/* Hero Section */}
