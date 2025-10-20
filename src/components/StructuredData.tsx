@@ -1,5 +1,6 @@
 import Script from 'next/script'
 import { Project } from '@/types/project'
+import { BlogPost as BlogPostType } from '@/types/blog'
 
 interface StructuredDataProps {
   data: object
@@ -142,22 +143,7 @@ export function WebSiteSchema() {
   return <StructuredData data={websiteData} />
 }
 
-interface BlogPost {
-  title: string
-  slug: string
-  excerpt: string
-  content: string
-  image: string
-  publishedDate: string
-  author: {
-    name: string
-    avatar: string
-  }
-  tags: string[]
-  readingTime: number
-}
-
-export function BlogPostSchema({ post }: { post: BlogPost }) {
+export function BlogPostSchema({ post }: { post: BlogPostType }) {
   const blogPostData = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -169,7 +155,7 @@ export function BlogPostSchema({ post }: { post: BlogPost }) {
     "author": {
       "@type": "Person",
       "name": post.author.name,
-      "image": post.author.avatar
+      "image": post.author.avatar || ""
     },
     "publisher": {
       "@type": "Organization",
@@ -187,7 +173,7 @@ export function BlogPostSchema({ post }: { post: BlogPost }) {
     "keywords": post.tags.join(', '),
     "articleSection": "Blog",
     "inLanguage": "de-DE",
-    "timeRequired": `PT${post.readingTime}M`
+    "timeRequired": `PT${post.readTime}M`
   }
 
   return <StructuredData data={blogPostData} />
