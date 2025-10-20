@@ -16,8 +16,7 @@ export const sampleProjects: Project[] = [
     teamSize: 1,
     contact: {
       name: 'Das Entwicklerhaus',
-      email: 'info@dasentwicklerhaus.de',
-      phone: '+49 123 45678900'
+      email: 'admin@dasentwicklerhaus.de'
     },
     socialMedia: {
       website: 'https://dasentwicklerhaus.de/ai-literacy'
@@ -152,8 +151,7 @@ Krefeld 2030 ist keine fertige Lösung, die von oben implementiert wird. Es ist 
     teamSize: 5,
     contact: {
       name: 'Das Entwicklerhaus',
-      email: 'krefeld2030@dasentwicklerhaus.de',
-      phone: '+49 2151 1234567'
+      email: 'admin@dasentwicklerhaus.de'
     },
     socialMedia: {
       website: 'https://dasentwicklerhaus.de/projects/krefeld-2030'
@@ -243,8 +241,7 @@ Das Ladenprojekt zeigt: Digitalisierung muss nicht den Großen gehören. Mit den
     teamSize: 3,
     contact: {
       name: 'Das Entwicklerhaus',
-      email: 'ladenprojekt@dasentwicklerhaus.de',
-      phone: '+49 2151 1234567'
+      email: 'admin@dasentwicklerhaus.de'
     },
     socialMedia: {
       website: 'https://dasentwicklerhaus.de/projects/das-ladenprojekt'
