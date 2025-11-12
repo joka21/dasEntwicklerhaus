@@ -32,14 +32,25 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   const baseUrl = 'https://dasentwicklerhaus.de'
 
+  // Custom SEO für spezifische Blog-Posts
+  let title = `${post.title} - Das Entwicklerhaus Blog`
+  let description = post.excerpt
+
+  if (post.slug === 'ai-startups-deutschland-2025') {
+    title = 'KI Startups in Deutschland | Das Entwicklerhaus – Plattform für Innovation & KI-Projekte'
+    description = 'Entdecke Deutschlands innovativste KI-Startups. Das Entwicklerhaus zeigt Projekte, Ideen und Unternehmen, die mit Künstlicher Intelligenz die Zukunft gestalten.'
+  }
+
   return {
-    title: `${post.title} - Das Entwicklerhaus Blog`,
-    description: post.excerpt,
+    title,
+    description,
     keywords: post.tags,
     authors: [{ name: post.author.name }],
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: post.slug === 'ai-startups-deutschland-2025'
+        ? 'KI Startups in Deutschland | Das Entwicklerhaus – Plattform für Innovation & KI-Projekte'
+        : post.title,
+      description,
       url: `${baseUrl}/blog/${post.slug}`,
       siteName: 'Das Entwicklerhaus',
       images: [
@@ -58,8 +69,10 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
+      title: post.slug === 'ai-startups-deutschland-2025'
+        ? 'KI Startups in Deutschland | Das Entwicklerhaus – Plattform für Innovation & KI-Projekte'
+        : post.title,
+      description,
       images: [post.image],
       creator: '@entwicklerhaus',
     },
