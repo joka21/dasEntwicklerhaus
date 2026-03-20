@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Kontakt - Das Entwicklerhaus | Projekt einreichen',
-  description: 'Kontaktieren Sie Das Entwicklerhaus. Reichen Sie Ihr innovatives Projekt ein oder nehmen Sie Kontakt mit uns auf. Email: info@dasentwicklerhaus.de',
+  title: 'Kontakt – Das Entwicklerhaus',
+  description: 'Nimm Kontakt mit Josef Kalenberg und dem Entwicklerhaus-Team auf. Ideen einreichen, Projekte vorstellen oder einfach Hallo sagen.',
   openGraph: {
-    title: 'Kontakt - Das Entwicklerhaus',
-    description: 'Kontaktieren Sie Das Entwicklerhaus. Reichen Sie Ihr innovatives Projekt ein oder nehmen Sie Kontakt mit uns auf.',
+    title: 'Kontakt – Das Entwicklerhaus',
+    description: 'Nimm Kontakt mit Josef Kalenberg und dem Entwicklerhaus-Team auf. Ideen einreichen, Projekte vorstellen oder einfach Hallo sagen.',
     url: 'https://dasentwicklerhaus.de/contact',
   },
   alternates: {

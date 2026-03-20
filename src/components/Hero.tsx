@@ -65,8 +65,15 @@ export default function Hero() {
           <span className="italic font-light">mehr</span>
         </h1>
 
-        <p className="text-h3 lg:text-h2-lg text-dark font-medium max-w-2xl mx-auto mb-12">
+        <p className="text-h3 lg:text-h2-lg text-dark font-medium max-w-2xl mx-auto mb-8">
           Ideen für eine gute Zukunft
+        </p>
+
+        <p className="text-base lg:text-lg text-dark/80 max-w-2xl mx-auto mb-12 leading-relaxed">
+          Das Entwicklerhaus ist eine Plattform für Ideen und Projekte aus Deutschland und Europa –
+          gegründet von Josef Kalenberg, Webentwickler aus Krefeld am Niederrhein.
+          Wir machen sichtbar, was sonst untergeht: Innovationen, soziale Initiativen,
+          KI-Lösungen und nachhaltige Startups.
         </p>
       </div>
 

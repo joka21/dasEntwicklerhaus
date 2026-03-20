@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   // Custom SEO für spezifische Blog-Posts
   let title = `${post.title} - Das Entwicklerhaus Blog`
-  let description = post.excerpt
+  let description = post.excerpt || `${post.title} – Ein Artikel von Josef Kalenberg auf Das Entwicklerhaus.`
 
   if (post.slug === 'ai-startups-deutschland-2025') {
     title = 'KI Startups in Deutschland | Das Entwicklerhaus – Plattform für Innovation & KI-Projekte'

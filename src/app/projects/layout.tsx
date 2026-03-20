@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Alle Projekte - Das Entwicklerhaus | Innovative Projekte entdecken',
-  description: 'Entdecken Sie alle innovativen Projekte bei Das Entwicklerhaus: KI-Lösungen, soziale Initiativen, Webportale, DIY-Vorhaben und mehr aus Europa.',
+  title: 'Projekte – Ideen und Innovationen aus Deutschland & Europa',
+  description: '12 Projekte aus den Bereichen KI, Nachhaltigkeit, Zusammenarbeit und Zukunft. Entdecke, was gerade entsteht.',
   openGraph: {
-    title: 'Alle Projekte - Das Entwicklerhaus',
-    description: 'Entdecken Sie alle innovativen Projekte bei Das Entwicklerhaus: KI-Lösungen, soziale Initiativen, Webportale, DIY-Vorhaben und mehr.',
+    title: 'Projekte – Ideen und Innovationen aus Deutschland & Europa',
+    description: '12 Projekte aus den Bereichen KI, Nachhaltigkeit, Zusammenarbeit und Zukunft. Entdecke, was gerade entsteht.',
     url: 'https://dasentwicklerhaus.de/projects',
   },
   alternates: {

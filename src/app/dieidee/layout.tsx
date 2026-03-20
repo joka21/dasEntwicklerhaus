@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Warum es das Entwicklerhaus gibt',
-  description: 'Über 20 Jahre Entwickler. Dann kam KI. Alles ändert sich. Keiner weiß, was kommt. Aber nur zuschauen? Das ist keine Option. Gemeinsam sind wir weniger allein.',
+  title: 'Warum es Das Entwicklerhaus gibt – Die Idee hinter der Plattform',
+  description: 'Josef Kalenberg erklärt, warum er Das Entwicklerhaus gegründet hat: Eine ehrliche Plattform für echte Projekte – vom Niederrhein in die Welt.',
   openGraph: {
-    title: 'Warum es das Entwicklerhaus gibt',
-    description: 'Über 20 Jahre Entwickler. Dann kam KI. Alles ändert sich. Gemeinsam sind wir weniger allein.',
+    title: 'Warum es Das Entwicklerhaus gibt – Die Idee hinter der Plattform',
+    description: 'Josef Kalenberg erklärt, warum er Das Entwicklerhaus gegründet hat: Eine ehrliche Plattform für echte Projekte – vom Niederrhein in die Welt.',
     url: 'https://dasentwicklerhaus.de/dieidee',
   },
   alternates: {

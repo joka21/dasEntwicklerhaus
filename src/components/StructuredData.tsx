@@ -17,73 +17,78 @@ export default function StructuredData({ data }: StructuredDataProps) {
 }
 
 export function OrganizationSchema() {
-  const organizationData = {
+  const graphData = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Das Entwicklerhaus",
-    "description": "Plattform für innovative Projekte aus Europa - Vom Niederrhein bis Europa",
-    "url": "https://dasentwicklerhaus.de",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://dasentwicklerhaus.de/images/logo/logo-dasentwicklerhaus-1024x783.png",
-      "width": 1024,
-      "height": 783
-    },
-    "image": "https://dasentwicklerhaus.de/images/logo/logo-dasentwicklerhaus-1024x783.png",
-    "sameAs": [
-      "https://twitter.com/entwicklerhaus"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "0176 42463017",
-      "contactType": "customer service",
-      "email": "admin@dasentwicklerhaus.de",
-      "availableLanguage": ["German", "English"]
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Am Königshof 47",
-      "addressLocality": "Krefeld",
-      "postalCode": "47807",
-      "addressRegion": "Nordrhein-Westfalen",
-      "addressCountry": "DE"
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "Josef Kalenberg"
-    },
-    "foundingDate": "2025",
-    "knowsAbout": [
-      "Innovation",
-      "Projekte",
-      "KI-Lösungen",
-      "Soziale Initiativen",
-      "Webportale",
-      "DIY-Projekte",
-      "Startup-Förderung",
-      "Community Building"
-    ],
-    "areaServed": [
+    "@graph": [
       {
-        "@type": "Place",
-        "name": "Niederrhein"
+        "@type": "Organization",
+        "@id": "https://www.dasentwicklerhaus.de/#organization",
+        "name": "Das Entwicklerhaus",
+        "url": "https://www.dasentwicklerhaus.de",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.dasentwicklerhaus.de/images/logo/logo-Klein.webp"
+        },
+        "description": "Plattform für Ideen und Projekte aus Deutschland und Europa – KI, Nachhaltigkeit, Startups.",
+        "image": "https://www.dasentwicklerhaus.de/images/logo/logo-dasentwicklerhaus-1024x783.png",
+        "sameAs": [
+          "https://twitter.com/entwicklerhaus"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "0176 42463017",
+          "contactType": "customer service",
+          "email": "admin@dasentwicklerhaus.de",
+          "availableLanguage": ["German", "English"]
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Am Königshof 47",
+          "addressLocality": "Krefeld",
+          "postalCode": "47807",
+          "addressRegion": "Nordrhein-Westfalen",
+          "addressCountry": "DE"
+        },
+        "founder": {
+          "@id": "https://www.dasentwicklerhaus.de/#person"
+        },
+        "foundingDate": "2025",
+        "areaServed": ["DE", "EU"],
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Krefeld, Deutschland"
+        },
+        "knowsAbout": [
+          "Innovation",
+          "Projekte",
+          "KI-Lösungen",
+          "Soziale Initiativen",
+          "Webportale",
+          "DIY-Projekte",
+          "Startup-Förderung",
+          "Community Building"
+        ]
       },
       {
-        "@type": "Place", 
-        "name": "Nordrhein-Westfalen"
-      },
-      {
-        "@type": "Place",
-        "name": "Deutschland"
-      },
-      {
-        "@type": "Place",
-        "name": "Europa"
+        "@type": "Person",
+        "@id": "https://www.dasentwicklerhaus.de/#person",
+        "name": "Josef Kalenberg",
+        "jobTitle": "Gründer & Webentwickler",
+        "url": "https://www.dasentwicklerhaus.de/dieidee",
+        "worksFor": {
+          "@id": "https://www.dasentwicklerhaus.de/#organization"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Krefeld",
+          "addressRegion": "NRW",
+          "addressCountry": "DE"
+        }
       }
     ]
   }
 
-  return <StructuredData data={organizationData} />
+  return <StructuredData data={graphData} />
 }
 
 export function ProjectSchema({ project }: { project: Project }) {
@@ -125,19 +130,13 @@ export function WebSiteSchema() {
   const websiteData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://www.dasentwicklerhaus.de/#website",
+    "url": "https://www.dasentwicklerhaus.de",
     "name": "Das Entwicklerhaus",
-    "url": "https://dasentwicklerhaus.de",
-    "description": "Dein Projekt verdient es, gesehen zu werden. Eine Plattform für innovative Ideen aus Europa – KI, Startups, soziale Initiativen. Ehrlich, transparent, echt.",
-    "inLanguage": "de-DE",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://dasentwicklerhaus.de/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    },
     "publisher": {
-      "@type": "Organization",
-      "name": "Das Entwicklerhaus"
-    }
+      "@id": "https://www.dasentwicklerhaus.de/#organization"
+    },
+    "inLanguage": "de-DE"
   }
 
   return <StructuredData data={websiteData} />
@@ -153,23 +152,13 @@ export function BlogPostSchema({ post }: { post: BlogPostType }) {
     "datePublished": post.publishedDate,
     "dateModified": post.publishedDate,
     "author": {
-      "@type": "Person",
-      "name": post.author.name,
-      "image": post.author.avatar || ""
+      "@id": "https://www.dasentwicklerhaus.de/#person"
     },
     "publisher": {
-      "@type": "Organization",
-      "name": "Das Entwicklerhaus",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://dasentwicklerhaus.de/images/logo/logo-dasentwicklerhaus-1024x783.png"
-      }
+      "@id": "https://www.dasentwicklerhaus.de/#organization"
     },
-    "url": `https://dasentwicklerhaus.de/blog/${post.slug}`,
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://dasentwicklerhaus.de/blog/${post.slug}`
-    },
+    "url": `https://www.dasentwicklerhaus.de/blog/${post.slug}`,
+    "mainEntityOfPage": `https://www.dasentwicklerhaus.de/blog/${post.slug}`,
     "keywords": post.tags.join(', '),
     "articleSection": "Blog",
     "inLanguage": "de-DE",

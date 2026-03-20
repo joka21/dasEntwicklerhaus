@@ -12,10 +12,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://dasentwicklerhaus.de'),
   title: {
-    default: 'Das Entwicklerhaus - Gemeinsam sind wir weniger allein',
+    default: 'Das Entwicklerhaus – Ideen für eine gute Zukunft | Krefeld',
     template: '%s | Das Entwicklerhaus'
   },
-  description: 'Dein Projekt verdient es, gesehen zu werden. Eine Plattform für innovative Ideen aus Europa – vom Niederrhein bis Europa. KI, Startups, soziale Initiativen. Ehrlich, transparent, echt.',
+  description: 'Das Entwicklerhaus präsentiert Ideen und Projekte aus Deutschland und Europa. Gegründet von Josef Kalenberg, Webentwickler aus Krefeld. Entdecke Innovationen aus KI, Nachhaltigkeit und Startups.',
   keywords: ['Projekte Europa', 'Innovation Niederrhein', 'Soziale Initiativen', 'KI Projekte', 'Startup Plattform', 'Entwicklerhaus', 'Projektförderung', 'Community', 'Vernetzung', 'Digitale Innovation', 'AI Literacy', 'KI-Startups Deutschland'],
   authors: [{ name: 'Das Entwicklerhaus Team', url: 'https://dasentwicklerhaus.de' }],
   creator: 'Das Entwicklerhaus',
@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     locale: 'de_DE',
     url: 'https://dasentwicklerhaus.de',
     siteName: 'Das Entwicklerhaus',
-    title: 'Das Entwicklerhaus - Gemeinsam sind wir weniger allein',
-    description: 'Dein Projekt verdient es, gesehen zu werden. Eine Plattform für innovative Ideen aus Europa. KI, Startups, soziale Initiativen. Ehrlich, transparent, echt.',
+    title: 'Das Entwicklerhaus – Ideen für eine gute Zukunft | Krefeld',
+    description: 'Das Entwicklerhaus präsentiert Ideen und Projekte aus Deutschland und Europa. Gegründet von Josef Kalenberg, Webentwickler aus Krefeld. Entdecke Innovationen aus KI, Nachhaltigkeit und Startups.',
     images: [
       {
         url: '/images/logo/logo-dasentwicklerhaus-1024x783.png',
@@ -43,8 +43,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Das Entwicklerhaus - Gemeinsam sind wir weniger allein',
-    description: 'Dein Projekt verdient es, gesehen zu werden. KI, Startups, soziale Initiativen aus Europa. Ehrlich, transparent, echt.',
+    title: 'Das Entwicklerhaus – Ideen für eine gute Zukunft | Krefeld',
+    description: 'Das Entwicklerhaus präsentiert Ideen und Projekte aus Deutschland und Europa. Gegründet von Josef Kalenberg, Webentwickler aus Krefeld. Entdecke Innovationen aus KI, Nachhaltigkeit und Startups.',
     creator: '@entwicklerhaus',
     images: ['/images/logo/logo-dasentwicklerhaus-1024x783.png'],
   },
