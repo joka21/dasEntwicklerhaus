@@ -20,7 +20,12 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(npx vercel:*)",
+      "WebFetch(domain:www.dasentwicklerhaus.de)",
+      "Bash(find /c/Users/jokal/OneDrive/Desktop/Projekte/dasEntwicklerhaus -type f \\\\\\(-name layout.tsx -o -name page.tsx -o -name sitemap.* -o -name robots.txt -o -name *seo* -o -name next-seo* -o -name metadata* \\\\\\))",
+      "Bash(npx kill-port:*)",
+      "Bash(rm -rf .next)"
     ],
     "deny": [],
     "ask": [],

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Projekte – Ideen und Innovationen aus Deutschland & Europa',
-  description: '12 Projekte aus den Bereichen KI, Nachhaltigkeit, Zusammenarbeit und Zukunft. Entdecke, was gerade entsteht.',
+  title: 'Projekte aus Krefeld & NRW – KI, Innovation und Nachhaltigkeit vom Niederrhein',
+  description: 'Innovative Projekte aus Krefeld, dem Niederrhein und NRW: KI-Lösungen, Nachhaltigkeit, Startups und Zusammenarbeit. Entdecke, was in der Region entsteht.',
   openGraph: {
-    title: 'Projekte – Ideen und Innovationen aus Deutschland & Europa',
-    description: '12 Projekte aus den Bereichen KI, Nachhaltigkeit, Zusammenarbeit und Zukunft. Entdecke, was gerade entsteht.',
+    title: 'Projekte aus Krefeld & NRW – KI, Innovation und Nachhaltigkeit vom Niederrhein',
+    description: 'Innovative Projekte aus Krefeld, dem Niederrhein und NRW: KI-Lösungen, Nachhaltigkeit, Startups und Zusammenarbeit. Entdecke, was in der Region entsteht.',
     url: 'https://dasentwicklerhaus.de/projects',
   },
   alternates: {

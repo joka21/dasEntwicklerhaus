@@ -29,7 +29,7 @@ export function OrganizationSchema() {
           "@type": "ImageObject",
           "url": "https://www.dasentwicklerhaus.de/images/logo/logo-Klein.webp"
         },
-        "description": "Plattform für Ideen und Projekte aus Deutschland und Europa – KI, Nachhaltigkeit, Startups.",
+        "description": "Das Entwicklerhaus in Krefeld am Niederrhein – Plattform für KI-Projekte, Startups und Innovation aus NRW, Deutschland und Europa.",
         "image": "https://www.dasentwicklerhaus.de/images/logo/logo-dasentwicklerhaus-1024x783.png",
         "sameAs": [
           "https://twitter.com/entwicklerhaus"
@@ -53,20 +53,45 @@ export function OrganizationSchema() {
           "@id": "https://www.dasentwicklerhaus.de/#person"
         },
         "foundingDate": "2025",
-        "areaServed": ["DE", "EU"],
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Krefeld",
+            "containedInPlace": {
+              "@type": "State",
+              "name": "Nordrhein-Westfalen"
+            }
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Niederrhein"
+          },
+          {
+            "@type": "State",
+            "name": "Nordrhein-Westfalen",
+            "alternateName": "NRW"
+          },
+          "DE",
+          "EU"
+        ],
         "foundingLocation": {
           "@type": "Place",
-          "name": "Krefeld, Deutschland"
+          "name": "Krefeld, Niederrhein, NRW",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 51.3388,
+            "longitude": 6.5853
+          }
         },
         "knowsAbout": [
-          "Innovation",
-          "Projekte",
+          "KI-Projekte Krefeld",
+          "Innovation Niederrhein",
+          "Startups NRW",
+          "Webentwicklung Krefeld",
           "KI-Lösungen",
           "Soziale Initiativen",
-          "Webportale",
-          "DIY-Projekte",
-          "Startup-Förderung",
-          "Community Building"
+          "Digitale Transformation NRW",
+          "Community Building Niederrhein"
         ]
       },
       {
@@ -81,8 +106,39 @@ export function OrganizationSchema() {
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Krefeld",
-          "addressRegion": "NRW",
+          "addressRegion": "Nordrhein-Westfalen",
           "addressCountry": "DE"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://www.dasentwicklerhaus.de/#localbusiness",
+        "name": "Das Entwicklerhaus",
+        "description": "Plattform für KI-Projekte, Startups und digitale Innovation in Krefeld am Niederrhein.",
+        "url": "https://www.dasentwicklerhaus.de",
+        "telephone": "0176 42463017",
+        "email": "admin@dasentwicklerhaus.de",
+        "image": "https://www.dasentwicklerhaus.de/images/logo/logo-dasentwicklerhaus-1024x783.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Am Königshof 47",
+          "addressLocality": "Krefeld",
+          "postalCode": "47807",
+          "addressRegion": "Nordrhein-Westfalen",
+          "addressCountry": "DE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 51.3388,
+          "longitude": 6.5853
+        },
+        "areaServed": ["Krefeld", "Niederrhein", "NRW", "Deutschland"],
+        "priceRange": "$$",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
         }
       }
     ]
