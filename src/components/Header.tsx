@@ -3,6 +3,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { NAV_LINKS } from '@/lib/navigation'
+
+// Linkfarben wie bisher im Wechsel (Umwelt, Menschen, Zukunft)
+const LINK_COLORS = ['text-umwelt-800', 'text-menschen-800', 'text-zukunft-800']
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -39,36 +43,15 @@ export default function Header() {
             </div>
             
             <div className="hidden lg:flex lg:items-center lg:space-x-8">
-              <Link
-                href="/projects"
-                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
-              >
-                Projekte
-              </Link>
-              <Link
-                href="/blog"
-                className="text-base font-medium text-menschen-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
-              >
-                Blog
-              </Link>
-              <Link
-                href="/ai-literacy"
-                className="text-base font-medium text-zukunft-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
-              >
-                AI Literacy
-              </Link>
-              <Link
-                href="/dieidee"
-                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
-              >
-                Die Idee
-              </Link>
-              <Link
-                href="/contact"
-                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
-              >
-                Kontakt
-              </Link>
+              {NAV_LINKS.map((link, i) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`text-base font-medium ${LINK_COLORS[i % LINK_COLORS.length]} hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1`}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
 
             <div className="lg:hidden">
@@ -110,41 +93,16 @@ export default function Header() {
               </div>
               
               <nav className="p-4 space-y-1">
-                <Link
-                  href="/projects"
-                  className="block px-3 py-2 text-base font-medium text-umwelt-800 hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Projekte
-                </Link>
-                <Link
-                  href="/blog"
-                  className="block px-3 py-2 text-base font-medium text-menschen-800 hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/ai-literacy"
-                  className="block px-3 py-2 text-base font-medium text-zukunft-800 hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  AI Literacy
-                </Link>
-                <Link
-                  href="/dieidee"
-                  className="block px-3 py-2 text-base font-medium text-umwelt-800 hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Die Idee
-                </Link>
-                <Link
-                  href="/contact"
-                  className="block px-3 py-2 text-base font-medium text-umwelt-800 hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Kontakt
-                </Link>
+                {NAV_LINKS.map((link, i) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`block px-3 py-2 text-base font-medium ${LINK_COLORS[i % LINK_COLORS.length]} hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </nav>
             </div>
           </div>

@@ -1,78 +1,27 @@
 import { MetadataRoute } from 'next'
-import { sampleProjects } from '@/data/projects'
-import { blogPosts } from '@/data/blog'
+import { staedte } from '@/data/staedte'
+import { referenzen } from '@/data/referenzen'
+import { absoluteUrl } from '@/lib/site'
 
+// Ohne changefreq/priority und ohne lastmod – die Datendateien haben kein
+// Änderungsdatum, ein erfundenes wäre irreführend.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://dasentwicklerhaus.de'
-  const currentDate = new Date()
-
-  // Static pages
-  const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/dieidee`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/projects`,
-      lastModified: currentDate,
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/ai-literacy`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/impressum`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/datenschutz`,
-      lastModified: currentDate,
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+  const staticPaths = [
+    '/',
+    '/baukasten',
+    '/onlineshop-erstellen',
+    '/online-marketing',
+    '/app-und-ki-entwicklung',
+    '/referenzen',
+    '/ueber-mich',
+    '/kontakt',
+    '/impressum',
+    '/datenschutz',
   ]
 
-  // Dynamic project pages
-  const projectPages: MetadataRoute.Sitemap = sampleProjects.map(project => ({
-    url: `${baseUrl}/projects/${project.slug}`,
-    lastModified: new Date(project.startDate),
-    changeFrequency: 'weekly' as const,
-    priority: 0.6,
-  }))
-
-  // Dynamic blog pages
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map(post => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedDate),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
-
-  return [...staticPages, ...projectPages, ...blogPages]
+  return [
+    ...staticPaths.map((path) => ({ url: absoluteUrl(path) })),
+    ...staedte.map((stadt) => ({ url: absoluteUrl(`/${stadt.slug}`) })),
+    ...referenzen.map((r) => ({ url: absoluteUrl(`/referenzen/${r.slug}`) })),
+  ]
 }

@@ -1,19 +1,16 @@
-import Header from '@/components/Header'
 import ContentSection from '@/components/ContentSection'
-import Footer from '@/components/Footer'
 
 export default function ImpressumPage() {
   return (
     <>
-      <Header />
       <div className="sr-only">
         <h1>Impressum - Das Entwicklerhaus</h1>
       </div>
       <ContentSection>
         <main id="main-content" className="max-w-4xl mx-auto">
-          <h1 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8">
+          <h2 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8">
             Impressum
-          </h1>
+          </h2>
 
           <div className="prose prose-lg max-w-none">
             <section className="mb-8">
@@ -100,7 +97,6 @@ export default function ImpressumPage() {
           </div>
         </main>
       </ContentSection>
-      <Footer />
     </>
   )
 }

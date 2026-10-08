@@ -1,8 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 
-export default function Hero() {
+interface HeroProps {
+  title: ReactNode
+  subtitle?: ReactNode
+}
+
+export default function Hero({ title, subtitle }: HeroProps) {
   const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
@@ -61,13 +66,14 @@ export default function Hero() {
       {/* Main Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <h1 className="text-h1 lg:text-h1-lg font-bold text-umwelt-800 mb-6 leading-tight">
-          Die größte Superkraft von uns Menschen sind unsere{' '}
-          <span className="italic font-light text-menschen">Ideen</span>
+          {title}
         </h1>
 
-        <h2 className="text-h3 lg:text-h2-lg text-white font-medium max-w-2xl mx-auto mb-8">
-          Zusammen erreichen wir mehr
-        </h2>
+        {subtitle && (
+          <p className="text-h3 lg:text-h2-lg text-white font-medium max-w-2xl mx-auto mb-8">
+            {subtitle}
+          </p>
+        )}
       </div>
 
       {/* Black Arrow Down - Center Bottom */}

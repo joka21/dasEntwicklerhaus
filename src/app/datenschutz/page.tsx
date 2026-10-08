@@ -1,19 +1,16 @@
-import Header from '@/components/Header'
 import ContentSection from '@/components/ContentSection'
-import Footer from '@/components/Footer'
 
 export default function DatenschutzPage() {
   return (
     <>
-      <Header />
       <div className="sr-only">
         <h1>Datenschutzerklärung - Das Entwicklerhaus</h1>
       </div>
       <ContentSection>
         <main id="main-content" className="max-w-4xl mx-auto">
-          <h1 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8">
+          <h2 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8">
             Datenschutzerklärung
-          </h1>
+          </h2>
 
           <div className="prose prose-lg max-w-none space-y-8">
             <section>
@@ -165,7 +162,6 @@ export default function DatenschutzPage() {
           </div>
         </main>
       </ContentSection>
-      <Footer />
     </>
   )
 }

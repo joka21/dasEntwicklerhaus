@@ -1,7 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { bausteine, zusatzbausteine } from '@/data/bausteine'
+
+const ALLE_BAUSTEINE = [...bausteine, ...zusatzbausteine]
 
 interface FormData {
   name: string
@@ -9,6 +12,8 @@ interface FormData {
   project: string
   projectDescription: string
   privacyConsent: boolean
+  /** Slugs aus bausteine.ts, vorbelegt über ?bausteine=slug,slug vom Baukasten */
+  bausteine: string[]
 }
 
 interface FormErrors {
@@ -21,12 +26,17 @@ interface FormErrors {
 
 export default function ContactForm() {
   const router = useRouter()
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    project: '',
-    projectDescription: '',
-    privacyConsent: false
+  const searchParams = useSearchParams()
+  const [formData, setFormData] = useState<FormData>(() => {
+    const ausUrl = (searchParams.get('bausteine') ?? '').split(',')
+    return {
+      name: '',
+      email: '',
+      project: '',
+      projectDescription: '',
+      privacyConsent: false,
+      bausteine: ALLE_BAUSTEINE.map((b) => b.slug).filter((slug) => ausUrl.includes(slug)),
+    }
   })
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -86,7 +96,8 @@ export default function ContactForm() {
           email: '',
           project: '',
           projectDescription: '',
-          privacyConsent: false
+          privacyConsent: false,
+          bausteine: []
         })
       } else {
         console.error('Server error:', result)
@@ -113,6 +124,15 @@ export default function ContactForm() {
     if (errors.privacyConsent) {
       setErrors(prev => ({ ...prev, privacyConsent: undefined }))
     }
+  }
+
+  const toggleBaustein = (slug: string) => {
+    setFormData(prev => ({
+      ...prev,
+      bausteine: prev.bausteine.includes(slug)
+        ? prev.bausteine.filter(s => s !== slug)
+        : [...prev.bausteine, slug]
+    }))
   }
 
   const handleSuccessClose = () => {
@@ -194,6 +214,27 @@ export default function ContactForm() {
           />
           {errors.projectDescription && <p className="text-red-500 text-sm mt-1">{errors.projectDescription}</p>}
         </div>
+
+        <fieldset>
+          <legend className="block text-lg font-medium text-dark mb-2">
+            Gewählte Bausteine (optional)
+          </legend>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {ALLE_BAUSTEINE.map((b) => (
+              <label key={b.slug} className="flex items-center space-x-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="bausteine"
+                  value={b.slug}
+                  checked={formData.bausteine.includes(b.slug)}
+                  onChange={() => toggleBaustein(b.slug)}
+                  className="w-5 h-5 text-primary border-gray-300 rounded focus:ring-2 focus:ring-primary"
+                />
+                <span className="text-dark">{'stufe' in b ? `${b.stufe}. ${b.titel}` : b.titel}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
 
         <div>
           <label className="flex items-start space-x-3 cursor-pointer">

@@ -84,24 +84,21 @@ const nextConfig = {
     ];
   },
 
+  // 301 für alle entfernten Seiten (statusCode statt permanent, das wäre 308).
+  // Next.js vergleicht Pfade ohne Rücksicht auf Groß-/Kleinschreibung, damit
+  // ist /dieIdee über /dieidee mit abgedeckt.
   async redirects() {
     return [
-      {
-        source: '/dieIdee',
-        destination: '/dieidee',
-        permanent: true,
-      },
+      { source: '/projects', destination: '/referenzen', statusCode: 301 },
+      { source: '/projects/:path*', destination: '/referenzen', statusCode: 301 },
+      { source: '/blog', destination: '/', statusCode: 301 },
+      { source: '/blog/:path*', destination: '/', statusCode: 301 },
+      { source: '/ai-literacy', destination: '/', statusCode: 301 },
+      { source: '/dieidee', destination: '/', statusCode: 301 },
+      { source: '/ki-deutschland', destination: '/', statusCode: 301 },
+      { source: '/ki-startups', destination: '/', statusCode: 301 },
+      { source: '/contact', destination: '/kontakt', statusCode: 301 },
     ]
-  },
-
-  async rewrites() {
-    return [
-      // exakt /dieIdee und /dieIdee/ → /dieidee
-      { source: '/dieIdee', destination: '/dieidee' },
-      { source: '/dieIdee/', destination: '/dieidee' },
-      // falls später Unterseiten: /dieIdee/* → /dieidee/*
-      { source: '/dieIdee/:path*', destination: '/dieidee/:path*' },
-    ];
   },
 };
 

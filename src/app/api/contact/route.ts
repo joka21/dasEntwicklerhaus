@@ -1,9 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import { bausteinTitel } from '@/data/bausteine'
+
+// Nutzereingaben vor dem Einsetzen ins HTML der E-Mail maskieren.
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, project, projectDescription, privacyConsent } = await req.json()
+    const { name, email, project, projectDescription, privacyConsent, bausteine } = await req.json()
+
+    // Nur bekannte Bausteine übernehmen (Slugs aus bausteine.ts -> Titel)
+    const gewaehlteBausteine: string[] = Array.isArray(bausteine)
+      ? bausteine
+          .map((slug: unknown) => (typeof slug === 'string' ? bausteinTitel(slug) : undefined))
+          .filter((titel): titel is string => Boolean(titel))
+      : []
+    const bausteineText = gewaehlteBausteine.length > 0 ? gewaehlteBausteine.join(', ') : 'keine angegeben'
 
     // Validation
     if (!name || !email || !project || !projectDescription || !privacyConsent) {
@@ -28,6 +47,7 @@ export async function POST(req: NextRequest) {
       email,
       project,
       projectDescription,
+      bausteine: gewaehlteBausteine,
       timestamp: new Date().toISOString()
     })
 
@@ -64,11 +84,12 @@ export async function POST(req: NextRequest) {
           subject: `Neues Projekt: ${project}`,
           html: `
             <h2>Neues Projekt eingereicht</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>E-Mail:</strong> ${email}</p>
-            <p><strong>Projekt:</strong> ${project}</p>
+            <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+            <p><strong>E-Mail:</strong> ${escapeHtml(email)}</p>
+            <p><strong>Projekt:</strong> ${escapeHtml(project)}</p>
+            <p><strong>Gewählte Bausteine:</strong> ${escapeHtml(bausteineText)}</p>
             <p><strong>Projektbeschreibung:</strong></p>
-            <p>${projectDescription.replace(/\n/g, '<br>')}</p>
+            <p>${escapeHtml(projectDescription).replace(/\n/g, '<br>')}</p>
             <p><strong>Datenschutz-Zustimmung:</strong> ✅ Erteilt</p>
             <hr>
             <p><small>Eingereicht am: ${new Date().toLocaleString('de-DE')}</small></p>
@@ -79,6 +100,7 @@ export async function POST(req: NextRequest) {
             Name: ${name}
             E-Mail: ${email}
             Projekt: ${project}
+            Gewählte Bausteine: ${bausteineText}
             
             Projektbeschreibung:
             ${projectDescription}
