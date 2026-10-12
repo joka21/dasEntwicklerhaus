@@ -54,6 +54,21 @@ const nextConfig = {
           },
         ],
       },
+      // Kundenportal: nicht indexieren (auch Route-Handler und Weiterleitungen)
+      {
+        source: '/login/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+      {
+        source: '/portal/:path*',
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
+      // Entwürfe werden im iframe auf der eigenen Seite angezeigt; überschreibt
+      // das DENY von oben (bei gleichem Header gewinnt der letzte Eintrag).
+      {
+        source: '/portal/:projekt/entwurf/:variante',
+        headers: [{ key: 'X-Frame-Options', value: 'SAMEORIGIN' }],
+      },
       {
         source: '/images/:path*',
         headers: [

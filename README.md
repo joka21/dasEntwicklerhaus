@@ -7,7 +7,7 @@ Eine Next.js 14 Plattform zur Präsentation innovativer Projekte aus Europa.
 - **Framework:** Next.js 14 mit App Router
 - **Sprache:** TypeScript
 - **Styling:** Tailwind CSS
-- **Backend:** Firebase v9+ (Auth, Firestore, Storage)
+- **Backend:** Supabase (Auth, Postgres, Storage) für das Kundenportal
 - **Design:** Responsive, Mobile-First
 
 ## Projektstruktur
@@ -26,8 +26,6 @@ src/
 │   ├── Footer.tsx    # Footer
 │   └── ProjectCard.tsx # Projekt Karte
 ├── lib/             # Utilities und Konfigurationen
-│   ├── firebase.ts  # Firebase Konfiguration
-│   ├── auth.ts      # Authentifizierung
 │   └── projects.ts  # Projekt-Verwaltung
 └── types/           # TypeScript Definitionen
     └── index.ts     # Gemeinsame Types
@@ -40,9 +38,9 @@ src/
    npm install
    ```
 
-2. Firebase Konfiguration:
+2. Umgebungsvariablen:
    - Kopiere `.env.local.example` zu `.env.local`
-   - Füge deine Firebase Konfigurationswerte ein
+   - Trage die Supabase- und SMTP-Werte ein (siehe `supabase/KUNDENPORTAL_SETUP.md`)
 
 3. Entwicklungsserver starten:
    ```bash
@@ -51,7 +49,7 @@ src/
 
 ## Features
 
-- 🔥 Firebase Integration (Auth, Firestore, Storage)
+- 🔐 Kundenportal mit Supabase (Magic Link, Design-Freigabe)
 - 📱 Responsive Design
 - 🎨 Tailwind CSS Styling
 - 🔍 TypeScript Unterstützung

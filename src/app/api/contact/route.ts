@@ -52,9 +52,6 @@ export async function POST(req: NextRequest) {
             user: process.env.SMTP_USER,
             pass: process.env.SMTP_PASS,
           },
-          tls: {
-            rejectUnauthorized: false
-          }
         })
 
         // Email content

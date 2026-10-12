@@ -25,9 +25,7 @@ Eine digitale Heimat für Projekte schaffen, die Europa nachhaltig gestalten –
 - **Markdown:** react-markdown 10.1.0
 
 ### Backend & Services
-- **Authentication:** Firebase 12.1.0 (Auth)
-- **Database:** Firebase Firestore
-- **Storage:** Firebase Storage
+- **Kundenportal:** Supabase (Auth, Postgres, Storage), Region Frankfurt
 - **Email:** Nodemailer 7.0.5
 
 ### Development Tools
@@ -88,8 +86,6 @@ dasEntwicklerhaus/
 │   │   └── projects.ts         # Projekt-Daten (12 Projekte)
 │   │
 │   ├── lib/                    # Utilities & Konfiguration
-│   │   ├── firebase.ts         # Firebase Setup
-│   │   ├── auth.ts             # Authentifizierung
 │   │   └── projects.ts         # Projekt-Verwaltung
 │   │
 │   └── types/                  # TypeScript Definitionen
@@ -168,7 +164,7 @@ dasEntwicklerhaus/
 - ✅ Next.js 14 Setup mit App Router
 - ✅ TypeScript Integration
 - ✅ Tailwind CSS Styling
-- ✅ Firebase Backend (Auth, Firestore, Storage)
+- ✅ Kundenportal mit Supabase (Magic-Link-Login, Design-Freigabe)
 - ✅ 12 dokumentierte Projekte
 - ✅ Filterbare Projektübersicht
 - ✅ Dynamische Projekt-Detailseiten
@@ -245,13 +241,9 @@ npm run lint
 
 ### Environment Variables
 ```env
-# Firebase
-NEXT_PUBLIC_FIREBASE_API_KEY=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
 
 # Email (Nodemailer)
 EMAIL_USER=
