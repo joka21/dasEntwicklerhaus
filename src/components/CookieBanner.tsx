@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 
 interface CookieConsent {
@@ -9,82 +9,99 @@ interface CookieConsent {
   timestamp: string
 }
 
+const STORAGE_KEY = 'cookie-consent'
+// Auf dem Server ist die Einwilligung unbekannt – dann wird nichts gerendert.
+const UNBEKANNT = 'unbekannt'
+
+// localStorage als externe Quelle für useSyncExternalStore. Das storage-Event
+// meldet nur Änderungen aus anderen Tabs, eigene Änderungen melden wir selbst.
+const listeners = new Set<() => void>()
+
+function subscribe(listener: () => void) {
+  listeners.add(listener)
+  window.addEventListener('storage', listener)
+  return () => {
+    listeners.delete(listener)
+    window.removeEventListener('storage', listener)
+  }
+}
+
+function getSnapshot() {
+  return localStorage.getItem(STORAGE_KEY)
+}
+
+function getServerSnapshot() {
+  return UNBEKANNT
+}
+
+function parseConsent(raw: string | null): CookieConsent | null {
+  if (!raw || raw === UNBEKANNT) return null
+  try {
+    return JSON.parse(raw) as CookieConsent
+  } catch {
+    return null
+  }
+}
+
+function loadGoogleAnalytics() {
+  if (typeof window !== 'undefined' && !window.gtag) {
+    const script1 = document.createElement('script')
+    script1.async = true
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'
+    document.head.appendChild(script1)
+
+    const script2 = document.createElement('script')
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID', {
+        anonymize_ip: true
+      });
+    `
+    document.head.appendChild(script2)
+  }
+}
+
+function saveConsent(newConsent: Omit<CookieConsent, 'timestamp'>) {
+  const consentWithTimestamp = {
+    ...newConsent,
+    timestamp: new Date().toISOString()
+  }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(consentWithTimestamp))
+  listeners.forEach((listener) => listener())
+}
+
 export default function CookieBanner() {
-  const [isVisible, setIsVisible] = useState(false)
+  const raw = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+  const savedConsent = parseConsent(raw)
+  const isVisible = raw !== UNBEKANNT && savedConsent === null
   const [showSettings, setShowSettings] = useState(false)
-  const [consent, setConsent] = useState<CookieConsent>({
-    necessary: true,
-    analytics: false,
-    timestamp: ''
-  })
+  // Entwurf für den Einstellungsdialog; gespeichert wird erst beim Klick.
+  const [analyticsDraft, setAnalyticsDraft] = useState(false)
 
+  const analyticsErlaubt = savedConsent?.analytics === true
   useEffect(() => {
-    const savedConsent = localStorage.getItem('cookie-consent')
-    if (!savedConsent) {
-      setIsVisible(true)
-    } else {
-      const parsed = JSON.parse(savedConsent) as CookieConsent
-      setConsent(parsed)
-      
-      if (parsed.analytics) {
-        loadGoogleAnalytics()
-      }
-    }
-  }, [])
-
-  const saveConsent = (newConsent: Omit<CookieConsent, 'timestamp'>) => {
-    const consentWithTimestamp = {
-      ...newConsent,
-      timestamp: new Date().toISOString()
-    }
-    localStorage.setItem('cookie-consent', JSON.stringify(consentWithTimestamp))
-    setConsent(consentWithTimestamp)
-    
-    if (newConsent.analytics) {
-      loadGoogleAnalytics()
-    }
-  }
-
-  const loadGoogleAnalytics = () => {
-    if (typeof window !== 'undefined' && !window.gtag) {
-      const script1 = document.createElement('script')
-      script1.async = true
-      script1.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'
-      document.head.appendChild(script1)
-
-      const script2 = document.createElement('script')
-      script2.innerHTML = `
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID', {
-          anonymize_ip: true
-        });
-      `
-      document.head.appendChild(script2)
-    }
-  }
+    if (analyticsErlaubt) loadGoogleAnalytics()
+  }, [analyticsErlaubt])
 
   const handleAcceptAll = () => {
     saveConsent({ necessary: true, analytics: true })
-    setIsVisible(false)
     setShowSettings(false)
   }
 
   const handleAcceptNecessary = () => {
     saveConsent({ necessary: true, analytics: false })
-    setIsVisible(false)
     setShowSettings(false)
   }
 
   const handleSaveSettings = () => {
-    saveConsent(consent)
-    setIsVisible(false)
+    saveConsent({ necessary: true, analytics: analyticsDraft })
     setShowSettings(false)
   }
 
   const handleToggleAnalytics = () => {
-    setConsent(prev => ({ ...prev, analytics: !prev.analytics }))
+    setAnalyticsDraft(prev => !prev)
   }
 
   if (!isVisible) return null
@@ -155,7 +172,7 @@ export default function CookieBanner() {
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
-                      checked={consent.analytics}
+                      checked={analyticsDraft}
                       onChange={handleToggleAnalytics}
                       className="sr-only peer"
                     />

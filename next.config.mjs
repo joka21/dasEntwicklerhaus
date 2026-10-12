@@ -4,6 +4,8 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: true,
+  // next dev soll keine AGENTS.md im Projekt anlegen
+  agentRules: false,
 
   // Image optimization
   images: {
