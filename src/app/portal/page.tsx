@@ -7,15 +7,15 @@ interface ProjektZeile {
   slug: string
   title: string
   description: string | null
-  project_approvals: { approved_at: string } | null
+  portal_project_approvals: { approved_at: string } | null
 }
 
 export default async function PortalPage() {
   const supabase = await createClient()
   // RLS liefert nur Projekte, zu denen der Nutzer gehört.
   const { data, error } = await supabase
-    .from('projects')
-    .select('slug, title, description, project_approvals(approved_at)')
+    .from('portal_projects')
+    .select('slug, title, description, portal_project_approvals(approved_at)')
     .order('created_at', { ascending: false })
 
   if (error) throw error
@@ -36,8 +36,8 @@ export default async function PortalPage() {
                 <h2 className="text-h5 lg:text-h5-lg font-semibold text-umwelt-800 mb-2">{p.title}</h2>
                 {p.description && <p className="text-dark mb-4">{p.description}</p>}
                 <p className="text-sm text-secondary">
-                  {p.project_approvals
-                    ? `Design freigegeben am ${formatDatum(p.project_approvals.approved_at)}`
+                  {p.portal_project_approvals
+                    ? `Design freigegeben am ${formatDatum(p.portal_project_approvals.approved_at)}`
                     : 'Design in Abstimmung'}
                 </p>
               </Link>

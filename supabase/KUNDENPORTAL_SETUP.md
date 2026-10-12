@@ -2,9 +2,23 @@
 
 ## 1. Supabase-Projekt
 
-- Region: **Central EU (Frankfurt), eu-central-1** – lässt sich später nicht ändern.
-- Migration einspielen: `supabase link --project-ref <ref>` und `supabase db push`
-  oder den Inhalt von `migrations/20261012120000_kundenportal.sql` im SQL-Editor ausführen.
+Das Portal läuft im bestehenden Projekt **„das entwicklerhaus“**. Alle Portal-Objekte
+tragen das Präfix `portal_` (Tabellen, Constraints, Indizes, Policies; Hilfsfunktionen im
+Schema `portal_private`). Die vorhandenen Tabellen `projects`, `blog_posts` und
+`contact_submissions` sowie das Schema `private` werden nicht angefasst.
+
+- Region prüfen (Settings → General): für Kundendaten sollte es **Central EU (Frankfurt),
+  eu-central-1** sein. Die Region eines bestehenden Projekts lässt sich nicht ändern.
+- Migration einspielen: Inhalt von `migrations/20261012180000_portal.sql` im SQL-Editor
+  ausführen. `supabase db push` nur, wenn die Migrationshistorie des Projekts mit dem
+  Ordner `supabase/migrations` übereinstimmt.
+- Falls die Storage-Policy mit „must be owner of table objects“ scheitert: Policy
+  `portal_design_proposals_select` unter Storage → Policies mit demselben Ausdruck anlegen.
+
+**Achtung – die Schritte 2 bis 5 gelten für das ganze Projekt**, nicht nur für das
+Portal. Falls die Website oder ein anderes Tool schon Supabase Auth nutzt (z. B. Logins
+für Blog oder Kontaktverwaltung), vorher prüfen, ob die Änderungen dort etwas stören –
+vor allem „Allow new users to sign up: aus“ und die Mail-Vorlagen.
 
 ## 2. Authentication → Sign In / Providers
 
@@ -54,31 +68,31 @@ funktioniert auch, wenn der Kunde den Link in einem anderen Browser oder Gerät 
 ## 6. Kunden anlegen
 
 1. **Authentication → Users → Invite user** mit der E-Mail-Adresse des Kunden.
-2. Table Editor → `clients`: Kunde anlegen.
-3. `client_members`: `client_id` + `user_id` (aus der Users-Liste) eintragen.
-4. `projects`: `client_id`, `slug` (nur `a-z`, `0-9`, `-`), `title`, optional `description`.
+2. Table Editor → `portal_clients`: Kunde anlegen.
+3. `portal_client_members`: `client_id` + `user_id` (aus der Users-Liste) eintragen.
+4. `portal_projects`: `client_id`, `slug` (nur `a-z`, `0-9`, `-`), `title`, optional `description`.
 
 ## 7. Design-Varianten hochladen
 
 1. Storage → Bucket `design-proposals` → Ordner mit der **Projekt-ID** (uuid) anlegen.
 2. HTML-Datei hochladen (nur `text/html`, max. 4 MB – Vercel liefert Antworten
    über 4,5 MB nicht aus; große Bilder vorher komprimieren).
-3. `design_variants`: `project_id`, `title`, `storage_path` = `<projekt-id>/<datei>.html`,
+3. `portal_design_variants`: `project_id`, `title`, `storage_path` = `<projekt-id>/<datei>.html`,
    optional `description`, `sort_order`.
 
-Dateien ohne Eintrag in `design_variants` sind für Kunden nicht abrufbar.
+Dateien ohne Eintrag in `portal_design_variants` sind für Kunden nicht abrufbar.
 
 ## 8. Admin
 
-Eigenen Nutzer einladen und in Tabelle `admins` eintragen (`user_id`). Admins sehen
+Eigenen Nutzer einladen und in Tabelle `portal_admins` eintragen (`user_id`). Admins sehen
 alle Projekte, kommentieren und freigeben können nur Kunden.
 
-Freigabe zurücksetzen: Zeile in `project_approvals` löschen.
+Freigabe zurücksetzen: Zeile in `portal_project_approvals` löschen.
 
 ## 9. Vercel
 
 Umgebungsvariablen (Production + Preview):
-`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SMTP_HOST`, `SMTP_PORT`,
+`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SMTP_HOST`, `SMTP_PORT`,
 `SMTP_USER`, `SMTP_PASS`, `PORTAL_ADMIN_EMAIL` (Empfänger der Benachrichtigungen),
 optional `SMTP_SECURE=true` für Port 465. Ohne `PORTAL_ADMIN_EMAIL` werden keine
 Benachrichtigungen verschickt (nur ein Hinweis im Log).

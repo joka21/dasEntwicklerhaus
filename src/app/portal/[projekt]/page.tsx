@@ -30,7 +30,7 @@ async function ladeProjekt(slug: string) {
   const supabase = await createClient()
   // RLS: Fremde Projekte sind unsichtbar und landen hier als null -> 404.
   const { data } = await supabase
-    .from('projects')
+    .from('portal_projects')
     .select('id, client_id, slug, title, description')
     .eq('slug', slug)
     .maybeSingle()
@@ -54,19 +54,19 @@ export default async function ProjektPage({ params }: PageProps) {
 
   const [variantenRes, freigabeRes, mitgliedRes] = await Promise.all([
     supabase
-      .from('design_variants')
+      .from('portal_design_variants')
       .select('id, title, description')
       .eq('project_id', projekt.id)
       .order('sort_order')
       .order('created_at'),
     supabase
-      .from('project_approvals')
+      .from('portal_project_approvals')
       .select('variant_id, approved_at')
       .eq('project_id', projekt.id)
       .maybeSingle(),
     // Kommentieren und Freigeben dürfen nur Kunden, nicht Admins.
     supabase
-      .from('client_members')
+      .from('portal_client_members')
       .select('client_id')
       .eq('client_id', projekt.client_id)
       .eq('user_id', user.id)
@@ -81,7 +81,7 @@ export default async function ProjektPage({ params }: PageProps) {
   let kommentare: Kommentar[] = []
   if (varianten.length > 0) {
     const { data, error } = await supabase
-      .from('variant_comments')
+      .from('portal_variant_comments')
       .select('id, variant_id, author_id, body, created_at')
       .in(
         'variant_id',

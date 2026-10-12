@@ -32,10 +32,10 @@ export async function GET(
   if (!user) return fehler(401, 'Nicht angemeldet')
 
   const { data: variante } = await supabase
-    .from('design_variants')
-    .select('storage_path, projects!inner(slug)')
+    .from('portal_design_variants')
+    .select('storage_path, portal_projects!inner(slug)')
     .eq('id', varianteId)
-    .eq('projects.slug', projekt)
+    .eq('portal_projects.slug', projekt)
     .maybeSingle()
   if (!variante) return fehler(404, 'Nicht gefunden')
 
@@ -53,7 +53,7 @@ export async function GET(
     {
       headers: {
         Authorization: `Bearer ${session.access_token}`,
-        apikey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        apikey: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
       },
       cache: 'no-store',
     }

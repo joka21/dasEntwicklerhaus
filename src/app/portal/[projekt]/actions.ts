@@ -19,7 +19,7 @@ interface VarianteMitProjekt {
   id: string
   title: string
   project_id: string
-  projects: { slug: string; title: string }
+  portal_projects: { slug: string; title: string }
 }
 
 // Lädt die Variante unter RLS und prüft, dass sie zum Projekt aus der URL gehört.
@@ -35,10 +35,10 @@ async function ladeKontext(formData: FormData) {
   if (!user) return null
 
   const { data } = await supabase
-    .from('design_variants')
-    .select('id, title, project_id, projects!inner(slug, title)')
+    .from('portal_design_variants')
+    .select('id, title, project_id, portal_projects!inner(slug, title)')
     .eq('id', variantId)
-    .eq('projects.slug', slug)
+    .eq('portal_projects.slug', slug)
     .maybeSingle()
   if (!data) return null
 
@@ -59,26 +59,26 @@ export async function kommentieren(_vorher: AktionsStatus, formData: FormData): 
   if (!kontext) return KEIN_ZUGRIFF
   const { supabase, user, variante } = kontext
 
-  const { error } = await supabase.from('variant_comments').insert({ variant_id: variante.id, body: text })
+  const { error } = await supabase.from('portal_variant_comments').insert({ variant_id: variante.id, body: text })
   if (error) {
     console.error('Kommentar nicht gespeichert:', error.code, error.message)
     return { ok: false, meldung: 'Der Kommentar konnte nicht gespeichert werden.' }
   }
 
-  const link = await portalLink(variante.projects.slug)
+  const link = await portalLink(variante.portal_projects.slug)
   await sendAdminMail({
-    subject: `Kommentar: ${variante.projects.title} – ${variante.title}`,
+    subject: `Kommentar: ${variante.portal_projects.title} – ${variante.title}`,
     html: `
       <p><strong>${escapeHtml(user.email ?? '')}</strong> hat die Variante
       <strong>${escapeHtml(variante.title)}</strong> im Projekt
-      <strong>${escapeHtml(variante.projects.title)}</strong> kommentiert:</p>
+      <strong>${escapeHtml(variante.portal_projects.title)}</strong> kommentiert:</p>
       <p>${escapeHtml(text).replace(/\n/g, '<br>')}</p>
       <p><a href="${link}">Im Kundenportal ansehen</a></p>
     `,
-    text: `${user.email} hat die Variante "${variante.title}" im Projekt "${variante.projects.title}" kommentiert:\n\n${text}\n\n${link}`,
+    text: `${user.email} hat die Variante "${variante.title}" im Projekt "${variante.portal_projects.title}" kommentiert:\n\n${text}\n\n${link}`,
   })
 
-  revalidatePath(`/portal/${variante.projects.slug}`)
+  revalidatePath(`/portal/${variante.portal_projects.slug}`)
   return { ok: true, meldung: 'Danke! Ihr Kommentar wurde gespeichert.' }
 }
 
@@ -88,7 +88,7 @@ export async function freigeben(_vorher: AktionsStatus, formData: FormData): Pro
   const { supabase, user, variante } = kontext
 
   const { error } = await supabase
-    .from('project_approvals')
+    .from('portal_project_approvals')
     .insert({ project_id: variante.project_id, variant_id: variante.id })
   if (error) {
     // 23505: Primärschlüssel project_id – es gibt schon eine Freigabe.
@@ -99,18 +99,18 @@ export async function freigeben(_vorher: AktionsStatus, formData: FormData): Pro
     return { ok: false, meldung: 'Die Freigabe konnte nicht gespeichert werden.' }
   }
 
-  const link = await portalLink(variante.projects.slug)
+  const link = await portalLink(variante.portal_projects.slug)
   await sendAdminMail({
-    subject: `Freigabe: ${variante.projects.title} – ${variante.title}`,
+    subject: `Freigabe: ${variante.portal_projects.title} – ${variante.title}`,
     html: `
       <p><strong>${escapeHtml(user.email ?? '')}</strong> hat im Projekt
-      <strong>${escapeHtml(variante.projects.title)}</strong> die Variante
+      <strong>${escapeHtml(variante.portal_projects.title)}</strong> die Variante
       <strong>${escapeHtml(variante.title)}</strong> freigegeben.</p>
       <p><a href="${link}">Im Kundenportal ansehen</a></p>
     `,
-    text: `${user.email} hat im Projekt "${variante.projects.title}" die Variante "${variante.title}" freigegeben.\n\n${link}`,
+    text: `${user.email} hat im Projekt "${variante.portal_projects.title}" die Variante "${variante.title}" freigegeben.\n\n${link}`,
   })
 
-  revalidatePath(`/portal/${variante.projects.slug}`)
+  revalidatePath(`/portal/${variante.portal_projects.slug}`)
   return { ok: true, meldung: 'Vielen Dank! Die Variante ist freigegeben.' }
 }
