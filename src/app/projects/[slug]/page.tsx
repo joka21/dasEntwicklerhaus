@@ -9,9 +9,9 @@ import Footer from '@/components/Footer'
 import { ProjectSchema } from '@/components/StructuredData'
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
-  const project = sampleProjects.find(p => p.slug === params.slug)
+  const { slug } = await params
+  const project = sampleProjects.find(p => p.slug === slug)
   
   if (!project) {
     return {
@@ -113,8 +114,9 @@ function getCategoryColor(category: string) {
   }
 }
 
-export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = sampleProjects.find(p => p.slug === params.slug)
+export default async function ProjectPage({ params }: ProjectPageProps) {
+  const { slug } = await params
+  const project = sampleProjects.find(p => p.slug === slug)
   
   if (!project) {
     notFound()

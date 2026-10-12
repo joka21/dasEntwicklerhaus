@@ -10,9 +10,9 @@ import ReactMarkdown from 'react-markdown'
 import { BlogPostSchema, BreadcrumbSchema } from '@/components/StructuredData'
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = blogPosts.find(p => p.slug === params.slug)
+  const { slug } = await params
+  const post = blogPosts.find(p => p.slug === slug)
 
   if (!post) {
     return {
@@ -114,8 +115,9 @@ function getRelatedPosts(currentPost: BlogPost) {
     .slice(0, 3)
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = blogPosts.find(p => p.slug === params.slug)
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params
+  const post = blogPosts.find(p => p.slug === slug)
 
   if (!post) {
     notFound()

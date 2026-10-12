@@ -7,10 +7,14 @@ const nextConfig = {
 
   // Image optimization
   images: {
-    formats: ['image/webp'], // AVIF aus: Sicherheitslücke in der Bildoptimierung von Next 14
+    formats: ['image/webp'], // AVIF aus: Sicherheitslücke in der Bildoptimierung von Next < 15.5.24
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    domains: ['images.unsplash.com', 'dasentwicklerhaus.de'],
+    // images.domains ist seit Next 16 veraltet
+    remotePatterns: [
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'dasentwicklerhaus.de' },
+    ],
     unoptimized: false,
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
@@ -20,6 +24,9 @@ const nextConfig = {
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['@heroicons/react'],
+    // Redirects/Rewrites groß-/kleinschreibungsgenau vergleichen. Next 16 vergleicht
+    // sonst ohne Rücksicht darauf, und /dieIdee -> /dieidee leitet auf sich selbst um.
+    caseSensitiveRoutes: true,
   },
 
   async headers() {
@@ -47,15 +54,6 @@ const nextConfig = {
       },
       {
         source: '/images/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/_next/static/:path*',
         headers: [
           {
             key: 'Cache-Control',
