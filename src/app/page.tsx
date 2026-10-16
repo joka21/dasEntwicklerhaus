@@ -1,32 +1,14 @@
-'use client'
+import type { Metadata } from 'next'
+import HomeContent from '@/components/HomeContent'
 
-import { useState } from 'react'
-import Header from '@/components/Header'
-import Hero from '@/components/Hero'
-import FilterSection from '@/components/FilterSection'
-import ProjectsSection from '@/components/ProjectsSection'
-import Footer from '@/components/Footer'
-import { sampleProjects } from '@/data/projects'
-import { FilterCategory } from '@/components/FilterSection'
+// Canonical nur hier, nicht im Root-Layout – sonst erben ihn alle Seiten
+// ohne eigenen Canonical (Impressum, 404 usw.).
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://www.dasentwicklerhaus.de',
+  },
+}
 
 export default function Home() {
-  const [activeFilter, setActiveFilter] = useState<FilterCategory>('alle')
-
-  const handleFilterChange = (filter: FilterCategory) => {
-    setActiveFilter(filter)
-  }
-
-  return (
-    <>
-      <Header />
-      <Hero />
-      <FilterSection onFilterChange={handleFilterChange} />
-      <ProjectsSection 
-        projects={sampleProjects} 
-        activeFilter={activeFilter}
-        onFilterChange={handleFilterChange}
-      />
-      <Footer />
-    </>
-  )
+  return <HomeContent />
 }

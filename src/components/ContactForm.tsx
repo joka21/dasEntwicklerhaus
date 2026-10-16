@@ -218,7 +218,7 @@ export default function ContactForm({ initialProject = '' }: { initialProject?: 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-primary text-white px-8 py-4 rounded-lg font-medium hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-primary text-dark px-8 py-4 rounded-lg font-medium hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Wird gesendet...' : 'Erstgespräch anfragen'}
           </button>

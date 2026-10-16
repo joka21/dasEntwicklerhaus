@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
         const mailOptions = {
           from: process.env.SMTP_USER,
           to: 'admin@dasentwicklerhaus.de',
-          subject: `Neues Projekt: ${project}`,
+          subject: 'Neue Anfrage: Erstgespräch',
           html: `
             <h2>Neues Projekt eingereicht</h2>
             <p><strong>Name:</strong> ${name}</p>

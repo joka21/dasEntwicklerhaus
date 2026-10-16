@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 
 // Für alle Bots gesperrt. Muss in jeder Gruppe stehen: Ein Bot mit eigener
 // Gruppe liest die Regeln für '*' nicht mehr.
-const GESPERRT = ['/api/', '/_next/', '/admin/', '/private/', '/portal', '/login']
+const GESPERRT = ['/api/', '/admin/', '/private/', '/portal', '/login']
 
 // KI-Suche und Abrufe im Auftrag von Nutzern: erlaubt, damit die Seite in
 // ChatGPT, Claude und Perplexity gefunden und zitiert werden kann.

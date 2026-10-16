@@ -67,9 +67,6 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
-  alternates: {
-    canonical: 'https://www.dasentwicklerhaus.de',
-  },
   verification: {
     google: 'caAjiFZudEGwlkms5VQwjcDqc5wYfs6uhVDLC9KfhVw',
   },
