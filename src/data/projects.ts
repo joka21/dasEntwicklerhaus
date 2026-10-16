@@ -15,7 +15,7 @@ export const sampleProjects: Project[] = [
     startDate: '2025-10-20',
     teamSize: 1,
     socialMedia: {
-      website: 'https://dasentwicklerhaus.de/ai-literacy'
+      website: 'https://www.dasentwicklerhaus.de/ai-literacy'
     }
   },
 
@@ -146,7 +146,7 @@ Krefeld 2030 ist keine fertige Lösung, die von oben implementiert wird. Es ist 
     startDate: '2026-01-01',
     teamSize: 5,
     socialMedia: {
-      website: 'https://dasentwicklerhaus.de/projects/krefeld-2030'
+      website: 'https://www.dasentwicklerhaus.de/projects/krefeld-2030'
     }
   },
 
@@ -232,7 +232,7 @@ Das Ladenprojekt zeigt: Digitalisierung muss nicht den Großen gehören. Mit den
     startDate: '2025-11-01',
     teamSize: 3,
     socialMedia: {
-      website: 'https://dasentwicklerhaus.de/projects/das-ladenprojekt'
+      website: 'https://www.dasentwicklerhaus.de/projects/das-ladenprojekt'
     }
   },
 

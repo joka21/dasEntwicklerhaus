@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Kontakt – Das Entwicklerhaus Krefeld | Josef Kalenberg',
-  description: 'Kontaktiere Josef Kalenberg und Das Entwicklerhaus in Krefeld am Niederrhein. Ideen einreichen, Projekte vorstellen oder zusammenarbeiten – direkt aus NRW.',
+  title: { absolute: 'Kostenloses Erstgespräch anfragen | Entwicklerhaus' },
+  description: 'Kostenloses Erstgespräch zu Website, Onlineshop oder KI-Lösung für Ihren Verein oder Betrieb. Persönlich und unverbindlich – direkt aus Krefeld.',
   openGraph: {
-    title: 'Kontakt – Das Entwicklerhaus Krefeld | Josef Kalenberg',
-    description: 'Kontaktiere Josef Kalenberg und Das Entwicklerhaus in Krefeld am Niederrhein. Ideen einreichen, Projekte vorstellen oder zusammenarbeiten – direkt aus NRW.',
-    url: 'https://dasentwicklerhaus.de/contact',
+    title: 'Kostenloses Erstgespräch anfragen | Entwicklerhaus',
+    description: 'Kostenloses Erstgespräch zu Website, Onlineshop oder KI-Lösung für Ihren Verein oder Betrieb. Persönlich und unverbindlich – direkt aus Krefeld.',
+    url: 'https://www.dasentwicklerhaus.de/contact',
   },
   alternates: {
-    canonical: 'https://dasentwicklerhaus.de/contact',
+    canonical: 'https://www.dasentwicklerhaus.de/contact',
   },
 }
 

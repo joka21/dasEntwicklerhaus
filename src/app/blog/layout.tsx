@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Blog – KI, Startups und Innovation aus Krefeld & Niederrhein',
     description: 'Gedanken zu KI, Startups und Innovation aus Krefeld am Niederrhein. Keine Theorie – nur das, was Josef Kalenberg als Gründer in NRW selbst erlebt hat.',
-    url: 'https://dasentwicklerhaus.de/blog',
+    url: 'https://www.dasentwicklerhaus.de/blog',
   },
   alternates: {
-    canonical: 'https://dasentwicklerhaus.de/blog',
+    canonical: 'https://www.dasentwicklerhaus.de/blog',
   },
 }
 

@@ -46,11 +46,11 @@ export default function ContactForm({ initialProject = '' }: { initialProject?: 
     }
 
     if (!formData.project.trim()) {
-      newErrors.project = 'Projektname ist erforderlich'
+      newErrors.project = 'Bitte geben Sie an, worum es geht'
     }
 
     if (!formData.projectDescription.trim()) {
-      newErrors.projectDescription = 'Projektbeschreibung ist erforderlich'
+      newErrors.projectDescription = 'Bitte schreiben Sie kurz etwas zu Ihrem Vorhaben'
     }
 
     if (!formData.privacyConsent) {
@@ -161,7 +161,7 @@ export default function ContactForm({ initialProject = '' }: { initialProject?: 
 
         <div>
           <label htmlFor="project" className="block text-lg font-medium text-dark mb-2">
-            Projekt *
+            Worum geht es? *
           </label>
           <input
             type="text"
@@ -172,14 +172,14 @@ export default function ContactForm({ initialProject = '' }: { initialProject?: 
             className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors ${
               errors.project ? 'border-red-500' : 'border-gray-300'
             }`}
-            placeholder="Name Ihres Projekts"
+            placeholder="z. B. Website für unseren Verein"
           />
           {errors.project && <p className="text-red-500 text-sm mt-1">{errors.project}</p>}
         </div>
 
         <div>
           <label htmlFor="projectDescription" className="block text-lg font-medium text-dark mb-2">
-            Projektbeschreibung *
+            Ihre Nachricht *
           </label>
           <textarea
             id="projectDescription"
@@ -190,7 +190,7 @@ export default function ContactForm({ initialProject = '' }: { initialProject?: 
             className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-colors resize-vertical ${
               errors.projectDescription ? 'border-red-500' : 'border-gray-300'
             }`}
-            placeholder="Beschreiben Sie Ihr Projekt ausführlich: Ziele, Zielgruppe, aktueller Stand, benötigte Unterstützung..."
+            placeholder="Was haben Sie vor, was gibt es schon, bis wann soll es fertig sein? Ein paar Stichpunkte reichen."
           />
           {errors.projectDescription && <p className="text-red-500 text-sm mt-1">{errors.projectDescription}</p>}
         </div>
@@ -220,7 +220,7 @@ export default function ContactForm({ initialProject = '' }: { initialProject?: 
             disabled={isSubmitting}
             className="w-full bg-primary text-white px-8 py-4 rounded-lg font-medium hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isSubmitting ? 'Wird gesendet...' : 'Projekt einreichen'}
+            {isSubmitting ? 'Wird gesendet...' : 'Erstgespräch anfragen'}
           </button>
         </div>
       </form>
@@ -234,7 +234,7 @@ export default function ContactForm({ initialProject = '' }: { initialProject?: 
               Vielen Dank!
             </h3>
             <p className="text-secondary mb-6">
-              Vielen Dank für Ihr Projekt, wir werden uns bald bei Ihnen melden.
+              Vielen Dank für Ihre Anfrage. Ich melde mich persönlich bei Ihnen.
             </p>
             <button
               onClick={handleSuccessClose}

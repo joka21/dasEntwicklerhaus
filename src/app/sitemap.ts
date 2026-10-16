@@ -5,7 +5,7 @@ import { uebersicht, veroeffentlichteStadtseiten, zielgruppen } from '@/data/ang
 import { absoluteUrl } from '@/lib/angebote-seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://dasentwicklerhaus.de'
+  const baseUrl = 'https://www.dasentwicklerhaus.de'
   const currentDate = new Date()
 
   // Static pages

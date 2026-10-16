@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AI Literacy – KI verstehen und nutzen | Lernplattform aus Krefeld, NRW',
     description: 'KI-Kompetenz aus Krefeld am Niederrhein: Interaktive Lernplattform für künstliche Intelligenz. Verstehen, nutzen und verantwortungsvoll gestalten – ein Projekt aus NRW.',
-    url: 'https://dasentwicklerhaus.de/ai-literacy',
+    url: 'https://www.dasentwicklerhaus.de/ai-literacy',
   },
   alternates: {
-    canonical: 'https://dasentwicklerhaus.de/ai-literacy',
+    canonical: 'https://www.dasentwicklerhaus.de/ai-literacy',
   },
 }
 

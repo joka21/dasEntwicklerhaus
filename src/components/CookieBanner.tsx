@@ -126,7 +126,7 @@ export default function CookieBanner() {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleAcceptAll}
-                className="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+                className="bg-primary text-dark px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
               >
                 Alle akzeptieren
               </button>
@@ -188,7 +188,7 @@ export default function CookieBanner() {
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
               <button
                 onClick={handleSaveSettings}
-                className="bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
+                className="bg-primary text-dark px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
               >
                 Einstellungen speichern
               </button>

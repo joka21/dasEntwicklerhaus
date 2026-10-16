@@ -9,18 +9,14 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <div className="sr-only">
-        <h1>Kontakt - Das Entwicklerhaus</h1>
-      </div>
       <ContentSection>
         <main id="main-content">
           <h1 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8 text-center">
-            Zeig, was du machst
+            Kostenloses Erstgespräch anfragen
           </h1>
           <p className="text-secondary text-center mb-12 max-w-2xl mx-auto">
-            Du hast ein Projekt? Egal ob groß oder klein, fertig oder in Arbeit – erzähl mir davon.
-            <br />
-            Ich helf dir, dass es gesehen wird.
+            Erzählen Sie kurz, worum es geht – Website für Ihren Verein, Ihren Handwerksbetrieb oder einen
+            Onlineshop. Ich melde mich persönlich bei Ihnen.
           </p>
 
           {/* Liest ?thema= (von den Angebotsseiten); bis dahin das leere Formular */}
@@ -30,10 +26,10 @@ export default function ContactPage() {
 
           <div className="mt-16 text-center">
             <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">
-              Oder schreib mir direkt
+              Oder schreiben Sie mir direkt
             </h2>
             <p className="text-secondary mb-4">
-              Keine Lust auf Formulare? Versteh ich.
+              Lieber per E-Mail? Das geht natürlich auch.
             </p>
             <p className="text-dark">
               <strong>E-Mail:</strong>{' '}

@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     }
   }
 
-  const baseUrl = 'https://dasentwicklerhaus.de'
+  const baseUrl = 'https://www.dasentwicklerhaus.de'
 
   return {
     title: `${project.name} - ${project.city}`,

@@ -153,7 +153,7 @@ export function ProjectSchema({ project }: { project: Project }) {
     "@type": "CreativeWork",
     "name": project.name,
     "description": project.description,
-    "url": `https://dasentwicklerhaus.de/projects/${project.slug}`,
+    "url": `https://www.dasentwicklerhaus.de/projects/${project.slug}`,
     "image": project.image,
     "dateCreated": project.startDate,
     "creator": {

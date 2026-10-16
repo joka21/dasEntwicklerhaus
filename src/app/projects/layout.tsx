@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Projekte aus Krefeld & NRW – KI, Innovation und Nachhaltigkeit vom Niederrhein',
     description: 'Innovative Projekte aus Krefeld, dem Niederrhein und NRW: KI-Lösungen, Nachhaltigkeit, Startups und Zusammenarbeit. Entdecke, was in der Region entsteht.',
-    url: 'https://dasentwicklerhaus.de/projects',
+    url: 'https://www.dasentwicklerhaus.de/projects',
   },
   alternates: {
-    canonical: 'https://dasentwicklerhaus.de/projects',
+    canonical: 'https://www.dasentwicklerhaus.de/projects',
   },
 }
 

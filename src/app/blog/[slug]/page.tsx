@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     }
   }
 
-  const baseUrl = 'https://dasentwicklerhaus.de'
+  const baseUrl = 'https://www.dasentwicklerhaus.de'
 
   // Custom SEO für spezifische Blog-Posts
   let title = `${post.title} - Das Entwicklerhaus Blog`
@@ -129,9 +129,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <>
       <BlogPostSchema post={post} />
       <BreadcrumbSchema items={[
-        { name: 'Home', url: 'https://dasentwicklerhaus.de' },
-        { name: 'Blog', url: 'https://dasentwicklerhaus.de/blog' },
-        { name: post.title, url: `https://dasentwicklerhaus.de/blog/${post.slug}` }
+        { name: 'Home', url: 'https://www.dasentwicklerhaus.de' },
+        { name: 'Blog', url: 'https://www.dasentwicklerhaus.de/blog' },
+        { name: post.title, url: `https://www.dasentwicklerhaus.de/blog/${post.slug}` }
       ]} />
       <Header />
 
@@ -243,7 +243,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <h3 className="text-lg font-semibold text-dark mb-4">Artikel teilen</h3>
             <div className="flex gap-4">
               <a
-                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://dasentwicklerhaus.de/blog/${post.slug}`)}&text=${encodeURIComponent(post.title)}`}
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://www.dasentwicklerhaus.de/blog/${post.slug}`)}&text=${encodeURIComponent(post.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-2 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
@@ -251,7 +251,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 Twitter
               </a>
               <a
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://dasentwicklerhaus.de/blog/${post.slug}`)}`}
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://www.dasentwicklerhaus.de/blog/${post.slug}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"

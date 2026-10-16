@@ -10,14 +10,14 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://dasentwicklerhaus.de'),
+  metadataBase: new URL('https://www.dasentwicklerhaus.de'),
   title: {
     default: 'Das Entwicklerhaus Krefeld – Innovation & KI-Projekte vom Niederrhein | NRW',
     template: '%s | Das Entwicklerhaus Krefeld'
   },
   description: 'Das Entwicklerhaus in Krefeld am Niederrhein: Plattform für KI-Projekte, Startups und Innovation in NRW. Gegründet von Josef Kalenberg – Webentwickler und Gründer aus Krefeld. Ideen aus der Region für Deutschland und Europa.',
   keywords: ['Entwicklerhaus Krefeld', 'KI Projekte Krefeld', 'Innovation Niederrhein', 'Startups NRW', 'Webentwickler Krefeld', 'KI-Startups Deutschland', 'Digitale Innovation Niederrhein', 'Projekte Krefeld', 'Tech Krefeld', 'AI Literacy NRW', 'Gründer Niederrhein', 'IT Projekte NRW', 'Josef Kalenberg Krefeld', 'Startup Plattform Niederrhein'],
-  authors: [{ name: 'Das Entwicklerhaus Team', url: 'https://dasentwicklerhaus.de' }],
+  authors: [{ name: 'Das Entwicklerhaus Team', url: 'https://www.dasentwicklerhaus.de' }],
   creator: 'Das Entwicklerhaus',
   publisher: 'Das Entwicklerhaus',
   formatDetection: {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'de_DE',
-    url: 'https://dasentwicklerhaus.de',
+    url: 'https://www.dasentwicklerhaus.de',
     siteName: 'Das Entwicklerhaus',
     title: 'Das Entwicklerhaus Krefeld – Innovation & KI-Projekte vom Niederrhein | NRW',
     description: 'Das Entwicklerhaus in Krefeld am Niederrhein: Plattform für KI-Projekte, Startups und Innovation in NRW. Gegründet von Josef Kalenberg – Webentwickler und Gründer aus Krefeld.',
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   alternates: {
-    canonical: 'https://dasentwicklerhaus.de',
+    canonical: 'https://www.dasentwicklerhaus.de',
   },
   verification: {
     google: 'caAjiFZudEGwlkms5VQwjcDqc5wYfs6uhVDLC9KfhVw',
