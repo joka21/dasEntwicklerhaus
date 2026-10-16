@@ -2,6 +2,8 @@ import Header from '@/components/Header'
 import ContentSection from '@/components/ContentSection'
 import Footer from '@/components/Footer'
 import ContactForm from '@/components/ContactForm'
+import ContactFormMitThema from '@/components/ContactFormMitThema'
+import { Suspense } from 'react'
 
 export default function ContactPage() {
   return (
@@ -21,7 +23,10 @@ export default function ContactPage() {
             Ich helf dir, dass es gesehen wird.
           </p>
 
-          <ContactForm />
+          {/* Liest ?thema= (von den Angebotsseiten); bis dahin das leere Formular */}
+          <Suspense fallback={<ContactForm />}>
+            <ContactFormMitThema />
+          </Suspense>
 
           <div className="mt-16 text-center">
             <h2 className="text-2xl font-semibold text-umwelt-800 mb-4">

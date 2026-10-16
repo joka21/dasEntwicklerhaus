@@ -2,10 +2,38 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { ANGEBOTE_UEBERSICHT, ZIELGRUPPEN_NAV } from '@/data/angebote-navigation'
+
+const ANGEBOTE_LINKS = [{ href: ANGEBOTE_UEBERSICHT.href, label: ANGEBOTE_UEBERSICHT.alleLabel }, ...ZIELGRUPPEN_NAV]
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [angeboteOffen, setAngeboteOffen] = useState(false)
+  const angeboteRef = useRef<HTMLDivElement>(null)
+  const angeboteButtonRef = useRef<HTMLButtonElement>(null)
+
+  // Dropdown schließt bei Klick oder Fokus außerhalb und mit Escape.
+  useEffect(() => {
+    if (!angeboteOffen) return
+    const ausserhalb = (e: Event) => {
+      if (!angeboteRef.current?.contains(e.target as Node)) setAngeboteOffen(false)
+    }
+    const escape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setAngeboteOffen(false)
+        angeboteButtonRef.current?.focus()
+      }
+    }
+    document.addEventListener('mousedown', ausserhalb)
+    document.addEventListener('focusin', ausserhalb)
+    document.addEventListener('keydown', escape)
+    return () => {
+      document.removeEventListener('mousedown', ausserhalb)
+      document.removeEventListener('focusin', ausserhalb)
+      document.removeEventListener('keydown', escape)
+    }
+  }, [angeboteOffen])
 
   return (
     <>
@@ -39,6 +67,39 @@ export default function Header() {
             </div>
             
             <div className="hidden lg:flex lg:items-center lg:space-x-8">
+              <div className="relative" ref={angeboteRef}>
+                <button
+                  type="button"
+                  ref={angeboteButtonRef}
+                  className="flex items-center gap-1 text-base font-medium text-zusammenarbeit-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
+                  aria-expanded={angeboteOffen}
+                  aria-controls="angebote-menue"
+                  onClick={() => setAngeboteOffen(!angeboteOffen)}
+                >
+                  {ANGEBOTE_UEBERSICHT.label}
+                  <svg aria-hidden="true" viewBox="0 0 20 20" className={`h-4 w-4 transition-transform ${angeboteOffen ? 'rotate-180' : ''}`}>
+                    <path d="M5 7.5 10 12.5 15 7.5" fill="none" stroke="currentColor" strokeWidth="2" />
+                  </svg>
+                </button>
+                {angeboteOffen && (
+                  <ul
+                    id="angebote-menue"
+                    className="absolute left-0 top-full z-50 mt-2 w-64 rounded-md bg-light py-2 shadow-lg ring-1 ring-secondary-300"
+                  >
+                    {ANGEBOTE_LINKS.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="block px-4 py-2 text-base font-medium text-dark hover:bg-primary-100 focus:outline-none focus:bg-primary-100"
+                          onClick={() => setAngeboteOffen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
               <Link
                 href="/projects"
                 className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
@@ -110,6 +171,26 @@ export default function Header() {
               </div>
               
               <nav className="p-4 space-y-1">
+                <Link
+                  href={ANGEBOTE_UEBERSICHT.href}
+                  className="block px-3 py-2 text-base font-medium text-zusammenarbeit-800 hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {ANGEBOTE_UEBERSICHT.label}
+                </Link>
+                <ul className="pl-4 space-y-1">
+                  {ZIELGRUPPEN_NAV.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="block px-3 py-2 text-sm font-medium text-dark hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
                 <Link
                   href="/projects"
                   className="block px-3 py-2 text-base font-medium text-umwelt-800 hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"

@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next'
 import { sampleProjects } from '@/data/projects'
 import { blogPosts } from '@/data/blog'
+import { uebersicht, veroeffentlichteStadtseiten, zielgruppen } from '@/data/angebote'
+import { absoluteUrl } from '@/lib/angebote-seo'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://dasentwicklerhaus.de'
@@ -74,5 +76,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...projectPages, ...blogPages]
+  // Angebotsseiten; Städteseiten nur, wenn veröffentlicht
+  const angebotPages: MetadataRoute.Sitemap = [
+    { url: absoluteUrl(`/${uebersicht.slug}`), lastModified: currentDate, changeFrequency: 'monthly', priority: 0.9 },
+    ...zielgruppen.map((z) => ({
+      url: absoluteUrl(`/${z.slug}`),
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    })),
+    ...veroeffentlichteStadtseiten().map((s) => ({
+      url: absoluteUrl(`/${s.slug}`),
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ]
+
+  return [...staticPages, ...angebotPages, ...projectPages, ...blogPages]
 }

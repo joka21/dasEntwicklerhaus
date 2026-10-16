@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import BlogHero from '@/components/blog/BlogHero'
@@ -85,12 +86,12 @@ export default function BlogPage() {
             <p className="text-lg mb-6 max-w-2xl mx-auto">
               Neue Artikel zu Startups, KI und Nachhaltigkeit direkt in dein Postfach.
             </p>
-            <a
+            <Link
               href="/contact"
               className="inline-block bg-white text-primary px-8 py-3 rounded-md font-medium hover:bg-light-100 transition-colors"
             >
               Newsletter abonnieren
-            </a>
+            </Link>
           </div>
         </div>
       </main>

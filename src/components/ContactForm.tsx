@@ -19,12 +19,12 @@ interface FormErrors {
   privacyConsent?: string
 }
 
-export default function ContactForm() {
+export default function ContactForm({ initialProject = '' }: { initialProject?: string }) {
   const router = useRouter()
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
-    project: '',
+    project: initialProject,
     projectDescription: '',
     privacyConsent: false
   })
