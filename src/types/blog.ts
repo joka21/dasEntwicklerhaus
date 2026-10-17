@@ -11,6 +11,8 @@ export interface BlogPost {
     avatar?: string
   }
   publishedDate: string
+  /** false = noindex und nicht in der Sitemap */
+  indexieren: boolean
   readTime: number // in Minuten
   image: string
   tags: string[]

@@ -294,6 +294,7 @@ Plattformen wie **Das Entwicklerhaus** helfen dabei, die nächste Generation deu
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-20',
+    indexieren: false,
     readTime: 14,
     image: '/images/blog/top-10-ki-startups.jpg',
     tags: ['KI Startups', 'Top 10', 'Deutschland', 'Innovation', 'AI Companies'],
@@ -658,6 +659,7 @@ Plattformen wie **Das Entwicklerhaus** können dabei helfen, die Lücke zwischen
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-21',
+    indexieren: false,
     readTime: 16,
     image: '/images/blog/deutschland-ki-nation.jpg',
     tags: ['KI Deutschland', 'AI Strategy', 'Innovation', 'Politik', 'Zukunft'],
@@ -1138,6 +1140,7 @@ Plattformen wie **Das Entwicklerhaus** spielen dabei eine Schlüsselrolle: Sie v
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-19',
+    indexieren: false,
     readTime: 17,
     image: '/images/blog/ai-startups-europa.jpg',
     tags: ['AI Startups Europa', 'European AI', 'Sovereign AI', 'EU AI Act', 'AI Regulation'],
@@ -1411,6 +1414,7 @@ Plattformen wie **Das Entwicklerhaus** spielen dabei eine wichtige Rolle: Sie ma
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-18',
+    indexieren: false,
     readTime: 15,
     image: '/images/blog/ai-startups-deutschland.jpg',
     tags: ['AI Startups', 'KI Deutschland', 'Artificial Intelligence', 'German AI', 'Startup Ecosystem'],
@@ -1462,6 +1466,7 @@ Die KI-Revolution bietet enormes Potenzial für Startups, birgt aber auch Risike
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-15',
+    indexieren: false,
     readTime: 8,
     image: '/images/blog/ki-startups.jpg',
     tags: ['KI', 'ChatGPT', 'Startups', 'Innovation'],
@@ -1518,6 +1523,7 @@ Nachhaltige Startups sind nicht nur ein Trend, sondern die Zukunft des Unternehm
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-12',
+    indexieren: false,
     readTime: 10,
     image: '/images/blog/nachhaltige-startups.jpg',
     tags: ['Nachhaltigkeit', 'Impact', 'Startups', 'ESG'],
@@ -1598,6 +1604,7 @@ Der Lean-Startup-Ansatz ist keine Methode, sondern eine Denkweise: Teste schnell
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-10',
+    indexieren: false,
     readTime: 12,
     image: '/images/blog/mvp-lean-startup.jpg',
     tags: ['Lean Startup', 'MVP', 'Produktentwicklung', 'Methoden'],
@@ -1704,6 +1711,7 @@ Prompt Engineering ist keine optionale Skill mehr – es ist eine Kernkompetenz 
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-08',
+    indexieren: false,
     readTime: 9,
     image: '/images/blog/prompt-engineering.jpg',
     tags: ['KI', 'Prompt Engineering', 'Skills', 'Zukunft'],
@@ -1819,6 +1827,7 @@ Circular Economy ist nicht nur "nice to have", sondern wirtschaftliche Notwendig
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-05',
+    indexieren: false,
     readTime: 11,
     image: '/images/blog/circular-economy.jpg',
     tags: ['Circular Economy', 'Nachhaltigkeit', 'Geschäftsmodelle', 'Innovation'],
@@ -1961,6 +1970,7 @@ Die beste Entscheidung ist die, die zu deiner Vision, deinem Markt und deiner Pe
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-03',
+    indexieren: false,
     readTime: 13,
     image: '/images/blog/bootstrapping-vs-vc.jpg',
     tags: ['Finanzierung', 'Bootstrapping', 'Venture Capital', 'Startups'],
@@ -2453,6 +2463,7 @@ Deutschland und Europa investieren massiv in KI - es war nie einfacher, Förderg
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-22',
+    indexieren: false,
     readTime: 18,
     image: '/images/blog/ki-foerderung.jpg',
     tags: ['Förderung', 'Finanzierung', 'KI Startups', 'EXIST', 'ZIM'],
@@ -2901,6 +2912,7 @@ Plattformen wie **Das Entwicklerhaus** helfen dabei, diese Message zu verbreiten
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-23',
+    indexieren: false,
     readTime: 15,
     image: '/images/blog/ai-made-in-germany.jpg',
     tags: ['Made in Germany', 'Ethical AI', 'Deutsche KI', 'Quality', 'Trust'],
@@ -3457,6 +3469,7 @@ Plattformen wie **Das Entwicklerhaus** zeigen die ganze Bandbreite innovativer S
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-24',
+    indexieren: false,
     readTime: 17,
     image: '/images/blog/was-ist-ki-startup.jpg',
     tags: ['KI Startup', 'Definition', 'AI-First', 'Startup Types', 'Guide'],
@@ -3867,6 +3880,7 @@ Diese Learnings sind Gold wert. Mach nicht die gleichen Fehler - lerne von denen
       avatar: '/images/authors/josef.jpg'
     },
     publishedDate: '2025-01-25',
+    indexieren: false,
     readTime: 20,
     image: '/images/blog/interview-ki-gruender.jpg',
     tags: ['Interview', 'KI-Gründer', 'Learnings', 'Startup Stories', 'Best Practices'],

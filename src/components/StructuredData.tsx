@@ -1,6 +1,7 @@
 import Script from 'next/script'
 import { Project } from '@/types/project'
 import { BlogPost as BlogPostType } from '@/types/blog'
+import { herausgeberLd, PERSON_ID } from '@/lib/angebote-seo'
 
 interface StructuredDataProps {
   data: object
@@ -16,137 +17,6 @@ export default function StructuredData({ data }: StructuredDataProps) {
   )
 }
 
-export function OrganizationSchema() {
-  const graphData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://www.dasentwicklerhaus.de/#organization",
-        "name": "Das Entwicklerhaus",
-        "url": "https://www.dasentwicklerhaus.de",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://www.dasentwicklerhaus.de/images/logo/logo-Klein.webp"
-        },
-        "description": "Das Entwicklerhaus in Krefeld am Niederrhein – Plattform für KI-Projekte, Startups und Innovation aus NRW, Deutschland und Europa.",
-        "image": "https://www.dasentwicklerhaus.de/images/logo/logo-dasentwicklerhaus-1024x783.png",
-        "sameAs": [
-          "https://twitter.com/entwicklerhaus"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "0176 42463017",
-          "contactType": "customer service",
-          "email": "admin@dasentwicklerhaus.de",
-          "availableLanguage": ["German", "English"]
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Am Königshof 47",
-          "addressLocality": "Krefeld",
-          "postalCode": "47807",
-          "addressRegion": "Nordrhein-Westfalen",
-          "addressCountry": "DE"
-        },
-        "founder": {
-          "@id": "https://www.dasentwicklerhaus.de/#person"
-        },
-        "foundingDate": "2025",
-        "areaServed": [
-          {
-            "@type": "City",
-            "name": "Krefeld",
-            "containedInPlace": {
-              "@type": "State",
-              "name": "Nordrhein-Westfalen"
-            }
-          },
-          {
-            "@type": "AdministrativeArea",
-            "name": "Niederrhein"
-          },
-          {
-            "@type": "State",
-            "name": "Nordrhein-Westfalen",
-            "alternateName": "NRW"
-          },
-          "DE",
-          "EU"
-        ],
-        "foundingLocation": {
-          "@type": "Place",
-          "name": "Krefeld, Niederrhein, NRW",
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 51.3388,
-            "longitude": 6.5853
-          }
-        },
-        "knowsAbout": [
-          "KI-Projekte Krefeld",
-          "Innovation Niederrhein",
-          "Startups NRW",
-          "Webentwicklung Krefeld",
-          "KI-Lösungen",
-          "Soziale Initiativen",
-          "Digitale Transformation NRW",
-          "Community Building Niederrhein"
-        ]
-      },
-      {
-        "@type": "Person",
-        "@id": "https://www.dasentwicklerhaus.de/#person",
-        "name": "Josef Kalenberg",
-        "jobTitle": "Gründer & Webentwickler",
-        "url": "https://www.dasentwicklerhaus.de/dieidee",
-        "worksFor": {
-          "@id": "https://www.dasentwicklerhaus.de/#organization"
-        },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Krefeld",
-          "addressRegion": "Nordrhein-Westfalen",
-          "addressCountry": "DE"
-        }
-      },
-      {
-        "@type": "LocalBusiness",
-        "@id": "https://www.dasentwicklerhaus.de/#localbusiness",
-        "name": "Das Entwicklerhaus",
-        "description": "Plattform für KI-Projekte, Startups und digitale Innovation in Krefeld am Niederrhein.",
-        "url": "https://www.dasentwicklerhaus.de",
-        "telephone": "0176 42463017",
-        "email": "admin@dasentwicklerhaus.de",
-        "image": "https://www.dasentwicklerhaus.de/images/logo/logo-dasentwicklerhaus-1024x783.png",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Am Königshof 47",
-          "addressLocality": "Krefeld",
-          "postalCode": "47807",
-          "addressRegion": "Nordrhein-Westfalen",
-          "addressCountry": "DE"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 51.3388,
-          "longitude": 6.5853
-        },
-        "areaServed": ["Krefeld", "Niederrhein", "NRW", "Deutschland"],
-        "priceRange": "$$",
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "09:00",
-          "closes": "18:00"
-        }
-      }
-    ]
-  }
-
-  return <StructuredData data={graphData} />
-}
-
 export function ProjectSchema({ project }: { project: Project }) {
   const projectData = {
     "@context": "https://schema.org",
@@ -156,15 +26,11 @@ export function ProjectSchema({ project }: { project: Project }) {
     "url": `https://www.dasentwicklerhaus.de/projects/${project.slug}`,
     "image": project.image,
     "dateCreated": project.startDate,
-    "creator": {
-      "@type": "Organization",
-      "name": "Das Entwicklerhaus"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Das Entwicklerhaus",
-      "email": "admin@dasentwicklerhaus.de"
-    },
+    // Vorgestellte Unternehmen sind nicht vom Entwicklerhaus
+    "creator": project.art === 'eigen'
+      ? { "@id": PERSON_ID }
+      : { "@type": "Organization", "name": project.name },
+    "publisher": herausgeberLd(),
     "locationCreated": {
       "@type": "Place",
       "name": project.city
@@ -182,22 +48,6 @@ export function ProjectSchema({ project }: { project: Project }) {
   return <StructuredData data={projectData} />
 }
 
-export function WebSiteSchema() {
-  const websiteData = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://www.dasentwicklerhaus.de/#website",
-    "url": "https://www.dasentwicklerhaus.de",
-    "name": "Das Entwicklerhaus",
-    "publisher": {
-      "@id": "https://www.dasentwicklerhaus.de/#organization"
-    },
-    "inLanguage": "de-DE"
-  }
-
-  return <StructuredData data={websiteData} />
-}
-
 export function BlogPostSchema({ post }: { post: BlogPostType }) {
   const blogPostData = {
     "@context": "https://schema.org",
@@ -208,11 +58,9 @@ export function BlogPostSchema({ post }: { post: BlogPostType }) {
     "datePublished": post.publishedDate,
     "dateModified": post.publishedDate,
     "author": {
-      "@id": "https://www.dasentwicklerhaus.de/#person"
+      "@id": PERSON_ID
     },
-    "publisher": {
-      "@id": "https://www.dasentwicklerhaus.de/#organization"
-    },
+    "publisher": herausgeberLd(),
     "url": `https://www.dasentwicklerhaus.de/blog/${post.slug}`,
     "mainEntityOfPage": `https://www.dasentwicklerhaus.de/blog/${post.slug}`,
     "keywords": post.tags.join(', '),

@@ -5,7 +5,8 @@ import Breadcrumbs from './Breadcrumbs'
 interface AngebotHeroProps {
   h1: string
   intro: string
-  krumen: Krume[]
+  /** Ohne Brotkrumen auf der Startseite */
+  krumen?: Krume[]
   children?: ReactNode
 }
 
@@ -30,7 +31,7 @@ export default function AngebotHero({ h1, intro, krumen, children }: AngebotHero
         }}
       />
       <div className="relative z-10 mx-auto w-[90%] max-w-6xl pt-24 pb-16 lg:pt-28 lg:pb-24">
-        <Breadcrumbs krumen={krumen} />
+        {krumen && <Breadcrumbs krumen={krumen} />}
         <h1 className="max-w-4xl text-h3 font-bold text-balance lg:text-h2-lg">{h1}</h1>
         <p className="mt-6 max-w-3xl text-lg leading-relaxed lg:text-xl">{intro}</p>
         {children}

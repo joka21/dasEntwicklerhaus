@@ -75,11 +75,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         : post.title,
       description,
       images: [post.image],
-      creator: '@entwicklerhaus',
     },
     alternates: {
       canonical: `${baseUrl}/blog/${post.slug}`,
     },
+    // Alte Artikel bleiben erreichbar, sollen aber nicht in den Suchergebnissen stehen
+    ...(!post.indexieren && { robots: { index: false, follow: true } }),
   }
 }
 
@@ -107,6 +108,13 @@ const getCategoryLabel = (category: string) => {
     default:
       return category
   }
+}
+
+/** Entfernt die führende „# Titel“-Zeile, wenn sie den Artikeltitel wiederholt */
+function ohneTitelZeile(content: string, title: string) {
+  const text = content.trimStart()
+  const ersteZeile = text.split('\n', 1)[0]
+  return ersteZeile.trim() === `# ${title}` ? text.slice(ersteZeile.length).trimStart() : content
 }
 
 function getRelatedPosts(currentPost: BlogPost) {
@@ -205,7 +213,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="prose prose-lg max-w-none mb-12">
             <ReactMarkdown
               components={{
-                h1: ({node, ...props}) => <h1 className="text-3xl font-bold text-dark mt-8 mb-4" {...props} />,
+                // Die Seite hat schon eine H1 (Artikeltitel)
+                h1: ({node, ...props}) => <h2 className="text-3xl font-bold text-dark mt-8 mb-4" {...props} />,
                 h2: ({node, ...props}) => <h2 className="text-2xl font-bold text-dark mt-8 mb-4" {...props} />,
                 h3: ({node, ...props}) => <h3 className="text-xl font-semibold text-dark mt-6 mb-3" {...props} />,
                 p: ({node, ...props}) => <p className="text-dark leading-relaxed mb-4" {...props} />,
@@ -219,7 +228,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 ),
               }}
             >
-              {post.content}
+              {ohneTitelZeile(post.content, post.title)}
             </ReactMarkdown>
           </div>
 

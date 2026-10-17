@@ -12,6 +12,8 @@ export const KONTAKT_THEMEN: Record<KontaktThema, string> = {
 
 export const ANGEBOTE_UEBERSICHT = { href: '/angebote', label: 'Angebote', alleLabel: 'Alle Angebote' } as const
 
+export const UEBER_MICH_NAV = { slug: 'ueber-mich', href: '/ueber-mich', label: 'Über mich' } as const
+
 export const ZIELGRUPPEN_NAV: { slug: ZielgruppenSlug; href: string; label: string }[] = [
   { slug: 'website-fuer-vereine', href: '/website-fuer-vereine', label: 'Website für Vereine' },
   { slug: 'website-fuer-handwerker', href: '/website-fuer-handwerker', label: 'Website für Handwerker' },

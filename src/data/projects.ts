@@ -1,4 +1,4 @@
-import { Project } from '@/types/project'
+import { Project, ProjektKarte } from '@/types/project'
 
 export const sampleProjects: Project[] = [
   // Zukunft Kategorie - AI Literacy
@@ -11,6 +11,7 @@ export const sampleProjects: Project[] = [
     category: 'zukunft',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
     slug: 'ai-literacy',
+    art: 'eigen',
     status: 'aktiv',
     startDate: '2025-10-20',
     teamSize: 1,
@@ -142,6 +143,7 @@ Krefeld 2030 ist keine fertige Lösung, die von oben implementiert wird. Es ist 
     category: 'zusammenarbeit',
     image: 'https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?w=600&h=400&fit=crop',
     slug: 'krefeld-2030',
+    art: 'eigen',
     status: 'geplant',
     startDate: '2026-01-01',
     teamSize: 5,
@@ -228,6 +230,7 @@ Das Ladenprojekt zeigt: Digitalisierung muss nicht den Großen gehören. Mit den
     category: 'zukunft',
     image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop',
     slug: 'das-ladenprojekt',
+    art: 'eigen',
     status: 'geplant',
     startDate: '2025-11-01',
     teamSize: 3,
@@ -252,6 +255,7 @@ Mit einer Series-B-Finanzierung von €60 Millionen im Juli 2025 und über 350 U
     category: 'umwelt',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop',
     slug: 'makersite',
+    art: 'inspiration',
     status: 'aktiv',
     startDate: '2016-01-01',
     teamSize: 150,
@@ -276,6 +280,7 @@ Das Münchner Unternehmen betreibt das Munich Battery Lab und arbeitet mit führ
     category: 'umwelt',
     image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=600&h=400&fit=crop',
     slug: 'twaice-technologies',
+    art: 'inspiration',
     status: 'aktiv',
     startDate: '2018-01-01',
     teamSize: 120,
@@ -300,6 +305,7 @@ Mit einer Series-A-Finanzierung von €10 Millionen im Juni 2025 und über einer
     category: 'umwelt',
     image: 'https://images.unsplash.com/photo-1569163139394-de4798aa62b6?w=600&h=400&fit=crop',
     slug: 'climatiq',
+    art: 'inspiration',
     status: 'aktiv',
     startDate: '2020-01-01',
     teamSize: 45,
@@ -324,6 +330,7 @@ Im Januar 2025 ging am Düsseldorf Airport die weltweit erste integrierte DAC-to
     category: 'umwelt',
     image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop',
     slug: 'greenlyte',
+    art: 'inspiration',
     status: 'aktiv',
     startDate: '2022-01-01',
     teamSize: 60,
@@ -348,6 +355,7 @@ Das Essener Startup mit 20 Mitarbeitern wurde 2025 in die globale FoodTech 500 L
     category: 'umwelt',
     image: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=600&h=400&fit=crop',
     slug: 'vgreens',
+    art: 'inspiration',
     status: 'aktiv',
     startDate: '2020-01-01',
     teamSize: 20,
@@ -372,6 +380,7 @@ Im Februar 2025 erhielt das Kölner Unternehmen €5 Millionen Seed-Finanzierung
     category: 'umwelt',
     image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop',
     slug: 'planted',
+    art: 'inspiration',
     status: 'aktiv',
     startDate: '2020-01-01',
     teamSize: 50,
@@ -396,6 +405,7 @@ Mit über 175 Mitarbeitern, 65 Netzbetreiberkunden und 35 Millionen verwalteten 
     category: 'umwelt',
     image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop',
     slug: 'envelio',
+    art: 'inspiration',
     status: 'aktiv',
     startDate: '2017-01-01',
     teamSize: 175,
@@ -420,6 +430,7 @@ Mit 64 Mitarbeitern, 93 realisierten Projekten und €26,4 Millionen vermittelte
     category: 'umwelt',
     image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop',
     slug: 'ecoligo',
+    art: 'inspiration',
     status: 'aktiv',
     startDate: '2016-01-01',
     teamSize: 64,
@@ -444,6 +455,7 @@ Mit Großaufträgen der Deutschen Bahn (3.500 Weichen), einem Umsatz von €7,6 
     category: 'umwelt',
     image: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600&h=400&fit=crop',
     slug: 'konux',
+    art: 'inspiration',
     status: 'aktiv',
     startDate: '2014-01-01',
     teamSize: 100,
@@ -452,3 +464,66 @@ Mit Großaufträgen der Deutschen Bahn (3.500 Weichen), einem Umsatz von €7,6 
     }
   }
 ]
+
+// ---------------------------------------------------------------------------
+// Karten für Startseite und /projects
+// ---------------------------------------------------------------------------
+
+/** Eigene Projekte ohne Projektseite – die Karte verlinkt direkt die Website */
+const krefelderLaden: ProjektKarte = {
+  name: 'Krefelder Laden',
+  city: 'Krefeld',
+  description:
+    'Der lokale Wegweiser für Krefeld – Geschäfte, Angebote und Tipps aus der Stadt. Entwickelt mit WordPress und Next.js, live.',
+  category: 'menschen',
+  image: '/images/projects/krefelder-laden.png',
+  href: 'https://krefelder-laden.de/',
+  extern: true,
+}
+
+function alsKarte(project: Project): ProjektKarte {
+  return {
+    name: project.name,
+    city: project.city,
+    description: project.description,
+    category: project.category,
+    image: project.image,
+    href: `/projects/${project.slug}`,
+  }
+}
+
+function karte(slug: string): ProjektKarte {
+  return alsKarte(sampleProjects.find((p) => p.slug === slug)!)
+}
+
+/** Reihenfolge wie auf /projects; die Startseite zeigt die ersten drei */
+export const eigeneProjekte: ProjektKarte[] = [
+  krefelderLaden,
+  karte('krefeld-2030'),
+  karte('das-ladenprojekt'),
+  karte('ai-literacy'),
+]
+
+export const inspirationsProjekte: ProjektKarte[] = sampleProjects
+  .filter((p) => p.art === 'inspiration')
+  .map(alsKarte)
+
+export const projekteSeite = {
+  seo: {
+    title: 'Projekte & Inspiration | Das Entwicklerhaus',
+    description:
+      'Eigene Projekte aus Krefeld wie Krefelder Laden und Krefeld 2030 – und Unternehmen aus Deutschland und Europa, deren Ideen inspirieren.',
+  },
+  navLabel: 'Projekte',
+  h1: 'Projekte & Inspiration',
+  intro:
+    'Neben Kundenprojekten entwickle ich eigene Ideen für Krefeld und den Niederrhein. Außerdem stelle ich Unternehmen vor, deren Ideen mich inspirieren.',
+  eigeneTitel: 'Eigene Projekte',
+  inspirationTitel: 'Inspiration: Ideen aus Deutschland und Europa',
+  /** Auch als Infokasten auf den Projektseiten der vorgestellten Unternehmen */
+  inspirationHinweis:
+    'Diese Unternehmen stelle ich vor, weil ihre Ideen inspirieren. Es sind keine Kundenprojekte des Entwicklerhauses.',
+  mehrErfahren: 'Mehr erfahren',
+  zurWebsite: 'Zur Website',
+  neuerTab: '(öffnet in neuem Tab)',
+}
