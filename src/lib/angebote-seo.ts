@@ -2,12 +2,13 @@ import type { Metadata } from 'next'
 import type { Faq } from '@/types/angebote'
 import { anbieter } from '@/data/angebote'
 import { person, ueberMichSeite } from '@/data/ueber-mich'
+import { OG_GROESSE, ogBildPfad, type OgSeite } from '@/lib/og-bilder'
 
 // Die Live-Domain ist www.dasentwicklerhaus.de (die Adresse ohne www leitet
 // dorthin um), deshalb zeigen Canonicals und JSON-LD auf www.
 export const SITE_URL = 'https://www.dasentwicklerhaus.de'
 
-const OG_BILD = {
+export const OG_BILD = {
   url: `${SITE_URL}/images/logo/logo-dasentwicklerhaus-1024x783.png`,
   width: 1024,
   height: 783,
@@ -20,16 +21,25 @@ export function absoluteUrl(path: string): string {
 
 // title.absolute, damit das Template aus dem Root-Layout nicht noch einmal
 // „| Das Entwicklerhaus Krefeld“ anhängt.
+/** Eigenes Open-Graph-Bild (aus /og/…) statt Logo */
+export function ogBild(seite: OgSeite, alt: string) {
+  return { url: absoluteUrl(ogBildPfad(seite)), ...OG_GROESSE, alt }
+}
+
 export function angebotMetadata({
   title,
   description,
   path,
+  og,
 }: {
   title: string
   description: string
   path: string
+  /** Seite mit eigenem Open-Graph-Bild; sonst das Logo */
+  og?: OgSeite
 }): Metadata {
   const url = absoluteUrl(path)
+  const bild = og ? ogBild(og, title) : OG_BILD
   return {
     title: { absolute: title },
     description,
@@ -41,13 +51,13 @@ export function angebotMetadata({
       title,
       description,
       url,
-      images: [OG_BILD],
+      images: [bild],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [OG_BILD.url],
+      images: [bild.url],
     },
   }
 }
@@ -89,6 +99,8 @@ export function professionalServiceLd({
     name: anbieter.name,
     description: anbieter.beschreibung,
     url: SITE_URL,
+    telephone: anbieter.telefon,
+    email: anbieter.email,
     image: OG_BILD.url,
     logo: `${SITE_URL}/images/logo/logo-Klein.webp`,
     address: {

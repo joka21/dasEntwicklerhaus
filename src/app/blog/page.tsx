@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import BlogHero from '@/components/blog/BlogHero'
@@ -29,7 +28,11 @@ export default function BlogPage() {
   return (
     <>
       <Header />
-      <BlogHero />
+      <BlogHero
+        artikel={blogPosts.length}
+        themen={new Set(blogPosts.map(post => post.category)).size}
+        lesezeit={blogPosts.reduce((summe, post) => summe + post.readTime, 0)}
+      />
 
       <main id="main-content" className="bg-light py-12">
         <div className="mx-auto max-w-[1500px] px-4 lg:px-8">
@@ -74,21 +77,6 @@ export default function BlogPage() {
             </div>
           )}
 
-          {/* Call-to-Action */}
-          <div className="mt-16 bg-gradient-to-r from-primary to-zukunft rounded-lg p-8 text-center text-white">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-              Bleib auf dem Laufenden
-            </h2>
-            <p className="text-lg mb-6 max-w-2xl mx-auto">
-              Neue Artikel zu Startups, KI und Nachhaltigkeit direkt in dein Postfach.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-block bg-white text-primary px-8 py-3 rounded-md font-medium hover:bg-light-100 transition-colors"
-            >
-              Newsletter abonnieren
-            </Link>
-          </div>
         </div>
       </main>
 

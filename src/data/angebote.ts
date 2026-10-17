@@ -23,16 +23,17 @@ export const cta: CtaTexte = {
   text: 'Ein kurzes Gespräch reicht, um zu klären, welches Paket zu Ihnen passt. Unverbindlich und persönlich – direkt aus Krefeld.',
   buttonAnfrage: 'Kostenloses Erstgespräch anfragen',
   buttonAnrufen: 'Anrufen',
-  // TODO_JO: Telefonnummer eintragen (telefon z. B. '+49…', telefonAnzeige z. B. '0176 …').
-  // Solange null, wird der Anrufen-Button nicht angezeigt.
-  telefon: null,
-  telefonAnzeige: null,
+  // Wie im Impressum; null blendet den Anrufen-Button aus
+  telefon: '+4917642463017',
+  telefonAnzeige: '0176 42463017',
   kontaktPfad: '/contact',
 }
 
-/** Anbieterangaben für JSON-LD (Adresse wie im OrganizationSchema der Website) */
+/** Anbieterangaben für JSON-LD – nur Angaben aus dem Impressum */
 export const anbieter = {
   name: 'Das Entwicklerhaus',
+  telefon: '+4917642463017',
+  email: 'admin@dasentwicklerhaus.de',
   beschreibung:
     'Websites, Onlineshops und KI-Lösungen für kleine und mittlere Betriebe und Vereine am Niederrhein – mit KI günstig gebaut und persönlich betreut aus Krefeld.',
   adresse: {
@@ -44,6 +45,8 @@ export const anbieter = {
   },
   /** Einzugsgebiet für die Seiten ohne Stadtbezug */
   einzugsgebiet: ['Krefeld', 'Niederrhein'],
+  /** Einzugsgebiet des Unternehmens insgesamt (JSON-LD im Layout) */
+  einzugsgebietGesamt: ['Krefeld', 'Niederrhein', 'Nordrhein-Westfalen'],
 }
 
 export const seitenTexte = {

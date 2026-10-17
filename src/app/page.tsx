@@ -7,15 +7,14 @@ import AblaufSchritte from '@/components/angebote/AblaufSchritte'
 import AngebotHero from '@/components/angebote/AngebotHero'
 import AngebotKarte from '@/components/angebote/AngebotKarte'
 import CtaBlock from '@/components/angebote/CtaBlock'
-import JsonLd from '@/components/angebote/JsonLd'
 import Sektion from '@/components/angebote/Sektion'
 import VorteilsListe from '@/components/angebote/VorteilsListe'
 import { uebersicht, zielgruppen } from '@/data/angebote'
 import { eigeneProjekte } from '@/data/projects'
 import { startseite } from '@/data/startseite'
-import { angebotMetadata, professionalServiceLd } from '@/lib/angebote-seo'
+import { angebotMetadata } from '@/lib/angebote-seo'
 
-export const metadata = angebotMetadata({ ...startseite.seo, path: '/' })
+export const metadata = angebotMetadata({ ...startseite.seo, path: '/', og: 'start' })
 
 const LINK_PFEIL = 'font-bold underline underline-offset-4 hover:text-zusammenarbeit'
 
@@ -24,14 +23,6 @@ export default function Home() {
 
   return (
     <>
-      <JsonLd
-        knoten={[
-          professionalServiceLd({
-            areaServed: ['Krefeld', 'Niederrhein', 'Nordrhein-Westfalen'],
-            angebote: zielgruppen.map((z) => ({ name: z.karte.titel, path: `/${z.slug}` })),
-          }),
-        ]}
-      />
       <Header />
       <main id="main-content">
         <AngebotHero h1={startseite.h1} intro={startseite.intro}>

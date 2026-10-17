@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import JsonLd from '@/components/angebote/JsonLd'
-import { personLd, websiteLd } from '@/lib/angebote-seo'
+import { personLd, professionalServiceLd, websiteLd } from '@/lib/angebote-seo'
+import { anbieter, zielgruppen } from '@/data/angebote'
 import { startseite } from '@/data/startseite'
 import { person } from '@/data/ueber-mich'
 import { UEBER_MICH_NAV } from '@/data/angebote-navigation'
@@ -27,7 +28,6 @@ export const metadata: Metadata = {
   formatDetection: {
     email: false,
     address: false,
-    telephone: false,
   },
   openGraph: {
     type: 'website',
@@ -95,7 +95,16 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-sans antialiased`}
       >
-        <JsonLd knoten={[websiteLd(), personLd()]} />
+        <JsonLd
+          knoten={[
+            websiteLd(),
+            personLd(),
+            professionalServiceLd({
+              areaServed: anbieter.einzugsgebietGesamt,
+              angebote: zielgruppen.map((z) => ({ name: z.karte.titel, path: `/${z.slug}` })),
+            }),
+          ]}
+        />
         {children}
         <CookieBanner />
       </body>

@@ -15,7 +15,6 @@ import {
   angebotMetadata,
   breadcrumbLd,
   faqPageLd,
-  professionalServiceLd,
   serviceLd,
   type Krume,
 } from '@/lib/angebote-seo'
@@ -40,7 +39,7 @@ export function zielgruppenKrumen(slug: ZielgruppenSlug): Krume[] {
 
 export function zielgruppenMetadata(slug: ZielgruppenSlug) {
   const z = getZielgruppe(slug)
-  return angebotMetadata({ ...z.seo, path: pfad(slug) })
+  return angebotMetadata({ ...z.seo, path: pfad(slug), og: slug })
 }
 
 export default function ZielgruppenSeite({ slug }: { slug: ZielgruppenSlug }) {
@@ -56,7 +55,6 @@ export default function ZielgruppenSeite({ slug }: { slug: ZielgruppenSlug }) {
     <>
       <JsonLd
         knoten={[
-          professionalServiceLd(),
           serviceLd({
             name: z.navLabel,
             description: z.seo.description,

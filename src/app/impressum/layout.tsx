@@ -1,12 +1,10 @@
-import type { Metadata } from 'next'
+import { angebotMetadata } from '@/lib/angebote-seo'
 
-export const metadata: Metadata = {
-  title: 'Impressum - Das Entwicklerhaus',
-  description: 'Impressum und rechtliche Angaben von Das Entwicklerhaus',
-  alternates: {
-    canonical: 'https://www.dasentwicklerhaus.de/impressum',
-  },
-}
+export const metadata = angebotMetadata({
+  title: 'Impressum | Das Entwicklerhaus',
+  description: 'Impressum von Das Entwicklerhaus: Josef Kalenberg, Am Königshof 47, 47807 Krefeld – Kontakt, Steuernummer und rechtliche Hinweise.',
+  path: '/impressum',
+})
 
 export default function ImpressumLayout({
   children,
