@@ -75,11 +75,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         : post.title,
       description,
       images: [post.image],
-      creator: '@entwicklerhaus',
     },
     alternates: {
       canonical: `${baseUrl}/blog/${post.slug}`,
     },
+    // Alte Artikel bleiben erreichbar, sollen aber nicht in den Suchergebnissen stehen
+    ...(!post.indexieren && { robots: { index: false, follow: true } }),
   }
 }
 

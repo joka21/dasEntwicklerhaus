@@ -1,7 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { OrganizationSchema, WebSiteSchema } from '@/components/StructuredData'
+import JsonLd from '@/components/angebote/JsonLd'
+import { personLd, websiteLd } from '@/lib/angebote-seo'
+import { startseite } from '@/data/startseite'
+import { person } from '@/data/ueber-mich'
+import { UEBER_MICH_NAV } from '@/data/angebote-navigation'
 import CookieBanner from '@/components/CookieBanner'
 
 const inter = Inter({
@@ -11,14 +15,14 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.dasentwicklerhaus.de'),
+  // Standard für Seiten ohne eigene Angaben; die Startseite setzt dieselben Texte
   title: {
-    default: 'Das Entwicklerhaus Krefeld – Innovation & KI-Projekte vom Niederrhein | NRW',
+    default: startseite.seo.title,
     template: '%s | Das Entwicklerhaus Krefeld'
   },
-  description: 'Das Entwicklerhaus in Krefeld am Niederrhein: Plattform für KI-Projekte, Startups und Innovation in NRW. Gegründet von Josef Kalenberg – Webentwickler und Gründer aus Krefeld. Ideen aus der Region für Deutschland und Europa.',
-  keywords: ['Entwicklerhaus Krefeld', 'KI Projekte Krefeld', 'Innovation Niederrhein', 'Startups NRW', 'Webentwickler Krefeld', 'KI-Startups Deutschland', 'Digitale Innovation Niederrhein', 'Projekte Krefeld', 'Tech Krefeld', 'AI Literacy NRW', 'Gründer Niederrhein', 'IT Projekte NRW', 'Josef Kalenberg Krefeld', 'Startup Plattform Niederrhein'],
-  authors: [{ name: 'Das Entwicklerhaus Team', url: 'https://www.dasentwicklerhaus.de' }],
-  creator: 'Das Entwicklerhaus',
+  description: startseite.seo.description,
+  authors: [{ name: person.name, url: `https://www.dasentwicklerhaus.de${UEBER_MICH_NAV.href}` }],
+  creator: person.name,
   publisher: 'Das Entwicklerhaus',
   formatDetection: {
     email: false,
@@ -30,8 +34,8 @@ export const metadata: Metadata = {
     locale: 'de_DE',
     url: 'https://www.dasentwicklerhaus.de',
     siteName: 'Das Entwicklerhaus',
-    title: 'Das Entwicklerhaus Krefeld – Innovation & KI-Projekte vom Niederrhein | NRW',
-    description: 'Das Entwicklerhaus in Krefeld am Niederrhein: Plattform für KI-Projekte, Startups und Innovation in NRW. Gegründet von Josef Kalenberg – Webentwickler und Gründer aus Krefeld.',
+    title: startseite.seo.title,
+    description: startseite.seo.description,
     images: [
       {
         url: '/images/logo/logo-dasentwicklerhaus-1024x783.png',
@@ -43,9 +47,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Das Entwicklerhaus Krefeld – Innovation & KI-Projekte vom Niederrhein | NRW',
-    description: 'Das Entwicklerhaus in Krefeld am Niederrhein: Plattform für KI-Projekte, Startups und Innovation in NRW. Gegründet von Josef Kalenberg – Webentwickler und Gründer aus Krefeld.',
-    creator: '@entwicklerhaus',
+    title: startseite.seo.title,
+    description: startseite.seo.description,
     images: ['/images/logo/logo-dasentwicklerhaus-1024x783.png'],
   },
   robots: {
@@ -92,8 +95,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} font-sans antialiased`}
       >
-        <OrganizationSchema />
-        <WebSiteSchema />
+        <JsonLd knoten={[websiteLd(), personLd()]} />
         {children}
         <CookieBanner />
       </body>

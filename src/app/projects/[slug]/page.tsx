@@ -7,6 +7,7 @@ import Header from '@/components/Header'
 import ContentSection from '@/components/ContentSection'
 import Footer from '@/components/Footer'
 import { ProjectSchema } from '@/components/StructuredData'
+import InspirationHinweis from '@/components/InspirationHinweis'
 
 interface ProjectPageProps {
   params: Promise<{
@@ -60,7 +61,6 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: `${project.name} - ${project.city}`,
       description: project.description,
       images: [project.image],
-      creator: '@entwicklerhaus',
     },
     alternates: {
       canonical: `${baseUrl}/projects/${project.slug}`,
@@ -186,6 +186,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             Zurück zu allen Projekten
           </Link>
         </div>
+
+        {project.art === 'inspiration' && <InspirationHinweis className="mb-8" />}
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Main Content */}

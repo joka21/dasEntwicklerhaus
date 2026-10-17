@@ -7,6 +7,8 @@ export interface Project {
   category: 'menschen' | 'frieden' | 'umwelt' | 'zusammenarbeit' | 'zukunft'
   image: string
   slug: string
+  /** Eigenes Projekt oder vorgestelltes Unternehmen (keine Kundenprojekte) */
+  art: 'eigen' | 'inspiration'
   status: 'aktiv' | 'geplant' | 'abgeschlossen'
   startDate: string
   teamSize: number
@@ -21,4 +23,15 @@ export interface Project {
     instagram?: string
     twitter?: string
   }
+}
+
+/** Daten für eine Projektkarte; extern = Link auf eine fremde Website */
+export interface ProjektKarte {
+  name: string
+  city: string
+  description: string
+  category: Project['category']
+  image: string
+  href: string
+  extern?: boolean
 }

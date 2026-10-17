@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { Faq } from '@/types/angebote'
 import { anbieter } from '@/data/angebote'
+import { person, ueberMichSeite } from '@/data/ueber-mich'
 
 // Die Live-Domain ist www.dasentwicklerhaus.de (die Adresse ohne www leitet
 // dorthin um), deshalb zeigen Canonicals und JSON-LD auf www.
@@ -55,15 +56,32 @@ export function angebotMetadata({
 // JSON-LD
 // ---------------------------------------------------------------------------
 
-const DIENSTLEISTER_ID = `${SITE_URL}/#dienstleister`
+export const DIENSTLEISTER_ID = `${SITE_URL}/#dienstleister`
+export const PERSON_ID = `${SITE_URL}/#person`
+const WEBSITE_ID = `${SITE_URL}/#website`
 
-function orte(namen: string[]) {
-  return namen.map((name) =>
-    name === 'Niederrhein' ? { '@type': 'Place', name } : { '@type': 'City', name }
-  )
+/** Verweis auf den Dienstleister für Knoten auf Seiten ohne eigenen ProfessionalService-Knoten */
+const DIENSTLEISTER_VERWEIS = { '@type': 'ProfessionalService', '@id': DIENSTLEISTER_ID, name: anbieter.name }
+
+const ORTSTYP: Record<string, string> = {
+  Niederrhein: 'Place',
+  'Nordrhein-Westfalen': 'State',
 }
 
-export function professionalServiceLd() {
+function orte(namen: string[]) {
+  return namen.map((name) => ({ '@type': ORTSTYP[name] ?? 'City', name }))
+}
+
+/** Angebot für `makesOffer`; verweist auf den Service-Knoten der Angebotsseite */
+export interface LdAngebot {
+  name: string
+  path: string
+}
+
+export function professionalServiceLd({
+  areaServed = anbieter.einzugsgebiet,
+  angebote,
+}: { areaServed?: string[]; angebote?: LdAngebot[] } = {}) {
   const a = anbieter.adresse
   return {
     '@type': 'ProfessionalService',
@@ -81,8 +99,69 @@ export function professionalServiceLd() {
       addressRegion: a.region,
       addressCountry: a.land,
     },
-    areaServed: orte(anbieter.einzugsgebiet),
+    areaServed: orte(areaServed),
+    founder: { '@id': PERSON_ID },
+    ...(angebote && {
+      makesOffer: angebote.map((o) => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          '@id': `${absoluteUrl(o.path)}#service`,
+          name: o.name,
+          url: absoluteUrl(o.path),
+        },
+      })),
+    }),
   }
+}
+
+// Person und WebSite stehen im Root-Layout und damit auf jeder Seite.
+export function personLd() {
+  return {
+    '@type': 'Person',
+    '@id': PERSON_ID,
+    name: person.name,
+    jobTitle: person.jobTitle,
+    description: person.beschreibung,
+    url: absoluteUrl(`/${ueberMichSeite.slug}`),
+    ...(person.foto && { image: absoluteUrl(person.foto) }),
+    worksFor: DIENSTLEISTER_VERWEIS,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: anbieter.adresse.ort,
+      addressRegion: anbieter.adresse.region,
+      addressCountry: anbieter.adresse.land,
+    },
+  }
+}
+
+export function websiteLd() {
+  return {
+    '@type': 'WebSite',
+    '@id': WEBSITE_ID,
+    url: SITE_URL,
+    name: anbieter.name,
+    inLanguage: 'de-DE',
+    publisher: DIENSTLEISTER_VERWEIS,
+  }
+}
+
+export function aboutPageLd({ name, description, path }: { name: string; description: string; path: string }) {
+  return {
+    '@type': 'AboutPage',
+    '@id': `${absoluteUrl(path)}#webpage`,
+    url: absoluteUrl(path),
+    name,
+    description,
+    inLanguage: 'de-DE',
+    isPartOf: { '@id': WEBSITE_ID },
+    mainEntity: { '@id': PERSON_ID },
+  }
+}
+
+/** Herausgeber für BlogPosting & Co. */
+export function herausgeberLd() {
+  return { ...DIENSTLEISTER_VERWEIS, logo: `${SITE_URL}/images/logo/logo-Klein.webp` }
 }
 
 export function serviceLd({

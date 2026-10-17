@@ -3,6 +3,7 @@ import { sampleProjects } from '@/data/projects'
 import { blogPosts } from '@/data/blog'
 import { uebersicht, veroeffentlichteStadtseiten, zielgruppen } from '@/data/angebote'
 import { absoluteUrl } from '@/lib/angebote-seo'
+import { UEBER_MICH_NAV } from '@/data/angebote-navigation'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.dasentwicklerhaus.de'
@@ -41,6 +42,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}${UEBER_MICH_NAV.href}`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/contact`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
@@ -68,8 +75,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  // Dynamic blog pages
-  const blogPages: MetadataRoute.Sitemap = blogPosts.map(post => ({
+  // Dynamic blog pages; nur Artikel, die indexiert werden sollen
+  const blogPages: MetadataRoute.Sitemap = blogPosts.filter(post => post.indexieren).map(post => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.publishedDate),
     changeFrequency: 'monthly' as const,
