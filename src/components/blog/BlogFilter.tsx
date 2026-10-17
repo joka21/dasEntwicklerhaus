@@ -8,9 +8,9 @@ interface BlogFilterProps {
 }
 
 const categories: { value: BlogCategory; label: string; color: string }[] = [
-  { value: 'alle', label: 'Alle Artikel', color: 'hover:bg-primary hover:text-white' },
-  { value: 'ki', label: 'KI & Technologie', color: 'hover:bg-zukunft hover:text-white' },
-  { value: 'nachhaltigkeit', label: 'Nachhaltigkeit', color: 'hover:bg-umwelt hover:text-white' },
+  { value: 'alle', label: 'Alle Artikel', color: 'hover:bg-primary hover:text-black' },
+  { value: 'ki', label: 'KI & Technologie', color: 'hover:bg-zukunft hover:text-black' },
+  { value: 'nachhaltigkeit', label: 'Nachhaltigkeit', color: 'hover:bg-umwelt hover:text-black' },
   { value: 'startups', label: 'Startups', color: 'hover:bg-menschen hover:text-black' },
 ]
 
@@ -25,16 +25,16 @@ export default function BlogFilter({ activeFilter, onFilterChange }: BlogFilterP
           if (isActive) {
             switch (category.value) {
               case 'ki':
-                activeColorClass = 'bg-zukunft text-white'
+                activeColorClass = 'bg-zukunft text-black'
                 break
               case 'nachhaltigkeit':
-                activeColorClass = 'bg-umwelt text-white'
+                activeColorClass = 'bg-umwelt text-black'
                 break
               case 'startups':
                 activeColorClass = 'bg-menschen text-black'
                 break
               default:
-                activeColorClass = 'bg-primary text-white'
+                activeColorClass = 'bg-primary text-black'
             }
           }
 

@@ -9,7 +9,7 @@ import {
   seitenTexte,
   veroeffentlichteStadtseiten,
 } from '@/data/angebote'
-import { breadcrumbLd, faqPageLd, professionalServiceLd, serviceLd } from '@/lib/angebote-seo'
+import { breadcrumbLd, faqPageLd, serviceLd } from '@/lib/angebote-seo'
 import AngebotHero from './AngebotHero'
 import CtaBlock from './CtaBlock'
 import FaqListe from './FaqListe'
@@ -37,7 +37,6 @@ export default function StadtSeite({ seite }: { seite: Stadtseite }) {
     <>
       <JsonLd
         knoten={[
-          professionalServiceLd(),
           serviceLd({
             name: mitStadt(z.stadtMuster.h1, stadt.name),
             description: seite.description,

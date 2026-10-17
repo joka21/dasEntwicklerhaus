@@ -8,11 +8,11 @@ import JsonLd from '@/components/angebote/JsonLd'
 import LeistungsListe from '@/components/angebote/LeistungsListe'
 import Sektion from '@/components/angebote/Sektion'
 import { seitenTexte, uebersicht, zielgruppen } from '@/data/angebote'
-import { angebotMetadata, breadcrumbLd, professionalServiceLd, type Krume } from '@/lib/angebote-seo'
+import { angebotMetadata, breadcrumbLd, type Krume } from '@/lib/angebote-seo'
 
 const PFAD = `/${uebersicht.slug}`
 
-export const metadata = angebotMetadata({ ...uebersicht.seo, path: PFAD })
+export const metadata = angebotMetadata({ ...uebersicht.seo, path: PFAD, og: 'angebote' })
 
 const krumen: Krume[] = [
   { name: seitenTexte.startseite, path: '/' },
@@ -22,7 +22,7 @@ const krumen: Krume[] = [
 export default function AngebotePage() {
   return (
     <>
-      <JsonLd knoten={[professionalServiceLd(), breadcrumbLd(krumen)]} />
+      <JsonLd knoten={[breadcrumbLd(krumen)]} />
       <Header />
       <main id="main-content">
         <AngebotHero h1={uebersicht.h1} intro={uebersicht.intro} krumen={krumen} />

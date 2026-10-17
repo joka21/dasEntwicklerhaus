@@ -8,9 +8,9 @@ interface BlogCardProps {
 const getCategoryColor = (category: string) => {
   switch (category) {
     case 'ki':
-      return 'bg-zukunft text-white'
+      return 'bg-zukunft text-black'
     case 'nachhaltigkeit':
-      return 'bg-umwelt text-white'
+      return 'bg-umwelt text-black'
     case 'startups':
       return 'bg-menschen text-black'
     default:

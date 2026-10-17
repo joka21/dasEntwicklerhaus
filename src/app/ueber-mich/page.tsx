@@ -11,7 +11,7 @@ import { aboutPageLd, angebotMetadata, breadcrumbLd, type Krume } from '@/lib/an
 
 const PFAD = `/${ueberMichSeite.slug}`
 
-export const metadata = angebotMetadata({ ...ueberMichSeite.seo, path: PFAD })
+export const metadata = angebotMetadata({ ...ueberMichSeite.seo, path: PFAD, og: 'ueber-mich' })
 
 const krumen: Krume[] = [
   { name: seitenTexte.startseite, path: '/' },
