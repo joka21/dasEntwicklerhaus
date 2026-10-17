@@ -106,6 +106,9 @@ const nextConfig = {
         destination: '/dieidee',
         permanent: true,
       },
+      // Frühere Kurzadressen; die Zielartikel stehen inzwischen auf noindex
+      { source: '/ki-startups', destination: '/blog', permanent: true },
+      { source: '/ki-deutschland', destination: '/blog', permanent: true },
     ]
   },
 
