@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { ANGEBOTE_UEBERSICHT, ZIELGRUPPEN_NAV } from '@/data/angebote-navigation'
+import { ANGEBOTE_UEBERSICHT, UEBER_MICH_NAV, ZIELGRUPPEN_NAV } from '@/data/angebote-navigation'
 
 const ANGEBOTE_LINKS = [{ href: ANGEBOTE_UEBERSICHT.href, label: ANGEBOTE_UEBERSICHT.alleLabel }, ...ZIELGRUPPEN_NAV]
 
@@ -60,18 +60,18 @@ export default function Header() {
                   height={40}
                   className="h-10 w-[52px]"
                 />
-                <span className="text-lg font-medium text-zusammenarbeit-800 lg:text-xl">
+                <span className="whitespace-nowrap text-lg font-medium text-zusammenarbeit-800 lg:text-xl">
                   Das Entwicklerhaus
                 </span>
               </Link>
             </div>
             
-            <div className="hidden lg:flex lg:items-center lg:space-x-8">
+            <div className="hidden lg:flex lg:items-center lg:space-x-2 xl:space-x-8">
               <div className="relative" ref={angeboteRef}>
                 <button
                   type="button"
                   ref={angeboteButtonRef}
-                  className="flex items-center gap-1 text-base font-medium text-zusammenarbeit-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
+                  className="flex items-center gap-1 text-base font-medium text-zusammenarbeit-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1 whitespace-nowrap"
                   aria-expanded={angeboteOffen}
                   aria-controls="angebote-menue"
                   onClick={() => setAngeboteOffen(!angeboteOffen)}
@@ -102,31 +102,37 @@ export default function Header() {
               </div>
               <Link
                 href="/projects"
-                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
+                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1 whitespace-nowrap"
               >
                 Projekte
               </Link>
               <Link
                 href="/blog"
-                className="text-base font-medium text-menschen-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
+                className="text-base font-medium text-menschen-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1 whitespace-nowrap"
               >
                 Blog
               </Link>
               <Link
                 href="/ai-literacy"
-                className="text-base font-medium text-zukunft-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
+                className="text-base font-medium text-zukunft-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1 whitespace-nowrap"
               >
                 AI Literacy
               </Link>
               <Link
                 href="/dieidee"
-                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
+                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1 whitespace-nowrap"
               >
                 Die Idee
               </Link>
               <Link
+                href={UEBER_MICH_NAV.href}
+                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1 whitespace-nowrap"
+              >
+                {UEBER_MICH_NAV.label}
+              </Link>
+              <Link
                 href="/contact"
-                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1"
+                className="text-base font-medium text-umwelt-800 hover:text-primary transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus focus:ring-offset-2 rounded-md px-2 py-1 whitespace-nowrap"
               >
                 Kontakt
               </Link>
@@ -218,6 +224,13 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Die Idee
+                </Link>
+                <Link
+                  href={UEBER_MICH_NAV.href}
+                  className="block px-3 py-2 text-base font-medium text-umwelt-800 hover:text-primary hover:bg-light-100 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-focus"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {UEBER_MICH_NAV.label}
                 </Link>
                 <Link
                   href="/contact"

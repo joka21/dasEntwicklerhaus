@@ -29,10 +29,6 @@ export default function BlogPage() {
   return (
     <>
       <Header />
-      <div className="sr-only">
-        <h1>Blog - Das Entwicklerhaus</h1>
-      </div>
-
       <BlogHero />
 
       <main id="main-content" className="bg-light py-12">
