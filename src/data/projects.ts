@@ -12,6 +12,7 @@ export const sampleProjects: Project[] = [
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop',
     slug: 'ai-literacy',
     art: 'eigen',
+    seoTitel: 'AI Literacy Lernplattform',
     status: 'aktiv',
     startDate: '2025-10-20',
     teamSize: 1,
@@ -144,6 +145,7 @@ Krefeld 2030 ist keine fertige Lösung, die von oben implementiert wird. Es ist 
     image: 'https://images.unsplash.com/photo-1494959764136-6be9eb3c261e?w=600&h=400&fit=crop',
     slug: 'krefeld-2030',
     art: 'eigen',
+    seoTitel: 'Krefeld 2030: digitale Bürgerbeteiligung',
     status: 'geplant',
     startDate: '2026-01-01',
     teamSize: 5,
@@ -231,6 +233,7 @@ Das Ladenprojekt zeigt: Digitalisierung muss nicht den Großen gehören. Mit den
     image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop',
     slug: 'das-ladenprojekt',
     art: 'eigen',
+    seoTitel: 'Das Ladenprojekt: KI-Shops für Händler',
     status: 'geplant',
     startDate: '2025-11-01',
     teamSize: 3,
@@ -492,6 +495,11 @@ function alsKarte(project: Project): ProjektKarte {
   }
 }
 
+/** Titelteil ohne Marke; vorgestellte Unternehmen nach Muster „Name (Ort)“ */
+export function projektTitel(project: Project): string {
+  return project.seoTitel ?? `${project.name} (${project.city})`
+}
+
 function karte(slug: string): ProjektKarte {
   return alsKarte(sampleProjects.find((p) => p.slug === slug)!)
 }
@@ -510,7 +518,7 @@ export const inspirationsProjekte: ProjektKarte[] = sampleProjects
 
 export const projekteSeite = {
   seo: {
-    title: 'Projekte & Inspiration | Das Entwicklerhaus',
+    title: 'Projekte & Inspiration',
     description:
       'Eigene Projekte aus Krefeld wie Krefelder Laden und Krefeld 2030 – und Unternehmen aus Deutschland und Europa, deren Ideen inspirieren.',
   },

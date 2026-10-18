@@ -1,10 +1,13 @@
 import type { Metadata } from 'next'
+import { vollerTitel } from '@/lib/angebote-seo'
+
+const TITEL = 'AI Literacy: KI verstehen und nutzen'
 
 export const metadata: Metadata = {
-  title: 'AI Literacy – KI verstehen und nutzen | Lernplattform aus Krefeld, NRW',
+  title: TITEL,
   description: 'KI-Kompetenz aus Krefeld am Niederrhein: Interaktive Lernplattform für künstliche Intelligenz. Verstehen, nutzen und verantwortungsvoll gestalten – ein Projekt aus NRW.',
   openGraph: {
-    title: 'AI Literacy – KI verstehen und nutzen | Lernplattform aus Krefeld, NRW',
+    title: vollerTitel(TITEL),
     description: 'KI-Kompetenz aus Krefeld am Niederrhein: Interaktive Lernplattform für künstliche Intelligenz. Verstehen, nutzen und verantwortungsvoll gestalten – ein Projekt aus NRW.',
     url: 'https://www.dasentwicklerhaus.de/ai-literacy',
   },

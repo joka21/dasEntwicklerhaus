@@ -14,7 +14,7 @@ import { eigeneProjekte } from '@/data/projects'
 import { startseite } from '@/data/startseite'
 import { angebotMetadata } from '@/lib/angebote-seo'
 
-export const metadata = angebotMetadata({ ...startseite.seo, path: '/', og: 'start' })
+export const metadata = angebotMetadata({ ...startseite.seo, path: '/', og: 'start', absolut: true })
 
 const LINK_PFEIL = 'font-bold underline underline-offset-4 hover:text-zusammenarbeit'
 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import JsonLd from '@/components/angebote/JsonLd'
-import { personLd, professionalServiceLd, websiteLd } from '@/lib/angebote-seo'
+import { personLd, professionalServiceLd, TITEL_VORLAGE, websiteLd } from '@/lib/angebote-seo'
 import { anbieter, zielgruppen } from '@/data/angebote'
 import { startseite } from '@/data/startseite'
 import { person } from '@/data/ueber-mich'
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   // Standard für Seiten ohne eigene Angaben; die Startseite setzt dieselben Texte
   title: {
     default: startseite.seo.title,
-    template: '%s | Das Entwicklerhaus Krefeld'
+    template: TITEL_VORLAGE
   },
   description: startseite.seo.description,
   authors: [{ name: person.name, url: `https://www.dasentwicklerhaus.de${UEBER_MICH_NAV.href}` }],

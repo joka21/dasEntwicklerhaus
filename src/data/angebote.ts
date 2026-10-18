@@ -82,7 +82,7 @@ export const uebersicht: Uebersicht = {
   slug: 'angebote',
   navLabel: ANGEBOTE_UEBERSICHT.label,
   seo: {
-    title: 'Websites, Onlineshops & KI am Niederrhein | Entwicklerhaus',
+    title: 'Websites, Onlineshops & KI am Niederrhein',
     description:
       'Websites für Vereine und Handwerksbetriebe, Onlineshops vom Starter bis zum Großhandel – mit KI-Assistent, persönlicher Betreuung und Hosting in Deutschland.',
   },
@@ -121,7 +121,7 @@ const vereine: Zielgruppe = {
   thema: 'verein',
   navLabel: navLabel('website-fuer-vereine'),
   seo: {
-    title: 'Website für Vereine mit KI-Pflege | Entwicklerhaus',
+    title: 'Website für Vereine mit KI-Pflege',
     description:
       'Vereinswebsite mit Terminen, Berichten und Galerie. Inhalte per Stichpunkt, Foto oder Sprachnachricht – der KI-Assistent schreibt, Sie geben frei.',
   },
@@ -227,7 +227,7 @@ const handwerker: Zielgruppe = {
   thema: 'handwerk',
   navLabel: navLabel('website-fuer-handwerker'),
   seo: {
-    title: 'Website für Handwerker: mehr Anfragen | Entwicklerhaus',
+    title: 'Website für Handwerker: mehr Anfragen',
     description:
       'Handwerker-Website mit Referenzen von der Baustelle, Anfrage mit Foto-Upload und Karriereseite für Azubis und Gesellen. Pflege per Sprachnachricht.',
   },
@@ -333,7 +333,7 @@ const onlineshop: Zielgruppe = {
   thema: 'onlineshop',
   navLabel: navLabel('onlineshop-erstellen'),
   seo: {
-    title: 'Onlineshop erstellen: Starter bis B2B | Entwicklerhaus',
+    title: 'Onlineshop erstellen: Starter bis B2B',
     description:
       'Onlineshop auf WooCommerce mit KI-Produkttexten, Beratungsassistent und B2B-Funktionen. Ihr Shop gehört Ihnen, Hosting in Deutschland, Betreuung aus Krefeld.',
   },
@@ -482,7 +482,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-vereine',
     stadt: 'krefeld',
     slug: 'website-fuer-vereine-krefeld',
-    titel: 'Website für Vereine in Krefeld | Entwicklerhaus',
+    titel: 'Website für Vereine in Krefeld',
     description:
       'Vereinswebsite in Krefeld: Termine, Berichte und Fotos einfach pflegen – mit KI-Assistent und persönlicher Betreuung vom Niederrhein.',
     einleitungLokal: TODO_JO,
@@ -498,7 +498,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-vereine',
     stadt: 'duesseldorf',
     slug: 'website-fuer-vereine-duesseldorf',
-    titel: 'Website für Vereine in Düsseldorf | Entwicklerhaus',
+    titel: 'Website für Vereine in Düsseldorf',
     description:
       'Vereinswebsite in Düsseldorf: Termine, Berichte und Fotos einfach pflegen – mit KI-Assistent und persönlicher Betreuung vom Niederrhein.',
     einleitungLokal: TODO_JO,
@@ -514,7 +514,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-vereine',
     stadt: 'moenchengladbach',
     slug: 'website-fuer-vereine-moenchengladbach',
-    titel: 'Website für Vereine in Mönchengladbach | Entwicklerhaus',
+    titel: 'Website für Vereine in Mönchengladbach',
     description:
       'Vereinswebsite in Mönchengladbach: Termine, Berichte und Fotos einfach pflegen – mit KI-Assistent und persönlicher Betreuung vom Niederrhein.',
     einleitungLokal: TODO_JO,
@@ -530,7 +530,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-vereine',
     stadt: 'duisburg',
     slug: 'website-fuer-vereine-duisburg',
-    titel: 'Website für Vereine in Duisburg | Entwicklerhaus',
+    titel: 'Website für Vereine in Duisburg',
     description:
       'Vereinswebsite in Duisburg: Termine, Berichte und Fotos einfach pflegen – mit KI-Assistent und persönlicher Betreuung vom Niederrhein.',
     einleitungLokal: TODO_JO,
@@ -546,7 +546,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-vereine',
     stadt: 'neuss',
     slug: 'website-fuer-vereine-neuss',
-    titel: 'Website für Vereine in Neuss | Entwicklerhaus',
+    titel: 'Website für Vereine in Neuss',
     description:
       'Vereinswebsite in Neuss: Termine, Berichte und Fotos einfach pflegen – mit KI-Assistent und persönlicher Betreuung vom Niederrhein.',
     einleitungLokal: TODO_JO,
@@ -562,7 +562,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-vereine',
     stadt: 'moers',
     slug: 'website-fuer-vereine-moers',
-    titel: 'Website für Vereine in Moers | Entwicklerhaus',
+    titel: 'Website für Vereine in Moers',
     description:
       'Vereinswebsite in Moers: Termine, Berichte und Fotos einfach pflegen – mit KI-Assistent und persönlicher Betreuung vom Niederrhein.',
     einleitungLokal: TODO_JO,
@@ -580,7 +580,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-handwerker',
     stadt: 'krefeld',
     slug: 'website-fuer-handwerker-krefeld',
-    titel: 'Website für Handwerker in Krefeld | Entwicklerhaus',
+    titel: 'Website für Handwerker in Krefeld',
     description:
       'Handwerker-Website in Krefeld: mehr Anfragen, Referenzen von der Baustelle und Karriereseite für Fachkräfte.',
     einleitungLokal: TODO_JO,
@@ -596,7 +596,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-handwerker',
     stadt: 'duesseldorf',
     slug: 'website-fuer-handwerker-duesseldorf',
-    titel: 'Website für Handwerker in Düsseldorf | Entwicklerhaus',
+    titel: 'Website für Handwerker in Düsseldorf',
     description:
       'Handwerker-Website in Düsseldorf: mehr Anfragen, Referenzen von der Baustelle und Karriereseite für Fachkräfte.',
     einleitungLokal: TODO_JO,
@@ -612,7 +612,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-handwerker',
     stadt: 'moenchengladbach',
     slug: 'website-fuer-handwerker-moenchengladbach',
-    titel: 'Website für Handwerker in Mönchengladbach | Entwicklerhaus',
+    titel: 'Website für Handwerker in Mönchengladbach',
     description:
       'Handwerker-Website in Mönchengladbach: mehr Anfragen, Referenzen von der Baustelle und Karriereseite für Fachkräfte.',
     einleitungLokal: TODO_JO,
@@ -628,7 +628,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-handwerker',
     stadt: 'duisburg',
     slug: 'website-fuer-handwerker-duisburg',
-    titel: 'Website für Handwerker in Duisburg | Entwicklerhaus',
+    titel: 'Website für Handwerker in Duisburg',
     description:
       'Handwerker-Website in Duisburg: mehr Anfragen, Referenzen von der Baustelle und Karriereseite für Fachkräfte.',
     einleitungLokal: TODO_JO,
@@ -644,7 +644,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-handwerker',
     stadt: 'neuss',
     slug: 'website-fuer-handwerker-neuss',
-    titel: 'Website für Handwerker in Neuss | Entwicklerhaus',
+    titel: 'Website für Handwerker in Neuss',
     description:
       'Handwerker-Website in Neuss: mehr Anfragen, Referenzen von der Baustelle und Karriereseite für Fachkräfte.',
     einleitungLokal: TODO_JO,
@@ -660,7 +660,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'website-fuer-handwerker',
     stadt: 'moers',
     slug: 'website-fuer-handwerker-moers',
-    titel: 'Website für Handwerker in Moers | Entwicklerhaus',
+    titel: 'Website für Handwerker in Moers',
     description:
       'Handwerker-Website in Moers: mehr Anfragen, Referenzen von der Baustelle und Karriereseite für Fachkräfte.',
     einleitungLokal: TODO_JO,
@@ -678,7 +678,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'onlineshop-erstellen',
     stadt: 'krefeld',
     slug: 'onlineshop-erstellen-krefeld',
-    titel: 'Onlineshop erstellen in Krefeld | Entwicklerhaus',
+    titel: 'Onlineshop erstellen in Krefeld',
     description:
       'Onlineshop in Krefeld erstellen lassen – vom Starter bis zum Großhandel, mit KI und Hosting in Deutschland.',
     einleitungLokal: TODO_JO,
@@ -694,7 +694,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'onlineshop-erstellen',
     stadt: 'duesseldorf',
     slug: 'onlineshop-erstellen-duesseldorf',
-    titel: 'Onlineshop erstellen in Düsseldorf | Entwicklerhaus',
+    titel: 'Onlineshop erstellen in Düsseldorf',
     description:
       'Onlineshop in Düsseldorf erstellen lassen – vom Starter bis zum Großhandel, mit KI und Hosting in Deutschland.',
     einleitungLokal: TODO_JO,
@@ -710,7 +710,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'onlineshop-erstellen',
     stadt: 'moenchengladbach',
     slug: 'onlineshop-erstellen-moenchengladbach',
-    titel: 'Onlineshop erstellen in Mönchengladbach | Entwicklerhaus',
+    titel: 'Onlineshop erstellen in Mönchengladbach',
     description:
       'Onlineshop in Mönchengladbach erstellen lassen – vom Starter bis zum Großhandel, mit KI und Hosting in Deutschland.',
     einleitungLokal: TODO_JO,
@@ -726,7 +726,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'onlineshop-erstellen',
     stadt: 'duisburg',
     slug: 'onlineshop-erstellen-duisburg',
-    titel: 'Onlineshop erstellen in Duisburg | Entwicklerhaus',
+    titel: 'Onlineshop erstellen in Duisburg',
     description:
       'Onlineshop in Duisburg erstellen lassen – vom Starter bis zum Großhandel, mit KI und Hosting in Deutschland.',
     einleitungLokal: TODO_JO,
@@ -742,7 +742,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'onlineshop-erstellen',
     stadt: 'neuss',
     slug: 'onlineshop-erstellen-neuss',
-    titel: 'Onlineshop erstellen in Neuss | Entwicklerhaus',
+    titel: 'Onlineshop erstellen in Neuss',
     description:
       'Onlineshop in Neuss erstellen lassen – vom Starter bis zum Großhandel, mit KI und Hosting in Deutschland.',
     einleitungLokal: TODO_JO,
@@ -758,7 +758,7 @@ export const stadtseiten: Stadtseite[] = [
     zielgruppe: 'onlineshop-erstellen',
     stadt: 'moers',
     slug: 'onlineshop-erstellen-moers',
-    titel: 'Onlineshop erstellen in Moers | Entwicklerhaus',
+    titel: 'Onlineshop erstellen in Moers',
     description:
       'Onlineshop in Moers erstellen lassen – vom Starter bis zum Großhandel, mit KI und Hosting in Deutschland.',
     einleitungLokal: TODO_JO,

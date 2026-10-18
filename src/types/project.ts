@@ -9,6 +9,8 @@ export interface Project {
   slug: string
   /** Eigenes Projekt oder vorgestelltes Unternehmen (keine Kundenprojekte) */
   art: 'eigen' | 'inspiration'
+  /** Titelteil für <title> (ohne Marke); sonst „Name (Ort)“ */
+  seoTitel?: string
   status: 'aktiv' | 'geplant' | 'abgeschlossen'
   startDate: string
   teamSize: number

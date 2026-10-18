@@ -15,33 +15,44 @@ export const OG_BILD = {
   alt: 'Das Entwicklerhaus Logo',
 }
 
+/** Marke hinter jedem Seitentitel (Vorlage im Root-Layout) */
+export const TITEL_VORLAGE = '%s | Entwicklerhaus'
+
+/** Titel wie im Browser, für og:title & Co. (die Vorlage gilt nur für <title>) */
+export function vollerTitel(title: string): string {
+  return TITEL_VORLAGE.replace('%s', title)
+}
+
 export function absoluteUrl(path: string): string {
   return path === '/' ? SITE_URL : `${SITE_URL}${path}`
 }
 
-// title.absolute, damit das Template aus dem Root-Layout nicht noch einmal
-// „| Das Entwicklerhaus Krefeld“ anhängt.
 /** Eigenes Open-Graph-Bild (aus /og/…) statt Logo */
 export function ogBild(seite: OgSeite, alt: string) {
   return { url: absoluteUrl(ogBildPfad(seite)), ...OG_GROESSE, alt }
 }
 
+// title ohne Marke; die Vorlage aus dem Root-Layout hängt „| Entwicklerhaus“ an.
+// absolut: Titel unverändert übernehmen (Startseite).
 export function angebotMetadata({
-  title,
+  title: titelteil,
   description,
   path,
   og,
+  absolut = false,
 }: {
   title: string
   description: string
   path: string
   /** Seite mit eigenem Open-Graph-Bild; sonst das Logo */
   og?: OgSeite
+  absolut?: boolean
 }): Metadata {
   const url = absoluteUrl(path)
+  const title = absolut ? titelteil : vollerTitel(titelteil)
   const bild = og ? ogBild(og, title) : OG_BILD
   return {
-    title: { absolute: title },
+    title: absolut ? { absolute: title } : titelteil,
     description,
     alternates: { canonical: url },
     openGraph: {

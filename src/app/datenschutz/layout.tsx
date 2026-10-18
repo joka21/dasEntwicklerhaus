@@ -1,12 +1,10 @@
-import type { Metadata } from 'next'
+import { angebotMetadata } from '@/lib/angebote-seo'
 
-export const metadata: Metadata = {
-  title: 'Datenschutzerklärung - Das Entwicklerhaus',
+export const metadata = angebotMetadata({
+  title: 'Datenschutz',
   description: 'Datenschutzerklärung und Informationen zum Datenschutz bei Das Entwicklerhaus',
-  alternates: {
-    canonical: 'https://www.dasentwicklerhaus.de/datenschutz',
-  },
-}
+  path: '/datenschutz',
+})
 
 export default function DatenschutzLayout({
   children,

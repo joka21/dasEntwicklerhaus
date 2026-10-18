@@ -7,7 +7,7 @@ import JsonLd from '@/components/angebote/JsonLd'
 import Sektion from '@/components/angebote/Sektion'
 import { seitenTexte } from '@/data/angebote'
 import { ueberMichSeite } from '@/data/ueber-mich'
-import { aboutPageLd, angebotMetadata, breadcrumbLd, type Krume } from '@/lib/angebote-seo'
+import { aboutPageLd, angebotMetadata, breadcrumbLd, vollerTitel, type Krume } from '@/lib/angebote-seo'
 
 const PFAD = `/${ueberMichSeite.slug}`
 
@@ -33,7 +33,7 @@ export default function UeberMichPage() {
 
   return (
     <>
-      <JsonLd knoten={[aboutPageLd({ name: seo.title, description: seo.description, path: PFAD }), breadcrumbLd(krumen)]} />
+      <JsonLd knoten={[aboutPageLd({ name: vollerTitel(seo.title), description: seo.description, path: PFAD }), breadcrumbLd(krumen)]} />
       <Header />
       <main id="main-content">
         <AngebotHero h1={ueberMichSeite.h1} intro={ueberMichSeite.intro} krumen={krumen} />

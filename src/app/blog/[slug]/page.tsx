@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 import ContentSection from '@/components/ContentSection'
 import ReactMarkdown from 'react-markdown'
 import { BlogPostSchema, BreadcrumbSchema } from '@/components/StructuredData'
+import { vollerTitel } from '@/lib/angebote-seo'
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -33,12 +34,11 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   const baseUrl = 'https://www.dasentwicklerhaus.de'
 
-  // Custom SEO für spezifische Blog-Posts
-  let title = `${post.title} - Das Entwicklerhaus Blog`
+  // Titel ohne Marke, die Vorlage aus dem Root-Layout hängt sie an
+  const title = post.title
   let description = post.excerpt || `${post.title} – Ein Artikel von Josef Kalenberg auf Das Entwicklerhaus.`
 
   if (post.slug === 'ai-startups-deutschland-2025') {
-    title = 'KI Startups in Deutschland | Das Entwicklerhaus – Plattform für Innovation & KI-Projekte'
     description = 'Entdecke Deutschlands innovativste KI-Startups. Das Entwicklerhaus zeigt Projekte, Ideen und Unternehmen, die mit Künstlicher Intelligenz die Zukunft gestalten.'
   }
 
@@ -48,9 +48,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     keywords: post.tags,
     authors: [{ name: post.author.name }],
     openGraph: {
-      title: post.slug === 'ai-startups-deutschland-2025'
-        ? 'KI Startups in Deutschland | Das Entwicklerhaus – Plattform für Innovation & KI-Projekte'
-        : post.title,
+      title: vollerTitel(post.title),
       description,
       url: `${baseUrl}/blog/${post.slug}`,
       siteName: 'Das Entwicklerhaus',
@@ -70,9 +68,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.slug === 'ai-startups-deutschland-2025'
-        ? 'KI Startups in Deutschland | Das Entwicklerhaus – Plattform für Innovation & KI-Projekte'
-        : post.title,
+      title: vollerTitel(post.title),
       description,
       images: [post.image],
     },

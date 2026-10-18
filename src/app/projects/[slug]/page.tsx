@@ -1,7 +1,8 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { sampleProjects } from '@/data/projects'
+import { projektTitel, sampleProjects } from '@/data/projects'
+import { vollerTitel } from '@/lib/angebote-seo'
 import { Project } from '@/types/project'
 import Header from '@/components/Header'
 import ContentSection from '@/components/ContentSection'
@@ -33,13 +34,15 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   const baseUrl = 'https://www.dasentwicklerhaus.de'
 
+  const titel = projektTitel(project)
+
   return {
-    title: `${project.name} - ${project.city}`,
+    title: titel,
     description: project.description,
     keywords: [project.category, project.city, 'Projekt', 'Innovation', 'Europa', 'Das Entwicklerhaus'],
     authors: [{ name: 'Das Entwicklerhaus' }],
     openGraph: {
-      title: `${project.name} - ${project.city}`,
+      title: vollerTitel(titel),
       description: project.description,
       url: `${baseUrl}/projects/${project.slug}`,
       siteName: 'Das Entwicklerhaus',
@@ -58,7 +61,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${project.name} - ${project.city}`,
+      title: vollerTitel(titel),
       description: project.description,
       images: [project.image],
     },

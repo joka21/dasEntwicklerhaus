@@ -1,25 +1,25 @@
 import type { Metadata } from 'next'
-import { ogBild } from '@/lib/angebote-seo'
+import { ogBild, vollerTitel } from '@/lib/angebote-seo'
 
-const TITEL = 'Kostenloses Erstgespräch anfragen | Entwicklerhaus'
+const TITEL = 'Kostenloses Erstgespräch anfragen'
 const DESCRIPTION = 'Kostenloses Erstgespräch zu Website, Onlineshop oder KI-Lösung für Ihren Verein oder Betrieb. Persönlich und unverbindlich – direkt aus Krefeld.'
-const BILD = ogBild('contact', TITEL)
+const BILD = ogBild('contact', vollerTitel(TITEL))
 
 export const metadata: Metadata = {
-  title: { absolute: TITEL },
+  title: TITEL,
   description: DESCRIPTION,
   openGraph: {
     type: 'website',
     locale: 'de_DE',
     siteName: 'Das Entwicklerhaus',
-    title: TITEL,
+    title: vollerTitel(TITEL),
     description: DESCRIPTION,
     url: 'https://www.dasentwicklerhaus.de/contact',
     images: [BILD],
   },
   twitter: {
     card: 'summary_large_image',
-    title: TITEL,
+    title: vollerTitel(TITEL),
     description: DESCRIPTION,
     images: [BILD.url],
   },

@@ -17,7 +17,7 @@ export const ueberMichSeite = {
   slug: UEBER_MICH_NAV.slug,
   navLabel: UEBER_MICH_NAV.label,
   seo: {
-    title: 'Über mich – Josef Kalenberg | Entwicklerhaus',
+    title: 'Über mich – Josef Kalenberg',
     description:
       'Josef Kalenberg, seit 1996 selbstständig in der IT: Erfahrung, drei Regeln für erfolgreiche Projekte und warum KI kleinen Betrieben und Vereinen neue Chancen gibt.',
   },

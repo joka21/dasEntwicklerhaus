@@ -1,7 +1,7 @@
 import { angebotMetadata } from '@/lib/angebote-seo'
 
 export const metadata = angebotMetadata({
-  title: 'Impressum | Das Entwicklerhaus',
+  title: 'Impressum',
   description: 'Impressum von Das Entwicklerhaus: Josef Kalenberg, Am Königshof 47, 47807 Krefeld – Kontakt, Steuernummer und rechtliche Hinweise.',
   path: '/impressum',
 })
