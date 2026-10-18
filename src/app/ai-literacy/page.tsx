@@ -28,9 +28,6 @@ export default function AILiteracyPage() {
   return (
     <>
       <Header />
-      <div className="sr-only">
-        <h1>AI Literacy Lernplattform - Das Entwicklerhaus</h1>
-      </div>
 
       <AILiteracyHero />
 

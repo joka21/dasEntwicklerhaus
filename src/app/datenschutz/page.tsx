@@ -6,9 +6,6 @@ export default function DatenschutzPage() {
   return (
     <>
       <Header />
-      <div className="sr-only">
-        <h1>Datenschutzerklärung - Das Entwicklerhaus</h1>
-      </div>
       <ContentSection>
         <main id="main-content" className="max-w-4xl mx-auto">
           <h1 className="text-3xl lg:text-4xl font-bold text-umwelt-800 mb-8">
