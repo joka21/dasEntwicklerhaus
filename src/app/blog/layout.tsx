@@ -1,19 +1,20 @@
 import type { Metadata } from 'next'
 import { OG_BILD } from '@/lib/angebote-seo'
 
+const TITEL = 'Ratgeber: Websites, Shops & KI | Entwicklerhaus'
 const DESCRIPTION = 'Ratgeber zu Websites, Onlineshops und KI für Vereine, Handwerksbetriebe und Händler – aus Krefeld.'
 
 export const metadata: Metadata = {
-  title: 'Blog – KI, Startups und Innovation aus Krefeld & Niederrhein',
+  title: { absolute: TITEL },
   description: DESCRIPTION,
   openGraph: {
-    title: 'Blog – KI, Startups und Innovation aus Krefeld & Niederrhein',
+    title: TITEL,
     description: DESCRIPTION,
     url: 'https://www.dasentwicklerhaus.de/blog',
     images: [OG_BILD],
   },
   twitter: {
-    title: 'Blog – KI, Startups und Innovation aus Krefeld & Niederrhein',
+    title: TITEL,
     description: DESCRIPTION,
     images: [OG_BILD.url],
   },

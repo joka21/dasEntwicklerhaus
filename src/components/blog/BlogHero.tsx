@@ -5,10 +5,10 @@ export default function BlogHero({ artikel, themen, lesezeit }: { artikel: numbe
       <div className="mx-auto max-w-[1500px] px-4 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl lg:text-5xl font-bold text-dark mb-6">
-            Was ich gelernt hab
+            Ratgeber für Vereine, Handwerk und Handel
           </h1>
           <p className="text-xl text-secondary leading-relaxed mb-8">
-            Gedanken zu Startups, KI und was wirklich zählt. Keine Theorie – nur das, was ich selbst erlebt hab.
+            Praktische Antworten rund um Websites, Onlineshops und KI – für kleine Betriebe und Vereine.
           </p>
 
           {/* Statistiken */}
