@@ -14,7 +14,7 @@ export default defineConfig({
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
   },
   test: {
-    include: ['src/**/*.test.ts'],
+    include: ['src/**/*.test.ts', 'scripts/**/*.test.ts'],
     env: { DATABASE_URL: TEST_DATABASE_URL },
     globalSetup: ['./src/lib/portal/__tests__/global-setup.ts'],
     // Alle Tests teilen sich eine Datenbank.

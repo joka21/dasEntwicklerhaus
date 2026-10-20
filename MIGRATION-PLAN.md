@@ -211,3 +211,8 @@ Kunden zugeordnet und erhält einen Magic Link (Einladung). Offene Registrierung
   des Kunden einen Hinweis mit Link (ohne Antworttext, einzeln adressiert). Admin-Bereich: Person
   entfernen (ohne weiteren Kunden und kein Admin: Sitzungen beendet), Freigabe zurücksetzen und
   Entwurf löschen (jeweils mit Bestätigungshäkchen; freigegebene Entwürfe nicht löschbar).
+- **Phase 6 – Umsetzung:** `scripts/migration/` (export-supabase.ts nur lesend, import.ts mit
+  import-lib.ts, Abgleich je Tabelle). Probelauf ohne Supabase über
+  `scripts/migration/probelauf/` (nachgestellte Quelle mit Original-Migration, Speicher-Nachbau nur
+  GET). Exportordner `/.supabase-export/` in .gitignore. Dateinamen außerhalb der Pfadregel werden
+  beim Import umbenannt.

@@ -36,3 +36,6 @@ next-env.d.ts
 
 # Kundenportal: lokale Ablage der Design-Entwürfe
 /.portal-storage/
+
+# Datenübernahme aus Supabase: enthält echte Kundendaten, niemals einchecken
+/.supabase-export/

@@ -12,7 +12,9 @@
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "admin:anlegen": "tsx --env-file-if-exists=.env.local scripts/admin-anlegen.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "migration:export": "tsx --env-file-if-exists=.env.local scripts/migration/export-supabase.ts",
+    "migration:import": "tsx --env-file-if-exists=.env.local scripts/migration/import.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
