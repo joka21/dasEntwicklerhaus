@@ -188,3 +188,11 @@ Kunden zugeordnet und erhält einen Magic Link (Einladung). Offene Registrierung
   der den Token beim Aufruf des Links verbraucht, und weniger Angriffsfläche.
 - **Phase 2 – Mail-Grenze selbst umgesetzt** statt Rate-Limit von Better Auth (siehe Risiken).
 - **Phase 2 – Mailpit** in `docker-compose.dev.yml` fängt lokal alle Mails ab.
+- **Phase 3 – `src/lib/portal/viewer.ts`:** ermittelt den Viewer aus der Sitzung (getrennt von
+  authz.ts, damit die Regeln ohne Next.js testbar sind).
+- **Phase 3 – `@types/node` auf ^22:** Vitest 5 setzt mindestens die Typen für Node 22 voraus.
+- **Phase 3 – Entwurfs-Route:** Rechteprüfung schon über authz; das Lesen der Datei folgt in Phase 4
+  (bis dahin 404 für alle Entwürfe).
+- **Phase 5 – Ergänzung (Freigabe Phase 3):** Admins können auf Kommentare antworten; ihre
+  Kommentare werden als Admin gekennzeichnet. Regel 7 wird dafür um Admins erweitert.
+  Freigeben (Regel 9) bleibt ausschließlich Kundenmitgliedern vorbehalten.

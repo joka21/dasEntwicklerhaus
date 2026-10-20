@@ -5,94 +5,31 @@ import Seite from '@/components/portal/PortalSeite'
 import DesignVorschau from '@/components/portal/DesignVorschau'
 import KommentarFormular from '@/components/portal/KommentarFormular'
 import FreigabeButton from '@/components/portal/FreigabeButton'
-import { createClient } from '@/lib/supabase/server'
 import { entwurfUrl, formatDatum } from '@/lib/portal'
+import { ladeProjekt, ladeProjektInhalt } from '@/lib/portal/daten'
+import { aktuellerViewer } from '@/lib/portal/viewer'
 
 interface PageProps {
   params: Promise<{ projekt: string }>
 }
 
-interface Variante {
-  id: string
-  title: string
-  description: string | null
-}
-
-interface Kommentar {
-  id: string
-  variant_id: string
-  author_id: string | null
-  body: string
-  created_at: string
-}
-
-async function ladeProjekt(slug: string) {
-  const supabase = await createClient()
-  // RLS: Fremde Projekte sind unsichtbar und landen hier als null -> 404.
-  const { data } = await supabase
-    .from('portal_projects')
-    .select('id, client_id, slug, title, description')
-    .eq('slug', slug)
-    .maybeSingle()
-  return data
-}
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const projekt = await ladeProjekt((await params).projekt)
+  const projekt = await ladeProjekt(await aktuellerViewer(), (await params).projekt)
   return { title: projekt?.title ?? 'Projekt' }
 }
 
 export default async function ProjektPage({ params }: PageProps) {
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  const viewer = await aktuellerViewer()
+  if (!viewer) redirect('/login')
 
-  const projekt = await ladeProjekt((await params).projekt)
+  // Fremde oder unbekannte Projekte liefern null -> 404.
+  const projekt = await ladeProjekt(viewer, (await params).projekt)
   if (!projekt) notFound()
+  const inhalt = await ladeProjektInhalt(viewer, projekt.id)
+  if (!inhalt) notFound()
+  const { varianten, freigabe, kommentare, istKunde } = inhalt
 
-  const [variantenRes, freigabeRes, mitgliedRes] = await Promise.all([
-    supabase
-      .from('portal_design_variants')
-      .select('id, title, description')
-      .eq('project_id', projekt.id)
-      .order('sort_order')
-      .order('created_at'),
-    supabase
-      .from('portal_project_approvals')
-      .select('variant_id, approved_at')
-      .eq('project_id', projekt.id)
-      .maybeSingle(),
-    // Kommentieren und Freigeben dürfen nur Kunden, nicht Admins.
-    supabase
-      .from('portal_client_members')
-      .select('client_id')
-      .eq('client_id', projekt.client_id)
-      .eq('user_id', user.id)
-      .maybeSingle(),
-  ])
-  if (variantenRes.error) throw variantenRes.error
-
-  const varianten = (variantenRes.data ?? []) as Variante[]
-  const freigabe = freigabeRes.data as { variant_id: string; approved_at: string } | null
-  const istKunde = Boolean(mitgliedRes.data)
-
-  let kommentare: Kommentar[] = []
-  if (varianten.length > 0) {
-    const { data, error } = await supabase
-      .from('portal_variant_comments')
-      .select('id, variant_id, author_id, body, created_at')
-      .in(
-        'variant_id',
-        varianten.map((v) => v.id)
-      )
-      .order('created_at')
-    if (error) throw error
-    kommentare = (data ?? []) as Kommentar[]
-  }
-
-  const freigegebeneVariante = freigabe && varianten.find((v) => v.id === freigabe.variant_id)
+  const freigegebeneVariante = freigabe && varianten.find((v) => v.id === freigabe.variantId)
 
   return (
     <Seite title={projekt.title}>
@@ -110,7 +47,7 @@ export default async function ProjektPage({ params }: PageProps) {
 
         {freigabe && (
           <p role="status" className="rounded-lg border border-umwelt-300 bg-white p-4 text-dark">
-            Freigegeben am {formatDatum(freigabe.approved_at)}:{' '}
+            Freigegeben am {formatDatum(freigabe.approvedAt)}:{' '}
             <strong>{freigegebeneVariante ? freigegebeneVariante.title : 'Variante'}</strong>
           </p>
         )}
@@ -119,8 +56,8 @@ export default async function ProjektPage({ params }: PageProps) {
           <p className="text-dark">Die Entwürfe werden gerade vorbereitet. Wir melden uns, sobald sie bereitstehen.</p>
         ) : (
           varianten.map((v) => {
-            const eigeneKommentare = kommentare.filter((k) => k.variant_id === v.id)
-            const istFreigegeben = freigabe?.variant_id === v.id
+            const eigeneKommentare = kommentare.filter((k) => k.variantId === v.id)
+            const istFreigegeben = freigabe?.variantId === v.id
 
             return (
               <article
@@ -151,7 +88,7 @@ export default async function ProjektPage({ params }: PageProps) {
                       {eigeneKommentare.map((k) => (
                         <li key={k.id} className="rounded-lg bg-gray-50 p-4">
                           <p className="text-sm text-secondary mb-1">
-                            {k.author_id === user.id ? 'Sie' : 'Ihr Team'} · {formatDatum(k.created_at, true)}
+                            {k.authorId === viewer.userId ? 'Sie' : 'Ihr Team'} · {formatDatum(k.createdAt, true)}
                           </p>
                           <p className="text-dark whitespace-pre-line">{k.body}</p>
                         </li>

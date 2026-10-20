@@ -1,8 +1,13 @@
 import { type NextRequest } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { ladeEntwurfPfad } from '@/lib/portal/daten'
+import { aktuellerViewer } from '@/lib/portal/viewer'
 import { UUID_RE } from '@/lib/portal'
 
-const BUCKET = 'design-proposals'
+// Übergang bis Phase 4: Die Dateien liegen noch im Supabase-Bucket und sind
+// ohne Supabase-Sitzung nicht abrufbar.
+async function entwurfLesen(_pfad: string): Promise<ReadableStream<Uint8Array> | null> {
+  return null
+}
 
 function fehler(status: number, text: string) {
   return new Response(text, {
@@ -15,9 +20,8 @@ function fehler(status: number, text: string) {
   })
 }
 
-// Liefert die HTML-Datei einer Design-Variante aus dem privaten Bucket.
-// Zugriff wird doppelt geprüft: Die Variante wird unter RLS geladen, und die
-// Datei wird mit dem Token des Nutzers geholt (Storage-Policy).
+// Liefert die HTML-Datei einer Design-Variante. Zugriff nur mit Login und
+// Projektzugehörigkeit (authz, Regel 10).
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ projekt: string; variante: string }> }
@@ -25,45 +29,21 @@ export async function GET(
   const { projekt, variante: varianteId } = await params
   if (!UUID_RE.test(varianteId)) return fehler(404, 'Nicht gefunden')
 
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  if (!user) return fehler(401, 'Nicht angemeldet')
+  const viewer = await aktuellerViewer()
+  if (!viewer) return fehler(401, 'Nicht angemeldet')
 
-  const { data: variante } = await supabase
-    .from('portal_design_variants')
-    .select('storage_path, portal_projects!inner(slug)')
-    .eq('id', varianteId)
-    .eq('portal_projects.slug', projekt)
-    .maybeSingle()
-  if (!variante) return fehler(404, 'Nicht gefunden')
+  // Rechteprüfung (Regel 10): Pfad nur aus der Datenbank, fremde Entwürfe -> 404.
+  const pfad = await ladeEntwurfPfad(viewer, projekt, varianteId)
+  if (!pfad) return fehler(404, 'Nicht gefunden')
 
-  // Token stammt aus dem Cookie; getUser() hat es oben bereits geprüft.
-  const {
-    data: { session },
-  } = await supabase.auth.getSession()
-  if (!session) return fehler(401, 'Nicht angemeldet')
-
-  // Direkt per fetch statt storage.download(), damit die Datei gestreamt und
-  // nicht komplett in den Speicher geladen wird.
-  const pfad = (variante.storage_path as string).split('/').map(encodeURIComponent).join('/')
-  const datei = await fetch(
-    `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/authenticated/${BUCKET}/${pfad}`,
-    {
-      headers: {
-        Authorization: `Bearer ${session.access_token}`,
-        apikey: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-      },
-      cache: 'no-store',
-    }
-  )
-  if (!datei.ok || !datei.body) {
-    console.error('Entwurf nicht geladen:', variante.storage_path, datei.status)
+  // Phase 4: Datei aus PORTAL_STORAGE_PATH lesen und streamen.
+  const datei = await entwurfLesen(pfad)
+  if (!datei) {
+    console.error('Entwurf nicht geladen:', pfad)
     return fehler(404, 'Nicht gefunden')
   }
 
-  return new Response(datei.body, {
+  return new Response(datei, {
     headers: {
       'Content-Type': 'text/html; charset=utf-8',
       // Entwürfe sind statisches HTML: sandbox ohne Ausnahmen – keine Skripte,

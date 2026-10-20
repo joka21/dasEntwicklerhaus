@@ -1,25 +1,12 @@
 import Link from 'next/link'
 import Seite from '@/components/portal/PortalSeite'
-import { createClient } from '@/lib/supabase/server'
 import { formatDatum } from '@/lib/portal'
-
-interface ProjektZeile {
-  slug: string
-  title: string
-  description: string | null
-  portal_project_approvals: { approved_at: string } | null
-}
+import { ladeProjektliste } from '@/lib/portal/daten'
+import { aktuellerViewer } from '@/lib/portal/viewer'
 
 export default async function PortalPage() {
-  const supabase = await createClient()
-  // RLS liefert nur Projekte, zu denen der Nutzer gehört.
-  const { data, error } = await supabase
-    .from('portal_projects')
-    .select('slug, title, description, portal_project_approvals(approved_at)')
-    .order('created_at', { ascending: false })
-
-  if (error) throw error
-  const projekte = (data ?? []) as unknown as ProjektZeile[]
+  // Nur Projekte, zu denen der Nutzer gehört (Admins: alle).
+  const projekte = await ladeProjektliste(await aktuellerViewer())
 
   return (
     <Seite title="Ihre Projekte">
@@ -36,8 +23,8 @@ export default async function PortalPage() {
                 <h2 className="text-h5 lg:text-h5-lg font-semibold text-umwelt-800 mb-2">{p.title}</h2>
                 {p.description && <p className="text-dark mb-4">{p.description}</p>}
                 <p className="text-sm text-secondary">
-                  {p.portal_project_approvals
-                    ? `Design freigegeben am ${formatDatum(p.portal_project_approvals.approved_at)}`
+                  {p.freigegebenAm
+                    ? `Design freigegeben am ${formatDatum(p.freigegebenAm)}`
                     : 'Design in Abstimmung'}
                 </p>
               </Link>
