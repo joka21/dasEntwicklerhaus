@@ -12,11 +12,13 @@ import {
   darfKommentieren,
   darfProjektLesen,
   istKundeImProjekt,
+  mussAdminSein,
   sichtbareProjekteBedingung,
   type Viewer,
 } from './authz'
+import { entwurfLoeschen, entwurfSpeichern, pruefeEntwurfDatei } from './speicher'
 
-// Einziger Ort mit Datenbankzugriffen für die Kundenseiten des Portals.
+// Einziger Ort mit Datenbankzugriffen des Portals.
 // Jede Funktion prüft über authz.ts; fremde Daten liefern null bzw. eine leere
 // Liste (wie bisher unter RLS), damit niemand erkennt, ob es sie gibt.
 
@@ -228,4 +230,56 @@ function pgFehlercode(error: unknown): string | undefined {
   const kandidat = (error as { cause?: { code?: unknown } })?.cause ?? error
   const code = (kandidat as { code?: unknown })?.code
   return typeof code === 'string' ? code : undefined
+}
+
+// ---------------------------------------------------------------------------
+// Admin (Regel 11)
+// ---------------------------------------------------------------------------
+
+export type UploadErgebnis =
+  | { status: 'ok'; variantId: string; storagePath: string }
+  | { status: 'kein-zugriff' }
+  | { status: 'ungueltig'; meldung: string }
+  | { status: 'fehler' }
+
+/**
+ * Regel 11: Entwurf hochladen und als Variante eines Projekts eintragen.
+ * Schlägt der Eintrag fehl (z. B. unbekanntes Projekt), wird die Datei wieder entfernt.
+ */
+export async function entwurfHochladen(
+  viewer: Viewer | null,
+  eingabe: { projectId: string; title: string; description?: string | null; sortOrder?: number; datei: File }
+): Promise<UploadErgebnis> {
+  if (!mussAdminSein(viewer)) return { status: 'kein-zugriff' }
+
+  const title = eingabe.title.trim()
+  if (title.length < 1 || title.length > 200) return { status: 'ungueltig', meldung: 'Bitte einen Titel (1–200 Zeichen) angeben.' }
+  const pruefung = pruefeEntwurfDatei(eingabe.datei)
+  if (!pruefung.ok) return { status: 'ungueltig', meldung: pruefung.meldung }
+
+  let storagePath: string
+  try {
+    storagePath = await entwurfSpeichern(eingabe.projectId, new Uint8Array(await eingabe.datei.arrayBuffer()))
+  } catch (error) {
+    console.error('Entwurf nicht gespeichert:', error)
+    return { status: 'fehler' }
+  }
+
+  try {
+    const [zeile] = await db
+      .insert(portalDesignVariants)
+      .values({
+        projectId: eingabe.projectId,
+        title,
+        description: eingabe.description?.trim() || null,
+        storagePath,
+        sortOrder: eingabe.sortOrder ?? 0,
+      })
+      .returning({ id: portalDesignVariants.id })
+    return { status: 'ok', variantId: zeile.id, storagePath }
+  } catch (error) {
+    await entwurfLoeschen(storagePath)
+    console.error('Variante nicht eingetragen:', pgFehlercode(error) ?? error)
+    return { status: 'fehler' }
+  }
 }

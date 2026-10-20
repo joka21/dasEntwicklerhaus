@@ -196,3 +196,7 @@ Kunden zugeordnet und erhält einen Magic Link (Einladung). Offene Registrierung
 - **Phase 5 – Ergänzung (Freigabe Phase 3):** Admins können auf Kommentare antworten; ihre
   Kommentare werden als Admin gekennzeichnet. Regel 7 wird dafür um Admins erweitert.
   Freigeben (Regel 9) bleibt ausschließlich Kundenmitgliedern vorbehalten.
+- **Phase 7 – vorgemerkt (Freigabe Phase 4):** Den in Phase 4 übersprungenen Symlink-Test im
+  Linux-Container ausführen und das Ergebnis berichten. In DEPLOY.md beschreiben, wie das Volume
+  `PORTAL_STORAGE_PATH` gesichert wird (Databasus sichert nur die Datenbank; Mittwald-Projektbackup
+  prüfen, ggf. zusätzlicher Cronjob) und wie Datenbank und Dateien gemeinsam wiederhergestellt werden.

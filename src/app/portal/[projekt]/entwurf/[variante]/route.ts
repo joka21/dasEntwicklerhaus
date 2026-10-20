@@ -1,13 +1,8 @@
 import { type NextRequest } from 'next/server'
 import { ladeEntwurfPfad } from '@/lib/portal/daten'
+import { entwurfLesen } from '@/lib/portal/speicher'
 import { aktuellerViewer } from '@/lib/portal/viewer'
 import { UUID_RE } from '@/lib/portal'
-
-// Übergang bis Phase 4: Die Dateien liegen noch im Supabase-Bucket und sind
-// ohne Supabase-Sitzung nicht abrufbar.
-async function entwurfLesen(_pfad: string): Promise<ReadableStream<Uint8Array> | null> {
-  return null
-}
 
 function fehler(status: number, text: string) {
   return new Response(text, {
@@ -36,7 +31,7 @@ export async function GET(
   const pfad = await ladeEntwurfPfad(viewer, projekt, varianteId)
   if (!pfad) return fehler(404, 'Nicht gefunden')
 
-  // Phase 4: Datei aus PORTAL_STORAGE_PATH lesen und streamen.
+  // Datei aus PORTAL_STORAGE_PATH streamen (nicht komplett in den Speicher laden).
   const datei = await entwurfLesen(pfad)
   if (!datei) {
     console.error('Entwurf nicht geladen:', pfad)
