@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Container bei Mittwald: eigenständiger Server in .next/standalone (siehe Dockerfile)
+  output: 'standalone',
   trailingSlash: false,
   compress: true,
   poweredByHeader: false,

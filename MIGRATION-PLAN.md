@@ -216,3 +216,9 @@ Kunden zugeordnet und erhält einen Magic Link (Einladung). Offene Registrierung
   `scripts/migration/probelauf/` (nachgestellte Quelle mit Original-Migration, Speicher-Nachbau nur
   GET). Exportordner `/.supabase-export/` in .gitignore. Dateinamen außerhalb der Pfadregel werden
   beim Import umbenannt.
+- **Phase 7 – Umsetzung:** `output: 'standalone'`, mehrstufiges Dockerfile (node:22-alpine, Nutzer
+  `app`, Werkzeuge migrieren/pruefen/admin-anlegen/import als gebündelte .mjs, Migrationen beim
+  Start), `.dockerignore`, `docker-compose.mittwald.yml` (Dienst website, Volume portal-dateien),
+  DEPLOY.md vollständig (Build, Registry, Stack, Testadresse, Sicherung/Wiederherstellung,
+  Umschalt-Ablauf mit DNS und Rückweg, Aufräumen, Löschen nach 14 Tagen). Symlink-Test unter
+  Linux ausgeführt (bestanden, Gegenprobe schlägt an).

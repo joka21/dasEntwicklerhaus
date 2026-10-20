@@ -1,0 +1,41 @@
+# Ergänzung für die docker-compose des Mittwald-Stacks "entwicklerhaus".
+# Den Dienst "website" und das Volume "portal-dateien" in die bestehende Datei
+# übernehmen; der Dienst "pgvector" (PostgreSQL 18 + pgvector) existiert dort schon.
+# Ablauf siehe DEPLOY.md. Alle Werte in <…> sind Platzhalter – echte Werte nur in
+# mStudio eintragen, nie einchecken.
+services:
+  website:
+    # Mittwald baut keine Images; das Image kommt fertig aus einer Registry (DEPLOY.md, Schritt 2).
+    image: <registry>/dasentwicklerhaus:<version>
+    ports:
+      - '3000/tcp'
+    environment:
+      # Datenbank im selben Stack (intern über den Dienstnamen erreichbar)
+      DATABASE_URL: postgres://<benutzer>:<passwort>@pgvector:5432/entwicklerhaus
+      # Migrationen beim Start einspielen (idempotent); 0 = abschalten
+      DB_MIGRATIONEN_BEIM_START: '1'
+      # Login: mind. 32 zufällige Zeichen (openssl rand -base64 32); nie ändern, sonst sind alle abgemeldet
+      BETTER_AUTH_SECRET: <geheim>
+      # Öffentliche Adresse ohne / am Ende – zum Testen die project.space-Adresse,
+      # nach dem Umschalten https://www.dasentwicklerhaus.de
+      BETTER_AUTH_URL: https://<test-subdomain>.project.space
+      # Entwürfe; liegt im Volume unten
+      PORTAL_STORAGE_PATH: /data/portal
+      # Mail (Kontaktformular, Anmeldelinks, Benachrichtigungen)
+      SMTP_HOST: <smtp-host>
+      SMTP_PORT: '587'
+      SMTP_USER: <smtp-benutzer>
+      SMTP_PASS: <smtp-passwort>
+      PORTAL_MAIL_FROM: 'Das Entwicklerhaus <portal@dasentwicklerhaus.de>'
+      PORTAL_ADMIN_EMAIL: <empfaenger-benachrichtigungen>
+    volumes:
+      - portal-dateien:/data/portal
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+volumes:
+  # Entwürfe der Kunden. Teil des Mittwald-Projektbackups (siehe DEPLOY.md, Sicherung).
+  portal-dateien: {}

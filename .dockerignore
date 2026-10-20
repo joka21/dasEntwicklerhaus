@@ -1,0 +1,18 @@
+# Nur einchecken, was der Build braucht. Keine Geheimnisse, keine Kundendaten.
+.git
+node_modules
+.next
+out
+coverage
+*.tsbuildinfo
+.env
+.env*.local
+.supabase-export
+.portal-storage
+.reference
+.claude
+.vercel
+docker-compose*.yml
+Dockerfile
+# lokale, nicht eingecheckte Entwürfe
+public/gartenpflege-preetz-*
