@@ -186,9 +186,26 @@ Stand 20.10.2026:
 | TXT `v=spf1 include:agenturserver.de ~all` | | **unverändert** |
 | TXT `google-site-verification=…` | | **unverändert** |
 
-TTL heute: 3600 Sekunden (1 Stunde). Wird die Domain in mStudio mit dem Container verbunden,
-setzt Mittwald die Einträge eventuell selbst **(prüfen)** – dann die Tabelle als Kontrolle
-nutzen.
+TTL heute: 3600 Sekunden (1 Stunde).
+
+**Ändert mStudio die DNS-Einträge beim Verbinden der Domain mit dem Container selbst?**
+Nach der Mittwald-Dokumentation **nein – davon nicht ausgehen**:
+
+- A-, AAAA- und MX-Einträge sind bei Mittwald standardmäßig „managed“, zeigen also von selbst
+  auf die Mittwald-Plattform. Bei dieser Domain ist der A-Eintrag aber **von Hand
+  überschrieben** (Vercel-IP) und `www` ist ein eigener CNAME. Solche eigenen Einträge bleiben
+  bestehen, bis man sie ändert oder auf „managed“ zurücksetzt.
+- Das Verbinden einer Domain mit dem Container (virtueller Host/Ingress) ist laut CLI-Doku
+  ein eigener Schritt; dass dabei DNS-Einträge geändert werden, steht nirgends.
+
+Die Umstellung in 5.4 erfolgt deshalb **ausdrücklich**. Vorher den Ist-Stand ansehen (auch,
+ob `www` eine eigene Zone hat):
+
+```bash
+mw domain dnszone list -o txt
+mw domain dnszone get dasentwicklerhaus.de -o json
+mw domain dnszone get www.dasentwicklerhaus.de -o json     # falls vorhanden
+```
 
 Die Live-Adresse ist `www.dasentwicklerhaus.de`; `dasentwicklerhaus.de` leitet heute (Vercel)
 dorthin weiter. Auf Mittwald übernimmt das die App (Regel in `next.config.mjs`, 301, Pfad und
@@ -198,9 +215,22 @@ der Ingress muss den Host-Header unverändert durchreichen – nach dem Umschalt
 
 ### 5.2 Am Vortag: TTL senken
 
-TTL der beiden Web-Einträge (A `dasentwicklerhaus.de`, `www`) auf **300** Sekunden senken.
-Wirkt erst, wenn die alte TTL (1 Stunde) abgelaufen ist – daher mindestens einige Stunden vor
-dem Umschalten, am besten am Vortag.
+TTL der beiden Web-Einträge (A `dasentwicklerhaus.de`, `www`) auf **300** Sekunden senken,
+Werte unverändert lassen (in mStudio oder per `mw domain dnszone update … --record <bisheriger
+Wert> --ttl 300`). Wirkt erst, wenn die alte TTL (1 Stunde) abgelaufen ist – daher mindestens
+einige Stunden vor dem Umschalten, am besten am Vortag.
+
+Am Vortag außerdem schon in mStudio `www.dasentwicklerhaus.de` und `dasentwicklerhaus.de`
+als virtuelle Hosts anlegen und mit dem Container `website` (Port 3000) verbinden:
+
+```bash
+mw domain virtualhost create --hostname www.dasentwicklerhaus.de --path-to-container /:<container-uid>:3000/tcp
+mw domain virtualhost create --hostname dasentwicklerhaus.de --path-to-container /:<container-uid>:3000/tcp
+```
+
+Das ändert am Live-Betrieb nichts, solange DNS noch auf Vercel zeigt. Das Zertifikat kann
+Mittwald zu diesem Zeitpunkt noch **nicht** ausstellen (siehe 5.4). Falls mStudio für die
+Domain eine Bestätigung per TXT-Eintrag verlangt, diesen jetzt setzen **(prüfen)**.
 
 ### 5.3 Kurz vor dem Umschalten: finaler Export und Import
 
@@ -235,15 +265,41 @@ ausführen; die Dateien dann mit `mw container cp` nach `/data/portal` kopieren 
 
 ### 5.4 Domain umstellen
 
-1. In mStudio `www.dasentwicklerhaus.de` und `dasentwicklerhaus.de` mit dem Container
-   `website` (Port 3000) verbinden; warten, bis das TLS-Zertifikat ausgestellt ist.
-2. `BETTER_AUTH_URL=https://www.dasentwicklerhaus.de` setzen,
-   `mw container update <website-id> --recreate`.
-3. DNS-Einträge wie in 5.1 umstellen. MX und TXT nicht anfassen.
-4. Prüfen (nach wenigen Minuten, TTL 300):
+**Zertifikat realistisch:** Mittwald holt das Let's-Encrypt-Zertifikat selbst (lässt sich
+nicht abschalten). Let's Encrypt prüft dabei, ob die Domain auf Mittwald zeigt – das
+Zertifikat kann also **erst nach der DNS-Umstellung** ausgestellt werden. Dazwischen liegt ein
+kurzes Zeitfenster (meist Minuten, nicht garantiert), in dem Besucher, deren DNS schon auf
+Mittwald zeigt, eine **Zertifikatswarnung** sehen oder die Seite nicht laden können. Andere
+landen wegen gespeicherter DNS-Antworten (TTL 300) noch einige Minuten auf Vercel – beides
+gleichzeitig ist normal.
+
+Deshalb: **ruhige Uhrzeit wählen** (z. B. früher Morgen oder Sonntagabend), direkt im
+Anschluss an 5.3, und Zeit für Rückweg einplanen.
+
+1. **DNS umstellen** – MX und TXT nicht anfassen:
+   - A `dasentwicklerhaus.de`: eigenen Eintrag `216.150.1.1` durch die Mittwald-IP ersetzen –
+     entweder auf „managed“ zurücksetzen
+     (`mw domain dnszone update dasentwicklerhaus.de a --managed`) oder die IP aus mStudio
+     (Projekt-Übersicht bzw. Domain-Ansicht) eintragen
+     (`mw domain dnszone update dasentwicklerhaus.de a --record <mittwald-ip> --ttl 300`).
+   - `www.dasentwicklerhaus.de`: CNAME `cname.vercel-dns.com` entfernen und auf Mittwald
+     zeigen lassen – je nach Ist-Stand aus 5.1 in der Zone `www.dasentwicklerhaus.de`
+     `mw domain dnszone update www.dasentwicklerhaus.de cname --unset` und danach
+     `… a --managed`, oder einen A-Eintrag mit der Mittwald-IP **(prüfen, wie mStudio `www`
+     führt)**.
+2. **Gleich danach** `BETTER_AUTH_URL=https://www.dasentwicklerhaus.de` setzen und
+   `mw container update <website-id> --recreate` (die Anmeldelinks zeigen ab dann auf www).
+3. **Zertifikat beobachten:** `mw domain virtualhost list` bzw.
+   `mw domain virtualhost get <ingress-id> -o json` zeigt den TLS-/ACME-Zustand und
+   DNS-Fehler des Ingress (u. a. „Frist für die Zertifikatsanforderung überschritten“).
+   Prüfen mit `curl -sI https://www.dasentwicklerhaus.de` – kein Zertifikatsfehler mehr.
+   Ist nach etwa **30 Minuten** noch kein gültiges Zertifikat da: Rückweg (5.5) und Ursache
+   in Ruhe klären.
+4. **Prüfen** (sobald das Zertifikat da ist):
    - `nslookup www.dasentwicklerhaus.de` und `nslookup dasentwicklerhaus.de` zeigen auf Mittwald
    - `https://www.dasentwicklerhaus.de` lädt mit gültigem Zertifikat;
-     `https://dasentwicklerhaus.de` leitet auf www weiter
+     `https://dasentwicklerhaus.de` leitet mit 301 auf www weiter (Zertifikat auch für die
+     Adresse ohne www)
    - Login per Magic Link (Link zeigt auf `https://www.dasentwicklerhaus.de/login/bestaetigen`)
    - Kontaktformular, ein Entwurf als Kunde, Admin-Bereich
    - Mailempfang für `@dasentwicklerhaus.de` funktioniert weiterhin (MX unverändert)
@@ -254,8 +310,10 @@ ausführen; die Dateien dann mit `mw container cp` nach `/data/portal` kopieren 
 
 Möglich, solange Vercel und Supabase noch bestehen (daher erst nach 14 Tagen löschen, siehe 7).
 
-1. DNS zurückstellen: A `dasentwicklerhaus.de` → `216.150.1.1`,
-   `www` CNAME → `cname.vercel-dns.com`. Dank TTL 300 wirkt das nach wenigen Minuten.
+1. DNS zurückstellen: A `dasentwicklerhaus.de` → `216.150.1.1`
+   (`mw domain dnszone update dasentwicklerhaus.de a --record 216.150.1.1 --ttl 300`),
+   `www` CNAME → `cname.vercel-dns.com`. Dank TTL 300 wirkt das nach wenigen Minuten; das
+   Vercel-Zertifikat besteht weiter, es gibt also kein neues Zertifikatsfenster.
    Die Domains im Vercel-Projekt **nicht entfernen**, solange der Rückweg offen sein soll.
 2. Die alte Website auf Vercel arbeitet weiter mit Supabase – dort ist der Stand vom finalen
    Export.
