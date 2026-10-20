@@ -1,0 +1,27 @@
+# Lokale Datenbank für die Entwicklung (gleiches Image wie im Mittwald-Stack).
+# Start:  docker compose -f docker-compose.dev.yml up -d
+# Stopp:  docker compose -f docker-compose.dev.yml down   (Daten bleiben im Volume)
+#
+# Legt die Datenbanken "entwicklerhaus" (Entwicklung) und "entwicklerhaus_test"
+# (Vitest) an. Nur lokal erreichbar; das Passwort ist ein reines Entwicklungspasswort.
+services:
+  pgvector:
+    image: pgvector/pgvector:pg18
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: entwicklerhaus
+      POSTGRES_PASSWORD: ${POSTGRES_DEV_PASSWORD:-entwicklerhaus_dev}
+      POSTGRES_DB: entwicklerhaus
+    ports:
+      - '127.0.0.1:5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ./docker/postgres-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U entwicklerhaus -d entwicklerhaus']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:
