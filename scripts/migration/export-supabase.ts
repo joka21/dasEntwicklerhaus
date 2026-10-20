@@ -11,9 +11,10 @@
 //   - die Alt-Tabellen projects, blog_posts, contact_submissions (nur Sicherung)
 //
 // Nur lesend, dreifach abgesichert:
-//   1. Die Datenbankverbindung setzt default_transaction_read_only=on, das
-//      Skript prüft das vor der ersten Abfrage.
-//   2. Alle Abfragen laufen in EINER Transaktion "read only" (gleicher Stand für alle Tabellen).
+//   1. Die Sitzung wird schreibgeschützt gesetzt (Startparameter und SET SESSION
+//      CHARACTERISTICS – der Supabase-Pooler ignoriert Startparameter).
+//   2. Alle Abfragen laufen in EINER Transaktion "read only" (gleicher Stand für
+//      alle Tabellen); vor der ersten Datenabfrage wird geprüft, dass sie schreibgeschützt ist.
 //   3. Dateien werden ausschließlich per HTTP GET geholt.
 //
 // Benötigt (in .env.local, nie einchecken):
@@ -91,10 +92,15 @@ async function main() {
   })
 
   try {
-    const [{ transaction_read_only: nurLesen }] = await sql`show transaction_read_only`
-    if (nurLesen !== 'on') throw new Error('Verbindung ist nicht schreibgeschützt – Abbruch.')
+    // Der Session-Pooler von Supabase reicht Startparameter wie
+    // default_transaction_read_only nicht durch – deshalb zusätzlich per SET.
+    await sql`set session characteristics as transaction read only`
 
     const { manifest, objekte } = await sql.begin('isolation level repeatable read read only', async (tx) => {
+      // Maßgeblich: Diese Transaktion ist schreibgeschützt – geprüft vor der ersten Datenabfrage.
+      const [{ transaction_read_only: nurLesen }] = await tx`show transaction_read_only`
+      if (nurLesen !== 'on') throw new Error('Transaktion ist nicht schreibgeschützt – Abbruch.')
+
       const zaehlung: Record<string, number> = {}
 
       for (const tabelle of PORTAL_TABELLEN) {
