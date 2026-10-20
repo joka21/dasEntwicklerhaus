@@ -45,8 +45,6 @@ export const anbieter = {
   },
   /** Einzugsgebiet für die Seiten ohne Stadtbezug */
   einzugsgebiet: ['Krefeld', 'Niederrhein'],
-  /** Einzugsgebiet des Unternehmens insgesamt (JSON-LD im Layout) */
-  einzugsgebietGesamt: ['Krefeld', 'Niederrhein', 'Nordrhein-Westfalen'],
 }
 
 export const seitenTexte = {

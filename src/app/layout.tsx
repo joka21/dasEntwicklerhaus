@@ -84,7 +84,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="de" itemScope itemType="https://schema.org/WebSite">
+    <html lang="de">
       <head>
         <meta name="google-site-verification" content="caAjiFZudEGwlkms5VQwjcDqc5wYfs6uhVDLC9KfhVw" />
         <link rel="icon" href="/images/logo/logo-Klein.webp" type="image/webp" />
@@ -100,7 +100,7 @@ export default function RootLayout({
             websiteLd(),
             personLd(),
             professionalServiceLd({
-              areaServed: anbieter.einzugsgebietGesamt,
+              areaServed: anbieter.einzugsgebiet,
               angebote: zielgruppen.map((z) => ({ name: z.karte.titel, path: `/${z.slug}` })),
             }),
           ]}

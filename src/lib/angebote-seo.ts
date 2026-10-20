@@ -81,8 +81,12 @@ export const DIENSTLEISTER_ID = `${SITE_URL}/#dienstleister`
 export const PERSON_ID = `${SITE_URL}/#person`
 const WEBSITE_ID = `${SITE_URL}/#website`
 
-/** Verweis auf den Dienstleister für Knoten auf Seiten ohne eigenen ProfessionalService-Knoten */
-const DIENSTLEISTER_VERWEIS = { '@type': 'ProfessionalService', '@id': DIENSTLEISTER_ID, name: anbieter.name }
+// Nur die @id: Ein Verweis mit eigenem @type zählen Validatoren als zweites
+// LocalBusiness (ohne Adresse). Der vollständige Knoten steht im Root-Layout.
+const DIENSTLEISTER_VERWEIS = { '@id': DIENSTLEISTER_ID }
+
+/** Startseiten-URL mit Schrägstrich, wie sie in JSON-LD stehen soll */
+const STARTSEITE_URL = `${SITE_URL}/`
 
 const ORTSTYP: Record<string, string> = {
   Niederrhein: 'Place',
@@ -109,7 +113,7 @@ export function professionalServiceLd({
     '@id': DIENSTLEISTER_ID,
     name: anbieter.name,
     description: anbieter.beschreibung,
-    url: SITE_URL,
+    url: STARTSEITE_URL,
     telephone: anbieter.telefon,
     email: anbieter.email,
     image: OG_BILD.url,
@@ -162,7 +166,7 @@ export function websiteLd() {
   return {
     '@type': 'WebSite',
     '@id': WEBSITE_ID,
-    url: SITE_URL,
+    url: STARTSEITE_URL,
     name: anbieter.name,
     inLanguage: 'de-DE',
     publisher: DIENSTLEISTER_VERWEIS,
@@ -184,7 +188,7 @@ export function aboutPageLd({ name, description, path }: { name: string; descrip
 
 /** Herausgeber für BlogPosting & Co. */
 export function herausgeberLd() {
-  return { ...DIENSTLEISTER_VERWEIS, logo: `${SITE_URL}/images/logo/logo-Klein.webp` }
+  return DIENSTLEISTER_VERWEIS
 }
 
 export function serviceLd({
