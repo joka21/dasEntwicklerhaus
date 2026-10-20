@@ -45,6 +45,7 @@ Registry – eine der beiden Varianten:
 - **GitHub Container Registry** (privat):
   `docker tag dasentwicklerhaus:<version> ghcr.io/joka21/dasentwicklerhaus:<version>` und
   `docker push …` (vorher `docker login ghcr.io` mit einem GitHub-Token mit `write:packages`).
+  **Gewählt: GHCR, privat.**
   In Mittwald die Zugangsdaten hinterlegen:
   `mw registry create --description "GitHub" --uri ghcr.io --username joka21`
   (Token mit `read:packages`) **(prüfen, ob ghcr.io so angebunden wird)**.
@@ -190,8 +191,10 @@ setzt Mittwald die Einträge eventuell selbst **(prüfen)** – dann die Tabelle
 nutzen.
 
 Die Live-Adresse ist `www.dasentwicklerhaus.de`; `dasentwicklerhaus.de` leitet heute (Vercel)
-dorthin weiter. Diese Weiterleitung muss auf Mittwald genauso bestehen (**offen**: per
-Weiterleitung in mStudio oder in der App).
+dorthin weiter. Auf Mittwald übernimmt das die App (Regel in `next.config.mjs`, 301, Pfad und
+Query bleiben erhalten). Dafür müssen **beide** Domains mit dem Container verbunden sein und
+der Ingress muss den Host-Header unverändert durchreichen – nach dem Umschalten prüfen
+(Schritt 5.4).
 
 ### 5.2 Am Vortag: TTL senken
 

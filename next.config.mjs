@@ -108,6 +108,14 @@ const nextConfig = {
 
   async redirects() {
     return [
+      // Adresse ohne www auf www (301), Pfad und Query bleiben erhalten. Auf Vercel
+      // erledigte das die Domain-Einstellung, im Container bei Mittwald die App.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'dasentwicklerhaus\\.de' }],
+        destination: 'https://www.dasentwicklerhaus.de/:path*',
+        statusCode: 301,
+      },
       {
         source: '/dieIdee',
         destination: '/dieidee',
