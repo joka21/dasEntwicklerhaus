@@ -1,4 +1,4 @@
-# Lokale Datenbank für die Entwicklung (gleiches Image wie im Mittwald-Stack).
+# Lokale Datenbank und Mail-Fänger für die Entwicklung (Datenbank-Image wie im Mittwald-Stack).
 # Start:  docker compose -f docker-compose.dev.yml up -d
 # Stopp:  docker compose -f docker-compose.dev.yml down   (Daten bleiben im Volume)
 #
@@ -22,6 +22,18 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+
+  # Fängt alle Mails ab (Anmeldelinks, Kontaktformular), nichts geht nach draußen.
+  # Postfach: http://localhost:8025 – dafür SMTP_HOST=localhost, SMTP_PORT=1025 setzen.
+  mailpit:
+    image: axllent/mailpit:latest
+    restart: unless-stopped
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    ports:
+      - '127.0.0.1:1025:1025'
+      - '127.0.0.1:8025:8025'
 
 volumes:
   pgdata:

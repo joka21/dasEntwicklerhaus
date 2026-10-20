@@ -10,19 +10,24 @@ export function escapeHtml(value: string): string {
     .replace(/'/g, '&#39;')
 }
 
-interface AdminMail {
+interface Mail {
+  to: string
   subject: string
   html: string
   text: string
 }
 
-// Benachrichtigung an mich. Wirft nie: Ein Mailfehler darf die eigentliche
-// Aktion (Kommentar, Freigabe) nicht scheitern lassen – er wird nur geloggt.
-export async function sendAdminMail({ subject, html, text }: AdminMail): Promise<void> {
-  const empfaenger = process.env.PORTAL_ADMIN_EMAIL
-  if (!empfaenger || !process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.warn('PORTAL_ADMIN_EMAIL oder SMTP nicht konfiguriert – Benachrichtigung nicht gesendet:', subject)
-    return
+function smtpKonfiguriert(): boolean {
+  return Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS)
+}
+
+// Mail aus dem Kundenportal (Anmeldelinks, Benachrichtigungen). Absender ist
+// PORTAL_MAIL_FROM, ersatzweise SMTP_USER. Wirft nie, sondern meldet über den
+// Rückgabewert, ob die Mail angenommen wurde; Fehler werden geloggt.
+export async function sendPortalMail({ to, subject, html, text }: Mail): Promise<boolean> {
+  if (!smtpKonfiguriert()) {
+    console.warn('SMTP nicht konfiguriert – Mail nicht gesendet:', subject)
+    return false
   }
 
   try {
@@ -38,13 +43,26 @@ export async function sendAdminMail({ subject, html, text }: AdminMail): Promise
     })
 
     await transporter.sendMail({
-      from: process.env.SMTP_USER,
-      to: empfaenger,
+      from: process.env.PORTAL_MAIL_FROM || process.env.SMTP_USER,
+      to,
       subject,
       html,
       text,
     })
+    return true
   } catch (error) {
-    console.error('Benachrichtigung fehlgeschlagen:', subject, error)
+    console.error('Mailversand fehlgeschlagen:', subject, error)
+    return false
   }
+}
+
+// Benachrichtigung an mich. Ein Mailfehler darf die eigentliche Aktion
+// (Kommentar, Freigabe) nicht scheitern lassen – er wird nur geloggt.
+export async function sendAdminMail(mail: Omit<Mail, 'to'>): Promise<void> {
+  const empfaenger = process.env.PORTAL_ADMIN_EMAIL
+  if (!empfaenger) {
+    console.warn('PORTAL_ADMIN_EMAIL nicht konfiguriert – Benachrichtigung nicht gesendet:', mail.subject)
+    return
+  }
+  await sendPortalMail({ ...mail, to: empfaenger })
 }

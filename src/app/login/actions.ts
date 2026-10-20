@@ -2,11 +2,9 @@
 
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import type { EmailOtpType } from '@supabase/supabase-js'
-import { createClient } from '@/lib/supabase/server'
+import { auth, darfAnmeldelinkErhalten } from '@/lib/auth'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const LINK_TYPES: EmailOtpType[] = ['email', 'magiclink', 'invite']
 
 export async function requestMagicLink(formData: FormData) {
   const email = String(formData.get('email') ?? '').trim().toLowerCase()
@@ -14,20 +12,17 @@ export async function requestMagicLink(formData: FormData) {
     redirect('/login?fehler=ungueltig')
   }
 
-  const supabase = await createClient()
-  // shouldCreateUser: false – nur Kunden, die ich angelegt habe, bekommen einen Link.
-  // emailRedirectTo = aktuelle Domain (Preview, localhost). Steht sie nicht auf
-  // der Redirect-Liste in Supabase, nimmt Supabase die Site URL.
-  const origin = (await headers()).get('origin') ?? undefined
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: { shouldCreateUser: false, emailRedirectTo: origin },
-  })
-
-  // Unbekannte Adressen liefern einen Fehler. Nach außen trotzdem dieselbe
-  // Meldung, damit niemand ausprobieren kann, welche Adressen Kunden sind.
-  if (error) {
-    console.error('Magic Link nicht versendet:', error.code ?? error.status, error.message)
+  // Nur Kunden, die ich angelegt habe, bekommen einen Link. Unbekannte Adressen
+  // und zu viele Anfragen erhalten nach außen dieselbe Meldung, damit niemand
+  // ausprobieren kann, welche Adressen Kunden sind.
+  if (await darfAnmeldelinkErhalten(email)) {
+    try {
+      await auth.api.signInMagicLink({ body: { email }, headers: await headers() })
+    } catch (error) {
+      console.error('Magic Link nicht versendet:', error)
+    }
+  } else {
+    console.warn('Magic Link nicht versendet: unbekannte Adresse oder zu viele Anfragen')
   }
 
   redirect('/login?gesendet=1')
@@ -37,16 +32,18 @@ export async function requestMagicLink(formData: FormData) {
 // Link-Scanner in Mailprogrammen rufen Links vorab auf und würden den
 // Einmal-Token sonst verbrauchen.
 export async function confirmLogin(formData: FormData) {
-  const tokenHash = String(formData.get('token_hash') ?? '')
-  const type = String(formData.get('type') ?? '') as EmailOtpType
-  if (!tokenHash || !LINK_TYPES.includes(type)) {
+  const token = String(formData.get('token') ?? '')
+  if (!token || token.length > 200) {
     redirect('/login?fehler=link')
   }
 
-  const supabase = await createClient()
-  const { error } = await supabase.auth.verifyOtp({ token_hash: tokenHash, type })
-  if (error) {
-    console.error('Login-Link ungültig:', error.code ?? error.status, error.message)
+  try {
+    // Ohne callbackURL antwortet Better Auth mit JSON statt Weiterleitung;
+    // das Sitzungs-Cookie setzt das Plugin nextCookies.
+    await auth.api.magicLinkVerify({ query: { token }, headers: await headers() })
+  } catch (error) {
+    // Ungültige oder abgelaufene Tokens meldet Better Auth als Weiterleitung mit Fehlercode.
+    console.error('Login-Link ungültig:', error instanceof Error ? error.message : error)
     redirect('/login?fehler=link')
   }
 
@@ -54,7 +51,10 @@ export async function confirmLogin(formData: FormData) {
 }
 
 export async function logout() {
-  const supabase = await createClient()
-  await supabase.auth.signOut()
+  try {
+    await auth.api.signOut({ headers: await headers() })
+  } catch (error) {
+    console.error('Abmelden fehlgeschlagen:', error)
+  }
   redirect('/login')
 }

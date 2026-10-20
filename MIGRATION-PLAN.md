@@ -73,7 +73,6 @@ das Portal selbst nutzt sie nicht.
 | `drizzle.config.ts`, `drizzle/*.sql` | drizzle-kit-Konfiguration und Migrationen | 1 |
 | `src/lib/db/index.ts`, `src/lib/db/schema.ts` | DB-Verbindung, Schema (Portal + Better Auth) | 1 |
 | `src/lib/auth.ts` | Better-Auth-Konfiguration | 2 |
-| `src/app/api/auth/[...all]/route.ts` | Better-Auth-Handler | 2 |
 | `src/lib/portal/authz.ts` | alle Zugriffsregeln | 3 |
 | `src/lib/portal/daten.ts` | alle Portal-Abfragen, jede ruft authz auf | 3 |
 | `src/lib/portal/*.test.ts` | Tests der Regeln gegen echte Test-Datenbank | 3 |
@@ -163,7 +162,7 @@ Kunden zugeordnet und erhält einen Magic Link (Einladung). Offene Registrierung
 | Ablaufzeit Magic Link (Better Auth Standard: 5 Min, heute 1 Std.) | `expiresIn` auf 1 Stunde setzen (Mailtext sagt „eine Stunde“) |
 | Pfad-Traversal beim Datei-Lesen/Upload | Pfad nur aus DB, Normalisierung + Prüfung „liegt unter `PORTAL_STORAGE_PATH`“, Dateinamen beim Upload selbst vergeben |
 | Dateien im Container gehen verloren | Persistentes Volume für `PORTAL_STORAGE_PATH`, Backup einplanen (DEPLOY.md) |
-| Mail-Flut durch Login-Anfragen | Rate-Limit von Better Auth aktivieren (Speicher: Datenbank, da mehrere Instanzen möglich) |
+| Mail-Flut durch Login-Anfragen | Eigene Grenze: höchstens 3 Anmeldelinks pro Adresse in 15 Minuten (gezählt in `auth_verification`); das Rate-Limit von Better Auth greift bei direkten `auth.api`-Aufrufen nicht |
 | Übergangszeit: Vercel-Previews erreichen die Mittwald-DB nicht (intern) | Portal lokal testen; Live-Portal läuft bis zum Umzug weiter mit Supabase |
 | Supabase-Einstellungen außerhalb des Repos (SMTP, Redirect-URLs) | Vor Phase 6 im Dashboard nachsehen, nichts ändern |
 | Alt-Tabellen `projects`, `blog_posts`, `contact_submissions` | Nur Sicherung in Phase 6, keine Übernahme |
@@ -181,3 +180,11 @@ Kunden zugeordnet und erhält einen Magic Link (Einladung). Offene Registrierung
 6. Admin-Bereich unter `/portal/admin`.
 7. Admin-Rechte über `portal_admins` + Skript für den ersten Admin; Magic Link 1 Stunde gültig;
    Einlösung erst per Button auf der Bestätigungsseite.
+
+## 7. Abweichungen in der Umsetzung
+
+- **Phase 2 – kein öffentlicher Better-Auth-Handler (`/api/auth/*`):** Anmelden, Einlösen und
+  Abmelden laufen nur über Server Actions mit `auth.api`. Es gibt damit keinen GET-Endpunkt,
+  der den Token beim Aufruf des Links verbraucht, und weniger Angriffsfläche.
+- **Phase 2 – Mail-Grenze selbst umgesetzt** statt Rate-Limit von Better Auth (siehe Risiken).
+- **Phase 2 – Mailpit** in `docker-compose.dev.yml` fängt lokal alle Mails ab.

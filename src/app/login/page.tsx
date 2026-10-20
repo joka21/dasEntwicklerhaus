@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import Seite from '@/components/portal/PortalSeite'
-import { createClient } from '@/lib/supabase/server'
+import { aktuelleSitzung } from '@/lib/auth'
 import { requestMagicLink } from './actions'
 
 const FEHLER: Record<string, string> = {
@@ -14,11 +14,7 @@ export default async function LoginPage({
   searchParams: Promise<{ gesendet?: string; fehler?: string }>
 }) {
   const { gesendet, fehler: fehlerCode } = await searchParams
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  if (user) redirect('/portal')
+  if (await aktuelleSitzung()) redirect('/portal')
 
   const fehler = fehlerCode ? FEHLER[fehlerCode] : undefined
 

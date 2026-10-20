@@ -10,15 +10,17 @@
     "db:up": "docker compose -f docker-compose.dev.yml up -d",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "admin:anlegen": "tsx --env-file-if-exists=.env.local scripts/admin-anlegen.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.3",
-    "@types/nodemailer": "^7.0.1",
+    "@types/nodemailer": "^8.0.2",
+    "better-auth": "^1.7.11",
     "drizzle-orm": "^0.45.4",
     "next": "^16.4.0",
-    "nodemailer": "^7.0.5",
+    "nodemailer": "^10.1.7",
     "postgres": "^3.4.9",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
@@ -33,6 +35,7 @@
     "eslint-config-next": "^16.4.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

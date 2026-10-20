@@ -1,46 +1,31 @@
 import { NextResponse, type NextRequest } from 'next/server'
-import { createServerClient } from '@supabase/ssr'
+import { auth } from '@/lib/auth'
 
-// Erneuert die Supabase-Sitzung und schützt /portal/*.
+// Prüft die Better-Auth-Sitzung (in der Datenbank) und schützt /portal/*.
 // Next 16: proxy statt middleware, läuft in der Node.js-Runtime.
 // Die Seiten prüfen den Login zusätzlich selbst.
 export async function proxy(request: NextRequest) {
-  let response = NextResponse.next({ request })
+  // returnHeaders: Verlängert Better Auth die Sitzung, kommt das neue Cookie
+  // als Set-Cookie zurück und wird an die Antwort weitergegeben.
+  const { headers: authHeaders, response: sitzung } = await auth.api.getSession({
+    headers: request.headers,
+    returnHeaders: true,
+  })
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll()
-        },
-        setAll(cookiesToSet, headers) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-          response = NextResponse.next({ request })
-          cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options))
-          Object.entries(headers).forEach(([key, value]) => response.headers.set(key, value))
-        },
-      },
-    }
-  )
+  const response =
+    !sitzung && request.nextUrl.pathname.startsWith('/portal')
+      ? NextResponse.redirect(loginUrl(request))
+      : NextResponse.next({ request })
 
-  // getUser() prüft das Token beim Auth-Server (getSession() würde dem Cookie
-  // ungeprüft vertrauen).
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  if (!user && request.nextUrl.pathname.startsWith('/portal')) {
-    const loginUrl = request.nextUrl.clone()
-    loginUrl.pathname = '/login'
-    loginUrl.search = ''
-    const redirect = NextResponse.redirect(loginUrl)
-    response.cookies.getAll().forEach((cookie) => redirect.cookies.set(cookie))
-    return redirect
-  }
-
+  authHeaders.getSetCookie().forEach((cookie) => response.headers.append('set-cookie', cookie))
   return response
+}
+
+function loginUrl(request: NextRequest): URL {
+  const url = request.nextUrl.clone()
+  url.pathname = '/login'
+  url.search = ''
+  return url
 }
 
 export const config = {
