@@ -6,9 +6,11 @@ import { kommentieren, type AktionsStatus } from '@/app/portal/[projekt]/actions
 interface KommentarFormularProps {
   projektSlug: string
   varianteId: string
+  /** Admins antworten dem Kunden */
+  alsAdmin?: boolean
 }
 
-export default function KommentarFormular({ projektSlug, varianteId }: KommentarFormularProps) {
+export default function KommentarFormular({ projektSlug, varianteId, alsAdmin = false }: KommentarFormularProps) {
   const [status, action, wirdGesendet] = useActionState<AktionsStatus, FormData>(kommentieren, null)
   const formRef = useRef<HTMLFormElement>(null)
   const feldId = `kommentar-${varianteId}`
@@ -32,7 +34,7 @@ export default function KommentarFormular({ projektSlug, varianteId }: Kommentar
       <input type="hidden" name="projekt" value={projektSlug} />
       <input type="hidden" name="variant_id" value={varianteId} />
       <label htmlFor={feldId} className="block font-medium text-dark">
-        Ihr Kommentar zu dieser Variante
+        {alsAdmin ? 'Antwort an den Kunden (erscheint als „Das Entwicklerhaus“)' : 'Ihr Kommentar zu dieser Variante'}
       </label>
       <textarea
         id={feldId}

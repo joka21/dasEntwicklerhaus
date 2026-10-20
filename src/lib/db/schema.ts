@@ -89,6 +89,7 @@ export const authVerification = pgTable(
 // Kundenportal – inhaltlich 1:1 zu supabase/migrations/20261012180000_portal.sql.
 // Verweise auf auth.users zeigen jetzt auf auth_user. Die Defaults auth.uid()
 // (author_id, approved_by) entfallen: Der Server setzt die Benutzer-ID.
+// Neu gegenüber Supabase: portal_variant_comments.is_admin (Migration 0001).
 // Zugriffsregeln (bisher RLS) stehen in src/lib/portal/authz.ts.
 // ---------------------------------------------------------------------------
 
@@ -207,6 +208,9 @@ export const portalVariantComments = pgTable(
     variantId: uuid('variant_id').notNull(),
     authorId: uuid('author_id'),
     body: text('body').notNull(),
+    // Beim Speichern festgehalten: Kommentar stammt von einem Admin (Antwort
+    // vom Entwicklerhaus). Bleibt erhalten, auch wenn der Admin später ausgetragen wird.
+    isAdmin: boolean('is_admin').notNull().default(false),
     createdAt: angelegtAm(),
   },
   (t) => [

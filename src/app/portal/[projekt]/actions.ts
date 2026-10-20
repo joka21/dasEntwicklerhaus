@@ -2,9 +2,11 @@
 
 import { revalidatePath } from 'next/cache'
 import { headers } from 'next/headers'
-import { escapeHtml, sendAdminMail } from '@/lib/mail'
+import { escapeHtml, sendAdminMail, sendPortalMail } from '@/lib/mail'
 import { UUID_RE } from '@/lib/portal'
-import { freigabeSpeichern, kommentarSpeichern } from '@/lib/portal/daten'
+import { empfaengerFuerAntwort } from '@/lib/portal/admin'
+import type { Viewer } from '@/lib/portal/authz'
+import { freigabeSpeichern, kommentarSpeichern, type VarianteImProjekt } from '@/lib/portal/daten'
 import { aktuellerViewer } from '@/lib/portal/viewer'
 
 export type AktionsStatus = { ok: boolean; meldung: string } | null
@@ -40,6 +42,14 @@ export async function kommentieren(_vorher: AktionsStatus, formData: FormData): 
   if (ergebnis.status !== 'ok') return { ok: false, meldung: 'Der Kommentar konnte nicht gespeichert werden.' }
   const k = ergebnis.kontext
 
+  // Antworten von Admins: kurzer Hinweis an alle Personen des Kunden (ohne den
+  // Antworttext), keine Benachrichtigung an mich.
+  if (viewer.istAdmin) {
+    await kundenBenachrichtigen(viewer, k)
+    revalidatePath(`/portal/${k.projectSlug}`)
+    return { ok: true, meldung: 'Ihre Antwort wurde gespeichert.' }
+  }
+
   const link = await portalLink(k.projectSlug)
   await sendAdminMail({
     subject: `Kommentar: ${k.projectTitle} – ${k.variantTitle}`,
@@ -55,6 +65,29 @@ export async function kommentieren(_vorher: AktionsStatus, formData: FormData): 
 
   revalidatePath(`/portal/${k.projectSlug}`)
   return { ok: true, meldung: 'Danke! Ihr Kommentar wurde gespeichert.' }
+}
+
+async function kundenBenachrichtigen(viewer: Viewer, k: VarianteImProjekt): Promise<void> {
+  const empfaenger = await empfaengerFuerAntwort(viewer, k.projectId)
+  if (empfaenger.length === 0) return
+  const link = await portalLink(k.projectSlug)
+  // Einzeln verschicken, damit niemand die Adressen der anderen sieht.
+  await Promise.all(
+    empfaenger.map((to) =>
+      sendPortalMail({
+        to,
+        subject: `Neue Antwort im Projekt ${k.projectTitle}`,
+        html: `
+          <p>Guten Tag,</p>
+          <p>im Kundenportal gibt es eine neue Antwort von Das Entwicklerhaus im Projekt
+          <strong>${escapeHtml(k.projectTitle)}</strong>.</p>
+          <p><a href="${escapeHtml(link)}">Zum Projekt im Kundenportal</a></p>
+          <p>Viele Grüße<br>Das Entwicklerhaus</p>
+        `,
+        text: `Guten Tag,\n\nim Kundenportal gibt es eine neue Antwort von Das Entwicklerhaus im Projekt "${k.projectTitle}".\n\nZum Projekt: ${link}\n\nViele Grüße\nDas Entwicklerhaus`,
+      })
+    )
+  )
 }
 
 export async function freigeben(_vorher: AktionsStatus, formData: FormData): Promise<AktionsStatus> {

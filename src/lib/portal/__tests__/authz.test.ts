@@ -93,7 +93,8 @@ describe('5, 6, 8 – Varianten, Kommentare und Freigabe lesen', () => {
     expect(inhalt?.varianten.map((v) => v.id)).toEqual([ID.variante1a, ID.variante1b])
     expect(inhalt?.kommentare.map((k) => k.body)).toEqual(['Schön!'])
     expect(inhalt?.freigabe).toBeNull()
-    expect(inhalt?.istKunde).toBe(true)
+    expect(inhalt?.darfKommentieren).toBe(true)
+    expect(inhalt?.darfFreigeben).toBe(true)
   })
   it('fremder Kunde bekommt nichts', async () => {
     expect(await ladeProjektInhalt(viewer.kundeB, ID.projekt1)).toBeNull()
@@ -101,10 +102,19 @@ describe('5, 6, 8 – Varianten, Kommentare und Freigabe lesen', () => {
   it('ohne Login nichts', async () => {
     expect(await ladeProjektInhalt(null, ID.projekt1)).toBeNull()
   })
-  it('Admin liest mit, ist aber kein Kunde', async () => {
+  it('Admin liest mit und darf antworten, aber nicht freigeben', async () => {
     const inhalt = await ladeProjektInhalt(viewer.admin, ID.projekt1)
     expect(inhalt?.varianten).toHaveLength(2)
-    expect(inhalt?.istKunde).toBe(false)
+    expect(inhalt?.darfKommentieren).toBe(true)
+    expect(inhalt?.darfFreigeben).toBe(false)
+  })
+  it('Kommentare von Admins sind gekennzeichnet', async () => {
+    await kommentarSpeichern(viewer.admin, { slug: 'projekt-1', variantId: ID.variante1a, body: 'Antwort' })
+    const inhalt = await ladeProjektInhalt(viewer.kundeA, ID.projekt1)
+    expect(inhalt?.kommentare.map((k) => [k.body, k.vonAdmin])).toEqual([
+      ['Schön!', false],
+      ['Antwort', true],
+    ])
   })
 })
 
@@ -128,9 +138,14 @@ describe('7 – portal_variant_comments_insert', () => {
     expect(await darfKommentieren(null, ID.variante1a)).toBe(false)
     expect((await kommentarSpeichern(null, eingabe)).status).toBe('kein-zugriff')
   })
-  it('Admin darf nicht kommentieren', async () => {
-    expect(await darfKommentieren(viewer.admin, ID.variante1a)).toBe(false)
-    expect((await kommentarSpeichern(viewer.admin, eingabe)).status).toBe('kein-zugriff')
+  it('Admin darf antworten (Phase 5), Autor ist der Admin', async () => {
+    expect(await darfKommentieren(viewer.admin, ID.variante1a)).toBe(true)
+    expect((await kommentarSpeichern(viewer.admin, eingabe)).status).toBe('ok')
+    const [k] = await db.select().from(portalVariantComments).where(eq(portalVariantComments.body, eingabe.body))
+    expect(k.authorId).toBe(ID.admin)
+  })
+  it('Admin darf auch bei fremden Kunden antworten, aber nicht ohne passende Projekt-URL', async () => {
+    expect((await kommentarSpeichern(viewer.admin, { ...eingabe, slug: 'projekt-2' })).status).toBe('kein-zugriff')
   })
   it('Variante muss zum Projekt aus der URL gehören', async () => {
     expect((await kommentarSpeichern(viewer.kundeB, { ...eingabe, slug: 'projekt-2' })).status).toBe('kein-zugriff')
@@ -165,6 +180,7 @@ describe('9 – portal_project_approvals_insert', () => {
     expect((await freigabeSpeichern(null, eingabe)).status).toBe('kein-zugriff')
   })
   it('Admin darf nicht freigeben', async () => {
+    expect(await darfFreigeben(viewer.admin, ID.projekt1, ID.variante1b)).toBe(false)
     expect((await freigabeSpeichern(viewer.admin, eingabe)).status).toBe('kein-zugriff')
   })
   it('Variante eines anderen Projekts kann nicht freigegeben werden', async () => {

@@ -12,11 +12,10 @@ import {
   darfKommentieren,
   darfProjektLesen,
   istKundeImProjekt,
-  mussAdminSein,
   sichtbareProjekteBedingung,
   type Viewer,
 } from './authz'
-import { entwurfLoeschen, entwurfSpeichern, pruefeEntwurfDatei } from './speicher'
+import { pgFehlercode } from './pg-fehler'
 
 // Einziger Ort mit Datenbankzugriffen des Portals.
 // Jede Funktion prüft über authz.ts; fremde Daten liefern null bzw. eine leere
@@ -83,14 +82,18 @@ export interface Kommentar {
   authorId: string | null
   body: string
   createdAt: Date
+  /** Beim Speichern festgehalten: Antwort vom Entwicklerhaus (is_admin) */
+  vonAdmin: boolean
 }
 
 export interface ProjektInhalt {
   varianten: Variante[]
   freigabe: { variantId: string; approvedAt: Date } | null
   kommentare: Kommentar[]
-  /** Kommentieren und Freigeben dürfen nur Kunden, nicht Admins (Regeln 7 und 9) */
-  istKunde: boolean
+  /** Regel 7: Kundenmitglieder und Admins */
+  darfKommentieren: boolean
+  /** Regel 9: ausschließlich Kundenmitglieder */
+  darfFreigeben: boolean
 }
 
 /** Regeln 5, 6, 8: Varianten, Kommentare und Freigabe eines Projekts */
@@ -121,6 +124,7 @@ export async function ladeProjektInhalt(viewer: Viewer | null, projectId: string
             authorId: portalVariantComments.authorId,
             body: portalVariantComments.body,
             createdAt: portalVariantComments.createdAt,
+            vonAdmin: portalVariantComments.isAdmin,
           })
           .from(portalVariantComments)
           .where(
@@ -131,7 +135,13 @@ export async function ladeProjektInhalt(viewer: Viewer | null, projectId: string
           )
           .orderBy(asc(portalVariantComments.createdAt))
 
-  return { varianten, freigabe: freigabe ?? null, kommentare, istKunde }
+  return {
+    varianten,
+    freigabe: freigabe ?? null,
+    kommentare,
+    darfKommentieren: istKunde || Boolean(viewer?.istAdmin),
+    darfFreigeben: istKunde,
+  }
 }
 
 export interface VarianteImProjekt {
@@ -182,7 +192,7 @@ export async function kommentarSpeichern(
   try {
     await db
       .insert(portalVariantComments)
-      .values({ variantId: kontext.variantId, body: eingabe.body, authorId: viewer.userId })
+      .values({ variantId: kontext.variantId, body: eingabe.body, authorId: viewer.userId, isAdmin: viewer.istAdmin })
     return { status: 'ok', kontext }
   } catch (error) {
     console.error('Kommentar nicht gespeichert:', pgFehlercode(error) ?? error)
@@ -223,63 +233,4 @@ export async function ladeEntwurfPfad(viewer: Viewer | null, slug: string, varia
     .where(eq(portalDesignVariants.id, kontext.variantId))
     .limit(1)
   return zeile?.storagePath ?? null
-}
-
-// Drizzle verpackt Fehler von postgres.js; der SQLSTATE steht dann in cause.
-function pgFehlercode(error: unknown): string | undefined {
-  const kandidat = (error as { cause?: { code?: unknown } })?.cause ?? error
-  const code = (kandidat as { code?: unknown })?.code
-  return typeof code === 'string' ? code : undefined
-}
-
-// ---------------------------------------------------------------------------
-// Admin (Regel 11)
-// ---------------------------------------------------------------------------
-
-export type UploadErgebnis =
-  | { status: 'ok'; variantId: string; storagePath: string }
-  | { status: 'kein-zugriff' }
-  | { status: 'ungueltig'; meldung: string }
-  | { status: 'fehler' }
-
-/**
- * Regel 11: Entwurf hochladen und als Variante eines Projekts eintragen.
- * Schlägt der Eintrag fehl (z. B. unbekanntes Projekt), wird die Datei wieder entfernt.
- */
-export async function entwurfHochladen(
-  viewer: Viewer | null,
-  eingabe: { projectId: string; title: string; description?: string | null; sortOrder?: number; datei: File }
-): Promise<UploadErgebnis> {
-  if (!mussAdminSein(viewer)) return { status: 'kein-zugriff' }
-
-  const title = eingabe.title.trim()
-  if (title.length < 1 || title.length > 200) return { status: 'ungueltig', meldung: 'Bitte einen Titel (1–200 Zeichen) angeben.' }
-  const pruefung = pruefeEntwurfDatei(eingabe.datei)
-  if (!pruefung.ok) return { status: 'ungueltig', meldung: pruefung.meldung }
-
-  let storagePath: string
-  try {
-    storagePath = await entwurfSpeichern(eingabe.projectId, new Uint8Array(await eingabe.datei.arrayBuffer()))
-  } catch (error) {
-    console.error('Entwurf nicht gespeichert:', error)
-    return { status: 'fehler' }
-  }
-
-  try {
-    const [zeile] = await db
-      .insert(portalDesignVariants)
-      .values({
-        projectId: eingabe.projectId,
-        title,
-        description: eingabe.description?.trim() || null,
-        storagePath,
-        sortOrder: eingabe.sortOrder ?? 0,
-      })
-      .returning({ id: portalDesignVariants.id })
-    return { status: 'ok', variantId: zeile.id, storagePath }
-  } catch (error) {
-    await entwurfLoeschen(storagePath)
-    console.error('Variante nicht eingetragen:', pgFehlercode(error) ?? error)
-    return { status: 'fehler' }
-  }
 }

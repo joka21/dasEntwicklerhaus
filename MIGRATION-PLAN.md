@@ -200,3 +200,14 @@ Kunden zugeordnet und erhält einen Magic Link (Einladung). Offene Registrierung
   Linux-Container ausführen und das Ergebnis berichten. In DEPLOY.md beschreiben, wie das Volume
   `PORTAL_STORAGE_PATH` gesichert wird (Databasus sichert nur die Datenbank; Mittwald-Projektbackup
   prüfen, ggf. zusätzlicher Cronjob) und wie Datenbank und Dateien gemeinsam wiederhergestellt werden.
+- **Phase 5 – Umsetzung:** Admin-Bereich `/portal/admin` (Übersicht Kunden/Personen/Projekte,
+  neueste Kommentare, Formulare: Kunde anlegen, Person einladen, Projekt anlegen, Entwurf hochladen).
+  Daten in `src/lib/portal/admin.ts`, jede Funktion prüft Regel 11. Antworten schreiben Admins auf
+  der Projektseite; gekennzeichnet über `portal_admins` (kein neues Feld). Admin-Antworten lösen
+  keine Benachrichtigung an `PORTAL_ADMIN_EMAIL` aus. `serverActions.bodySizeLimit` und
+  `proxyClientMaxBodySize` auf 11 MB (Uploads bis 10 MB).
+- **Phase 5 – Ergänzungen (Freigabe Phase 5):** Migration 0001 `portal_variant_comments.is_admin`
+  (beim Speichern gesetzt, bestehende Admin-Kommentare befüllt). Admin-Antwort schickt allen Personen
+  des Kunden einen Hinweis mit Link (ohne Antworttext, einzeln adressiert). Admin-Bereich: Person
+  entfernen (ohne weiteren Kunden und kein Admin: Sitzungen beendet), Freigabe zurücksetzen und
+  Entwurf löschen (jeweils mit Bestätigungshäkchen; freigegebene Entwürfe nicht löschbar).

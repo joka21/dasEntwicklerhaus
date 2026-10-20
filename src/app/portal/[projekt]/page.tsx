@@ -27,7 +27,7 @@ export default async function ProjektPage({ params }: PageProps) {
   if (!projekt) notFound()
   const inhalt = await ladeProjektInhalt(viewer, projekt.id)
   if (!inhalt) notFound()
-  const { varianten, freigabe, kommentare, istKunde } = inhalt
+  const { varianten, freigabe, kommentare, darfKommentieren, darfFreigeben } = inhalt
 
   const freigegebeneVariante = freigabe && varianten.find((v) => v.id === freigabe.variantId)
 
@@ -86,9 +86,21 @@ export default async function ProjektPage({ params }: PageProps) {
                     <h4 className="font-semibold text-dark">Kommentare</h4>
                     <ul className="space-y-3">
                       {eigeneKommentare.map((k) => (
-                        <li key={k.id} className="rounded-lg bg-gray-50 p-4">
+                        <li
+                          key={k.id}
+                          className={`rounded-lg p-4 ${k.vonAdmin ? 'border-l-4 border-umwelt-500 bg-white' : 'bg-gray-50'}`}
+                        >
                           <p className="text-sm text-secondary mb-1">
-                            {k.authorId === viewer.userId ? 'Sie' : 'Ihr Team'} · {formatDatum(k.createdAt, true)}
+                            {k.vonAdmin ? (
+                              <span className="font-semibold text-umwelt-800">Das Entwicklerhaus</span>
+                            ) : k.authorId === viewer.userId ? (
+                              'Sie'
+                            ) : viewer.istAdmin ? (
+                              'Kunde'
+                            ) : (
+                              'Ihr Team'
+                            )}{' '}
+                            · {formatDatum(k.createdAt, true)}
                           </p>
                           <p className="text-dark whitespace-pre-line">{k.body}</p>
                         </li>
@@ -97,10 +109,10 @@ export default async function ProjektPage({ params }: PageProps) {
                   </div>
                 )}
 
-                {istKunde && (
+                {darfKommentieren && (
                   <div className="space-y-6 border-t border-gray-200 pt-6">
-                    <KommentarFormular projektSlug={projekt.slug} varianteId={v.id} />
-                    {!freigabe && (
+                    <KommentarFormular projektSlug={projekt.slug} varianteId={v.id} alsAdmin={viewer.istAdmin} />
+                    {darfFreigeben && !freigabe && (
                       <FreigabeButton projektSlug={projekt.slug} varianteId={v.id} varianteTitel={v.title} />
                     )}
                   </div>

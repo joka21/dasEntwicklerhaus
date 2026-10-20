@@ -26,6 +26,11 @@ const nextConfig = {
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['@heroicons/react'],
+    // Kundenportal: Entwürfe bis 10 MB per Server Action hochladen (Standard 1 MB);
+    // der Proxy puffert Request-Bodies, daher dort dieselbe Grenze. Etwas Luft für
+    // die übrigen Formularfelder.
+    serverActions: { bodySizeLimit: '11mb' },
+    proxyClientMaxBodySize: '11mb',
     // Redirects/Rewrites groß-/kleinschreibungsgenau vergleichen. Next 16 vergleicht
     // sonst ohne Rücksicht darauf, und /dieIdee -> /dieidee leitet auf sich selbst um.
     caseSensitiveRoutes: true,

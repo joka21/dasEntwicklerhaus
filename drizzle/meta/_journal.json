@@ -8,6 +8,13 @@
       "when": 1792487998898,
       "tag": "0000_portal",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792499020059,
+      "tag": "0001_kommentar_is_admin",
+      "breakpoints": true
     }
   ]
 }

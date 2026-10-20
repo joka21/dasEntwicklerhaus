@@ -100,23 +100,25 @@ export function sichtbareProjekteBedingung(viewer: Viewer | null): SQL | undefin
 }
 
 /**
- * 7 – portal_variant_comments_insert: nur Kundenmitglieder des Projekts der
- * Variante. Admin-Status allein reicht nicht. Autor setzt daten.ts serverseitig.
+ * 7 – portal_variant_comments_insert: Kundenmitglieder des Projekts der
+ * Variante und – erweitert in Phase 5 – Admins (Antworten, als Admin
+ * gekennzeichnet). Autor setzt daten.ts serverseitig.
  */
 export async function darfKommentieren(viewer: Viewer | null, variantId: string): Promise<boolean> {
   if (!viewer) return false
   const projectId = await projektIdDerVariante(variantId)
-  return projectId !== null && istProjektmitglied(viewer.userId, projectId)
+  return projectId !== null && (viewer.istAdmin || istProjektmitglied(viewer.userId, projectId))
 }
 
-/** Kommentar- und Freigabe-Formulare anzeigen: dieselbe Mitgliedschaft wie 7 und 9 */
+/** Freigabe-Formular anzeigen: dieselbe Mitgliedschaft wie Regel 9 */
 export async function istKundeImProjekt(viewer: Viewer | null, projectId: string): Promise<boolean> {
   if (!viewer) return false
   return istProjektmitglied(viewer.userId, projectId)
 }
 
 /**
- * 9 – portal_project_approvals_insert: nur Kundenmitglieder; die Variante muss
+ * 9 – portal_project_approvals_insert: ausschließlich Kundenmitglieder, auch
+ * nicht Admins; die Variante muss
  * zum Projekt gehören (zusätzlich durch den zusammengesetzten FK abgesichert).
  * Eine zweite Freigabe verhindert der Primärschlüssel in der Datenbank.
  */

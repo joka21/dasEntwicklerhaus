@@ -47,8 +47,12 @@ export const auth = betterAuth({
       disableSignUp: true,
       // In der Datenbank steht nur der Hash des Tokens.
       storeToken: 'hashed',
-      sendMagicLink: async ({ email, url, token }) => {
-        await sendeAnmeldelink(email, bestaetigungsUrl(url, token))
+      // metadata.einladung: Einladung aus dem Admin-Bereich statt Anmeldelink.
+      // Wirft, wenn die Mail nicht rausging – der Aufrufer meldet das.
+      sendMagicLink: async ({ email, url, token, metadata }) => {
+        const link = bestaetigungsUrl(url, token)
+        const mail = metadata?.einladung === true ? einladungsMail(link) : anmeldeMail(link)
+        if (!(await sendPortalMail({ to: email, ...mail }))) throw new Error('Mail nicht versendet')
       },
     }),
     // Muss das letzte Plugin sein: setzt die Cookies in Server Actions.
@@ -64,9 +68,8 @@ function bestaetigungsUrl(betterAuthUrl: string, token: string): string {
   return ziel.toString()
 }
 
-async function sendeAnmeldelink(email: string, link: string): Promise<void> {
-  const gesendet = await sendPortalMail({
-    to: email,
+function anmeldeMail(link: string) {
+  return {
     subject: 'Ihr Anmeldelink für das Kundenportal',
     html: `
       <h2>Ihr Anmeldelink für das Kundenportal</h2>
@@ -87,8 +90,46 @@ Falls Sie keinen Link angefordert haben, können Sie diese E-Mail ignorieren.
 
 Viele Grüße
 Das Entwicklerhaus`,
-  })
-  if (!gesendet) console.error('Anmeldelink nicht versendet')
+  }
+}
+
+function einladungsMail(link: string) {
+  const loginSeite = new URL('/login', link).toString()
+  return {
+    subject: 'Ihr Zugang zum Kundenportal',
+    html: `
+      <h2>Ihr Zugang zum Kundenportal</h2>
+      <p>Guten Tag,</p>
+      <p>für Sie wurde ein Zugang zum Kundenportal von Das Entwicklerhaus eingerichtet. Dort finden Sie die Entwürfe zu Ihrem Projekt.</p>
+      <p><a href="${escapeHtml(link)}">Zugang aktivieren und anmelden</a></p>
+      <p>Der Link ist eine Stunde gültig. Später melden Sie sich jederzeit unter
+      <a href="${escapeHtml(loginSeite)}">${escapeHtml(loginSeite)}</a> mit Ihrer E-Mail-Adresse an –
+      ein Passwort brauchen Sie nicht.</p>
+      <p>Viele Grüße<br>Das Entwicklerhaus</p>
+    `,
+    text: `Guten Tag,
+
+für Sie wurde ein Zugang zum Kundenportal von Das Entwicklerhaus eingerichtet. Dort finden Sie die Entwürfe zu Ihrem Projekt.
+
+Zugang aktivieren und anmelden:
+${link}
+
+Der Link ist eine Stunde gültig. Später melden Sie sich jederzeit unter ${loginSeite} mit Ihrer E-Mail-Adresse an – ein Passwort brauchen Sie nicht.
+
+Viele Grüße
+Das Entwicklerhaus`,
+  }
+}
+
+/** Einladung aus dem Admin-Bereich: Magic Link mit Einladungstext */
+export async function sendeEinladung(email: string): Promise<boolean> {
+  try {
+    await auth.api.signInMagicLink({ body: { email, metadata: { einladung: true } }, headers: await headers() })
+    return true
+  } catch (error) {
+    console.error('Einladung nicht versendet:', error instanceof Error ? error.message : error)
+    return false
+  }
 }
 
 /**
